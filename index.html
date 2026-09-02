@@ -158,6 +158,7 @@ main{max-width:1140px;margin:0 auto;padding:54px 28px 40px;}
 }
 .cat[data-accent="gold"]{--c:var(--accent-deep);}
 .cat[data-accent="green"]{--c:var(--green);}
+.cat[data-accent="pink"]{--c:#b5487f;}
 .cat:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);}
 .cat.open{box-shadow:var(--shadow-lg);border-color:var(--c);}
 
@@ -315,12 +316,37 @@ footer{
 <!-- ═══════════ MAIN ═══════════ -->
 <main>
   <div class="section-head">
-    <div class="eyebrow">Trois formations</div>
+    <div class="eyebrow">Quatre formations</div>
     <h2>Sélectionnez votre filière</h2>
     <p>Cliquez sur une rubrique pour découvrir les outils disponibles.</p>
   </div>
 
   <div class="cats" id="cats">
+
+    <!-- ───── TERMINALE ───── -->
+    <article class="cat" data-accent="pink">
+      <button class="cat-head" aria-expanded="false">
+        <span class="head-top">
+          <span class="mono">TLE</span>
+          <svg class="chev" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </span>
+        <span class="cat-name">Terminale</span>
+        <span class="cat-full">Classes de Mme Huet</span>
+        <span class="count">1 outil</span>
+      </button>
+      <div class="cat-panel"><div class="cat-panel-inner">
+        <div class="tool-list">
+          <a class="tool" href="code-couleur-st2s.html" data-text="terminale st2s anglais phonologie code couleur prononciation autonome mme huet">
+            <span class="tool-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18h1.5a2.5 2.5 0 0 0 0-5H13a2 2 0 0 1 0-4h4a4 4 0 0 0 4-4 5 5 0 0 0-5-5Z"/><circle cx="7.5" cy="11.5" r="1.1"/><circle cx="10.5" cy="7.5" r="1.1"/><circle cx="15" cy="7" r="1.1"/></svg></span>
+            <div class="tool-body">
+              <div class="tool-title">M2-Phonologie code couleur</div>
+              <div class="tool-desc">Anglais — méthode du code couleur pour travailler la prononciation en autonomie.</div>
+            </div>
+            <svg class="tool-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div></div>
+    </article>
 
     <!-- ───── BTS ───── -->
     <article class="cat" data-accent="blue">
