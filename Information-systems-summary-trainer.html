@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSCG UE12 — Summary Trainer · Information Systems and New Technologies</title>
+<link rel="icon" type="image/png" href="assets/lsa-logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1a2744;--navy-deep:#0f1a33;--blue:#2d5fa6;--accent:#c8a84b;--green:#2a7a4b;--red:#b5302b;--bg:#f5f3ef;--surface:#fff;--border:#ddd5c5;--text:#2a2520;--muted:#7a7060}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16.5px}
+a{color:var(--blue)}
+.topbar{background:var(--navy-deep);color:rgba(255,255,255,.7);font-size:12.5px}
+.topbar-inner{max-width:900px;margin:0 auto;padding:9px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:rgba(255,255,255,.78);text-decoration:none;border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 13px;font-size:11.5px}
+.topbar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.mast{background:linear-gradient(135deg,var(--navy),var(--navy-deep));border-bottom:3px solid var(--accent);color:#fff}
+.mast-inner{max-width:900px;margin:0 auto;padding:34px 24px 28px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.mast h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.6rem);margin-top:8px;line-height:1.1}
+.mast h1 em{color:var(--accent);font-style:italic}
+.mast .sub{margin-top:12px;color:rgba(255,255,255,.82);font-size:15px;max-width:600px}
+.wrap{max-width:900px;margin:0 auto;padding:30px 24px 40px}
+.progress-wrap{position:sticky;top:0;z-index:20;background:rgba(245,243,239,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);padding:10px 24px;margin:0 -24px 26px}
+.progress-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.progress-inner .lbl{font-size:12.5px;font-weight:700;color:var(--navy);white-space:nowrap}
+.progress-inner .bar{flex:1;height:7px;border-radius:5px;background:var(--border);overflow:hidden}
+.progress-inner .fill{height:100%;background:var(--green);border-radius:5px;transition:width .3s;width:0%}
+.source{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:22px;overflow:hidden}
+.source-head{background:var(--navy);color:#fff;padding:12px 20px;font-size:13.5px;font-weight:700}
+.source-head span.note{display:block;font-weight:400;font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.article{padding:16px 22px 20px;font-size:15.5px}
+.article p{margin:10px 0}
+.article .title{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin-bottom:6px}
+.article .byline{font-size:13px;color:var(--muted);font-style:italic;margin-bottom:10px}
+.article .src{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:14px;border-top:1px solid var(--border);padding-top:10px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-bottom:20px;scroll-margin-top:70px}
+.step-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.step-num{width:38px;height:38px;border-radius:10px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;flex-shrink:0}
+.step h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.3rem;flex:1}
+.step p.instr{margin:14px 0;color:var(--text)}
+.qitem{border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:16px 0;background:#fcfbf8}
+.qitem .qtext{font-weight:600;color:var(--navy);margin-bottom:10px}
+.qitem .qtext i{color:var(--muted);font-weight:400;font-style:italic;font-size:13.5px;display:block;margin-top:3px}
+.mcq{display:flex;flex-direction:column;gap:8px}
+.mcq .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:9px;padding:9px 13px;cursor:pointer;background:#fff;transition:all .15s}
+.mcq .opt:hover{border-color:var(--blue)}
+.mcq .opt .k{font-weight:700;color:var(--blue);flex-shrink:0}
+.mcq .opt.correct{border-color:var(--green);background:#f1f7f2}
+.mcq .opt.wrong{border-color:var(--red);background:#fbf0ef}
+.mcq-fb{font-size:14px;margin-top:8px;font-style:italic;color:var(--muted)}
+textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--text);background:#fcfbf8;border:1px solid var(--border);border-radius:9px;padding:12px 14px;line-height:1.6;resize:vertical;min-height:70px}
+textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{font-family:inherit;cursor:pointer;font-weight:600;font-size:14px;border-radius:22px;padding:9px 18px;border:1px solid var(--border);background:var(--surface);color:var(--navy)}
+.btn:hover{border-color:var(--accent);color:#a9883a}
+.btn.ghost{background:transparent;border:none;color:var(--blue);padding:9px 4px;text-decoration:underline}
+.reveal{display:none;margin-top:14px;border:1px solid var(--green);background:#f1f7f2;border-radius:10px;padding:14px 18px;font-size:14.5px}
+.reveal.open{display:block}
+.reveal b{color:var(--green)}
+.fb-panel{display:none;margin-top:12px;border:1px solid var(--blue);background:#eef3fa;border-radius:10px;padding:14px 18px;font-size:14.5px}
+.fb-panel.open{display:block}
+.fb-panel ul{margin:8px 0 0 18px}
+.fb-panel li{margin:5px 0}
+.orderlist{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.orderrow{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:9px;padding:10px 14px;background:#fcfbf8}
+.orderrow span{flex:1}
+.orderrow select{font-family:inherit;font-size:14px;border:1px solid var(--border);border-radius:6px;padding:5px 8px;background:#fff}
+.orderrow.correct{border-color:var(--green);background:#f1f7f2}
+.orderrow.wrong{border-color:var(--red);background:#fbf0ef}
+.wc{font-size:12.5px;color:var(--muted);margin-top:6px}
+.wc b{color:var(--navy)}
+.wc.ok b{color:var(--green)}
+.wc.over b{color:var(--red)}
+.final{border:2px solid var(--accent);background:#faf6ec}
+.final h2{color:var(--navy)}
+.final-toggle{display:none;margin-top:16px}
+.final-toggle.open{display:block}
+.corrige h3{font-family:'Playfair Display',serif;color:var(--navy);margin:16px 0 8px;font-size:1.05rem}
+.corrige p{margin:8px 0}
+.corrige ul{margin:8px 0 0 18px}
+.corrige li{margin:6px 0}
+.corrige-foot{margin-top:20px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.check{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.check li{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border:1px solid var(--border);border-radius:9px;background:#fcfbf8;transition:all .15s}
+.check li:has(input:checked){border-color:var(--green);background:#f1f7f2}
+.check input{flex-shrink:0;width:20px;height:20px;margin-top:2px;accent-color:var(--green);cursor:pointer}
+.check label{flex:1;cursor:pointer;font-size:15px;color:var(--text)}
+.check li:has(input:checked) label{color:var(--green)}
+.check-foot{margin-top:12px;font-size:14px;color:var(--muted)}
+.check-foot b{color:var(--navy);font-variant-numeric:tabular-nums}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:36px 0 6px}
+footer{background:var(--navy-deep);color:rgba(255,255,255,.6);margin-top:36px;border-top:3px solid var(--accent);padding:20px 24px;text-align:center;font-size:13px}
+@media print{
+  body.printing .topbar,body.printing .mast,body.printing .progress-wrap,body.printing .step,body.printing .actions,body.printing footer,body.printing .source{display:none!important}
+  body.printing .final{display:block!important}
+  body.printing .final .row,body.printing .final .btn{display:none!important}
+  body.printing .final-toggle{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner"><span>Lycée Sidoine Apollinaire · Clermont-Ferrand</span><a href="information-systems.html">← Retour à 4-Information Systems and New Technologies</a></div></div>
+
+<header class="mast">
+  <div class="mast-inner">
+    <span class="eyebrow">DSCG — UE12 Business English</span>
+    <h1>Document Synthesis Trainer <em>Part I — Summary Skills</em></h1>
+    <p class="sub">A guided sequence to identify, reformulate and structure a concise English summary of the Euronews article on AI and the four-day working week.</p>
+  </div>
+</header>
+
+<div class="progress-wrap"><div class="progress-inner"><span class="lbl">Progression <span id="pcount">0</span> / 11 exercices</span><div class="bar"><div class="fill" id="pfill"></div></div></div></div>
+
+<div class="wrap">
+
+<section class="source">
+  <div class="source-head">Source Document — Read carefully before attempting the exercises<span class="note">Euronews.com — Luke Hurst, 11 November 2023</span></div>
+  <article class="article">
+    <p class="title">Millions could be working a four-day week by 2033 thanks to AI</p>
+    <p class="byline">By Luke Hurst, Euronews.com, November 11, 2023</p>
+    <p>Incorporating artificial intelligence (AI) into workflows could mean we work less for the same pay, according to the think tank Autonomy.</p>
+    <p>Nearly a third of the UK's workforce could be working a four-day week by 2033 thanks to the rollout of advanced artificial intelligence (AI) technology, a new report claims.</p>
+    <p>One of the biggest concerns around the increasing power and popularity of AI tech over the past couple of years is whether it will take jobs away from humans, as it is proven to be capable of taking on more of the tasks that humans currently perform.</p>
+    <p>A recent survey from LinkedIn found nearly half of European workers are expecting AI to make a major impact on their working lives within the next year.</p>
+    <p>Generative text AI tools like Open Ai's ChatGPT and Google's Bard can write whole articles or business plans in seconds, producing a close approximation of what a human can do when fed the right prompts and information.</p>
+    <p>Image generation tools meanwhile can conjure up photorealistic pictures nearly instantaneously, raising questions about job security for human artists and illustrators.</p>
+    <p>But the new report from Autonomy, an independent think tank that looks at the future of work and economic planning, sets out a more promising vision of AI's impact on our working lives.</p>
+    <p>In its GPT-4 report, the authors suggest 8.8 million workers in the UK - 28 per cent of the workforce - could be working 32-hour, four-day weeks thanks to AI.</p>
+    <p>A further 27.9 million meanwhile - representing 88 per cent of the country's workforce - could have working hours reduced by at least 10 per cent too.</p>
+    <p>AI could usher in new work benefits.</p>
+    <p>Autonomy made its calculations using the 1.5 per cent annual productivity increase from AI that was estimated by Goldman Sachs in a recent study on the topic of AI and GDP, as well as data from the US Department of Labor's Occupational Information Network (O*NET).</p>
+    <p>The Autonomy report outlines two forecasts for leveraging AI to boost productivity while delivering better conditions for workers, specifically looking at how the ideas could be rolled out in local authorities in the UK.</p>
+    <p>The two scenarios are a 20 per cent reduction in working hours while keeping the same pay for workers, or one in which worker productivity increases by 10 per cent, enabling a 10 per cent reduction in working hours, while keeping the same pay.</p>
+    <p>"Our research offers a fresh perspective in debates around how AI can be utilised for good," said Will Stronge, director of research at Autonomy.</p>
+    <p>"A shorter working week is the most tangible way of ensuring that AI delivers benefits to workers as well as companies. If AI is to be implemented fairly across the economy, it should usher in a new era of four-day working weeks for all".</p>
+    <p>Various four-day week trials are either underway or have been recently completed, with the majority of results pointing towards either maintained or improved levels of productivity, with substantial benefits for worker well-being.</p>
+    <p class="src">Source: Euronews.com, "Millions could be working a four-day week by 2033 thanks to AI" — Luke Hurst, 11 November 2023.</p>
+  </article>
+</section>
+
+<section class="step" id="s1">
+  <div class="step-top"><div class="step-num">01</div><h2>Identify the Main Ideas</h2></div>
+  <p class="instr">Avant de rédiger un résumé, il faut localiser et comprendre les arguments clés. Répondez aux questions de compréhension.</p>
+
+  <div class="qitem"><div class="qtext">What is the <i>central subject</i> of the article?</div>
+    <div class="mcq" data-mcq="q1" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>A detailed technical comparison of the different generative AI models released since 2021.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>A think tank's report suggesting AI could allow millions of UK workers to move to a four-day week.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>A government proposal to legally cap working hours across all sectors of the UK economy.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>A study on how AI image generators are affecting the earnings of freelance photographers.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q1"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">What does the Autonomy report's <i>28 per cent</i> figure refer to?</div>
+    <div class="mcq" data-mcq="q2" data-correct="C">
+      <div class="opt" data-k="A"><span class="k">A</span><span>The share of UK companies that have already introduced a formal four-day week policy.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>The expected rise in unemployment caused directly by AI adoption across UK industries.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>The share of the UK workforce that could work a 32-hour, four-day week by 2033 thanks to AI.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>The proportion of European workers who have never heard of generative AI tools at all.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q2"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">Why does Will Stronge say a shorter working week matters?</div>
+    <div class="mcq" data-mcq="q3" data-correct="A">
+      <div class="opt" data-k="A"><span class="k">A</span><span>It is the most tangible way to make sure AI's benefits reach workers as well as companies.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>It is a temporary measure needed only until AI systems become fully reliable and accurate.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>It is required by a new international treaty regulating the use of artificial intelligence.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>It mainly benefits large multinational companies rather than ordinary employees or local authorities.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q3"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">Why does the article mention <i>Goldman Sachs</i> and the <i>US Department of Labor</i>?</div>
+    <div class="mcq" data-mcq="q4" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>They jointly funded the Autonomy think tank that produced the report on AI and working hours.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>Their data and productivity estimates were used by Autonomy to build its calculations.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>They officially oversee the four-day week trials currently taking place across UK local authorities.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>They publicly opposed Autonomy's report, arguing that its productivity estimates were too optimistic.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q4"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">What is the article's <i>overall stance</i> on AI's impact on work?</div>
+    <div class="mcq" data-mcq="q5" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>AI is a purely negative force that will inevitably destroy far more jobs than it creates.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>Beyond job-loss fears, AI could also offer a genuine, tangible benefit: shorter working hours.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>AI's impact on work remains entirely uncertain and no credible research exists on the topic.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>AI mainly affects creative professions and has almost no relevance for other sectors of work.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q5"></p>
+  </div>
+</section>
+
+<section class="step" id="s2">
+  <div class="step-top"><div class="step-num">02</div><h2>Reformulate &amp; Order</h2></div>
+  <p class="instr">Un résumé reformule sans recopier. Reformulez deux phrases, puis remettez les idées clés dans l'ordre logique d'un résumé.</p>
+
+  <div class="qitem"><div class="qtext">Reformulate the following sentence in your own words.<br><i>"A shorter working week is the most tangible way of ensuring that AI delivers benefits to workers as well as companies."</i></div>
+    <label class="fl">Votre reformulation (en anglais) :</label>
+    <textarea data-save="r1" style="min-height:60px"></textarea>
+    <div class="row"><button class="btn ghost" onclick="toggle('rr1')">Vérifier ma reformulation</button></div>
+    <div class="reveal" id="rr1"><b>Modèle&nbsp;:</b> Reducing working hours is the clearest, most concrete way to make sure that both employees and businesses gain from AI-driven productivity.</div>
+  </div>
+
+  <div class="qitem"><div class="qtext">Reformulate the following sentence in your own words.<br><i>"In its GPT-4 report, the authors suggest 8.8 million workers in the UK - 28 per cent of the workforce - could be working 32-hour, four-day weeks thanks to AI."</i></div>
+    <label class="fl">Votre reformulation (en anglais) :</label>
+    <textarea data-save="r2" style="min-height:60px"></textarea>
+    <div class="row"><button class="btn ghost" onclick="toggle('rr2')">Vérifier ma reformulation</button></div>
+    <div class="reveal" id="rr2"><b>Modèle&nbsp;:</b> According to the report, AI could enable close to 9 million UK employees, more than a quarter of the workforce, to switch to a 32-hour week spread over four days.</div>
+  </div>
+
+  <div class="qitem"><div class="qtext">Put these key ideas in the <i>logical order</i> of a summary.<i>Utilisez les menus pour numéroter de 1 à 5.</i></div>
+    <div class="orderlist" id="orderlist">
+      <div class="orderrow" data-correct="3"><span>Autonomy's report suggests up to 28% of UK workers could move to a four-day week by 2033.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="1"><span>AI's growing power raises concerns about whether it will take jobs away from humans.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="2"><span>Against this backdrop, the think tank Autonomy sets out a more promising vision of AI's impact.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="4"><span>The calculations rely on productivity data from Goldman Sachs and the US Department of Labor.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="5"><span>Ongoing and completed four-day week trials already point to steady or improved productivity.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+    <div class="row"><button class="btn" onclick="checkOrder()">Vérifier l'ordre</button><button class="btn ghost" onclick="revealOrder()">Afficher le bon ordre</button></div>
+    <p class="mcq-fb" id="orderfb"></p>
+  </div>
+</section>
+
+<section class="step" id="s3">
+  <div class="step-top"><div class="step-num">03</div><h2>Summary Conventions</h2></div>
+  <p class="instr">Quelques règles à respecter avant de rédiger. Vérifiez votre compréhension des conventions du résumé.</p>
+
+  <div class="qitem"><div class="qtext">In a DSCG summary, you should…</div>
+    <div class="mcq" data-mcq="q6" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>add your own personal opinions and develop several detailed examples from your own experience.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>reformulate the author's ideas in your own words, respecting the logical order and word limit.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>copy the most important sentences of the text word for word, in their original order.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>translate the entire article into French as faithfully and completely as you possibly can.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q6"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">Which register is appropriate for a summary?</div>
+    <div class="mcq" data-mcq="q7" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>A first-person style that openly expresses the writer's own personal opinion throughout.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>A neutral, objective tone written in the third person, with no long direct quotations.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>A series of direct quotations taken from the text and linked together with connectors.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>An informal, conversational tone, as if you were simply chatting with a close friend.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q7"></p>
+  </div>
+</section>
+
+<section class="step" id="s4">
+  <div class="step-top"><div class="step-num">04</div><h2>Write Your Summary</h2></div>
+  <p class="instr">Rédigez un résumé du texte en anglais (environ 130–180 mots). Votre texte recevra un retour automatique sur plusieurs dimensions, puis vous pourrez comparer au corrigé.</p>
+  <label class="fl">Votre résumé (en anglais) :</label>
+  <textarea data-save="s4" style="min-height:220px"></textarea>
+  <div class="wc" id="wcbox">Résumé&nbsp;: <b id="wcout">0</b> mot(s) <span id="wcmsg"></span></div>
+  <div class="row"><button class="btn" onclick="analyseSummary()">Analyser mon résumé</button><button class="btn ghost" onclick="toggle('rfinal')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s4"></div>
+  <div class="reveal" id="rfinal">
+    <b>Corrigé — Résumé modèle</b>
+    <p>The article reports on a study by the think tank Autonomy suggesting that AI could allow millions of UK workers to move to a four-day week. While AI's growing power raises widespread concern about job losses, with nearly half of European workers expecting a major impact within a year, Autonomy offers a more optimistic outlook. Its GPT-4 report estimates that 28% of the UK workforce, around 8.8 million people, could work 32-hour, four-day weeks by 2033, while a further 88% could see their hours cut by at least 10%, with pay unchanged. These figures are based on productivity data from Goldman Sachs and the US Department of Labor. Autonomy's director of research argues that a shorter week is the clearest way to share AI's benefits fairly between workers and companies. The article notes that ongoing and completed four-day week trials already show steady or improved productivity, along with real gains for employee wellbeing. <i>(≈ 160 mots)</i></p>
+    <p style="font-size:13px;color:var(--muted)">structure&nbsp;: sujet → contexte (inquiétudes liées à l'IA) → chiffres clés du rapport → méthode/données → citation/argument → preuve (essais en cours)</p>
+  </div>
+</section>
+
+<section class="step" id="s6">
+  <div class="step-top"><div class="step-num">✓</div><h2>Checklist finale</h2></div>
+  <p class="instr">Avant de considérer votre résumé terminé, vérifiez que vous avez respecté toutes les étapes de la méthode.</p>
+  <ul class="check" id="checklist">
+    <li><input type="checkbox" id="c1" data-save="c1"><label for="c1">J'ai lu le document en entier avant de commencer les exercices.</label></li>
+    <li><input type="checkbox" id="c2" data-save="c2"><label for="c2">J'ai répondu aux 5 questions de compréhension de l'étape 1.</label></li>
+    <li><input type="checkbox" id="c3" data-save="c3"><label for="c3">J'ai reformulé les deux phrases avec mes propres mots, sans recopier le texte.</label></li>
+    <li><input type="checkbox" id="c4" data-save="c4"><label for="c4">J'ai vérifié l'ordre logique des idées clés.</label></li>
+    <li><input type="checkbox" id="c5" data-save="c5"><label for="c5">Mon résumé respecte la longueur demandée (130–180 mots).</label></li>
+    <li><input type="checkbox" id="c6" data-save="c6"><label for="c6">Mon résumé est rédigé dans mes propres mots, pas des phrases copiées du texte.</label></li>
+    <li><input type="checkbox" id="c7" data-save="c7"><label for="c7">Le ton est neutre et objectif — pas d'avis personnel ("I think…").</label></li>
+    <li><input type="checkbox" id="c8" data-save="c8"><label for="c8">Les idées apparaissent dans un ordre logique et cohérent.</label></li>
+    <li><input type="checkbox" id="c9" data-save="c9"><label for="c9">J'ai gardé les informations essentielles (Autonomy, AI, four-day week, productivity…).</label></li>
+    <li><input type="checkbox" id="c10" data-save="c10"><label for="c10">J'ai comparé mon résumé au corrigé et identifié ce qui manquait.</label></li>
+    <li><input type="checkbox" id="c11" data-save="c11"><label for="c11">J'ai vérifié l'orthographe et la grammaire de mon résumé.</label></li>
+  </ul>
+  <p class="check-foot"><b id="checkcount">0</b>&nbsp;/&nbsp;11 vérifications effectuées.</p>
+</section>
+
+<section class="step final" id="s5">
+  <div class="step-top"><div class="step-num">★</div><h2>Corrigé complet</h2></div>
+  <p class="instr">Résumé modèle et points clés, prêts pour l'impression.</p>
+  <div class="row"><button class="btn" onclick="toggleFinal()">Afficher le corrigé complet</button><button class="btn" onclick="printCorrige()">🖨 Imprimer le corrigé</button></div>
+  <div class="final-toggle" id="finalbox">
+    <div class="corrige">
+      <h3>Résumé modèle</h3>
+      <p>The article reports on a study by the think tank Autonomy suggesting that AI could allow millions of UK workers to move to a four-day week. While AI's growing power raises widespread concern about job losses, with nearly half of European workers expecting a major impact within a year, Autonomy offers a more optimistic outlook. Its GPT-4 report estimates that 28% of the UK workforce, around 8.8 million people, could work 32-hour, four-day weeks by 2033, while a further 88% could see their hours cut by at least 10%, with pay unchanged. These figures are based on productivity data from Goldman Sachs and the US Department of Labor. Autonomy's director of research argues that a shorter week is the clearest way to share AI's benefits fairly between workers and companies. The article notes that ongoing and completed four-day week trials already show steady or improved productivity, along with real gains for employee wellbeing.</p>
+      <h3>Points clés (support oral)</h3>
+      <ul>
+        <li><b>Subject</b> — Autonomy report: AI could enable a four-day week for millions of UK workers.</li>
+        <li><b>Context</b> — AI raises job-loss fears; nearly half of European workers expect a major impact within a year.</li>
+        <li><b>Key figures</b> — 28% (8.8 million) could work 32-hour weeks by 2033; 88% could see hours cut by 10%.</li>
+        <li><b>Data used</b> — Goldman Sachs productivity estimate (1.5%/year) + US Department of Labor (O*NET) data.</li>
+        <li><b>Argument</b> — a shorter week is the most tangible way to share AI's benefits fairly (Will Stronge).</li>
+        <li><b>Evidence</b> — ongoing/completed four-day week trials show steady or improved productivity and wellbeing gains.</li>
+      </ul>
+      <div class="corrige-foot">DSCG UE12 — Corrigé type · Lycée Sidoine Apollinaire<br>Document&nbsp;: "Millions could be working a four-day week by 2033 thanks to AI" (Euronews.com, Nov. 2023)</div>
+    </div>
+  </div>
+</section>
+
+<div class="actions">
+  <a class="btn" href="information-systems.html">← Revenir au chapitre</a>
+  <a class="btn" href="index.html">Revenir à l'accueil</a>
+</div>
+</div>
+
+<footer>Lycée Sidoine Apollinaire — Clermont-Ferrand · DSCG · 4-Information Systems and New Technologies</footer>
+
+<script>
+const STORE='lsa-summary-dst-infosys-v1';
+let state={}; try{state=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}
+const areas=document.querySelectorAll('textarea[data-save]');
+const checks=document.querySelectorAll('#checklist input');
+areas.forEach(el=>{const k=el.dataset.save; if(state[k]!==undefined) el.value=state[k]; el.addEventListener('input',()=>{save();updateAll()})});
+checks.forEach(el=>{const k=el.dataset.save; if(state[k]!==undefined) el.checked=state[k]; el.addEventListener('change',()=>{save();updateAll()})});
+
+document.querySelectorAll('[data-mcq]').forEach(box=>{
+  const key=box.dataset.mcq;
+  if(state[key]) selectMcq(box,state[key],false);
+  box.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>selectMcq(box,o.dataset.k,true)));
+});
+
+document.querySelectorAll('.orderrow select').forEach((sel,i)=>{
+  if(state.order && state.order[i]) sel.value=state.order[i];
+  sel.addEventListener('change',()=>{state.order=state.order||{};state.order[i]=sel.value;save();updateAll()});
+});
+
+function save(){
+  const o={order:state.order||{}};
+  document.querySelectorAll('[data-mcq]').forEach(box=>{o[box.dataset.mcq]=state[box.dataset.mcq]});
+  areas.forEach(el=>o[el.dataset.save]=el.value);
+  checks.forEach(el=>o[el.dataset.save]=el.checked);
+  localStorage.setItem(STORE,JSON.stringify(o));
+}
+function countWords(s){s=(s||'').trim();return s?s.split(/\s+/).filter(Boolean).length:0}
+function selectMcq(box,k,persist){
+  const correct=box.dataset.correct;
+  box.querySelectorAll('.opt').forEach(o=>{o.classList.remove('correct','wrong');if(o.dataset.k===k)o.classList.add(k===correct?'correct':'wrong')});
+  const fb=box.parentElement.querySelector('[data-fb="'+box.dataset.mcq+'"]');
+  if(fb) fb.textContent = k===correct ? 'Correct.' : 'Pas tout à fait — relisez le passage concerné.';
+  if(persist){state[box.dataset.mcq]=k;save();updateAll()}
+}
+function checkOrder(){
+  const rows=document.querySelectorAll('.orderrow');
+  let ok=0,total=rows.length,answered=0;
+  rows.forEach(r=>{
+    const sel=r.querySelector('select');
+    r.classList.remove('correct','wrong');
+    if(sel.value){answered++;if(sel.value===r.dataset.correct){r.classList.add('correct');ok++}else{r.classList.add('wrong')}}
+  });
+  document.getElementById('orderfb').textContent = answered<total ? 'Complétez les '+total+' menus avant de vérifier.' : ok+' / '+total+' bien placées.';
+  updateAll();
+}
+function revealOrder(){
+  const rows=document.querySelectorAll('.orderrow');
+  state.order=state.order||{};
+  rows.forEach((r,i)=>{
+    const sel=r.querySelector('select');
+    sel.value=r.dataset.correct;
+    r.classList.remove('wrong');r.classList.add('correct');
+    state.order[i]=sel.value;
+  });
+  document.getElementById('orderfb').textContent='Ordre correct affiché.';
+  save();updateAll();
+}
+function toggle(id){document.getElementById(id).classList.toggle('open')}
+function toggleFinal(){document.getElementById('finalbox').classList.toggle('open');updateAll()}
+function printCorrige(){document.getElementById('finalbox').classList.add('open');document.body.classList.add('printing');window.print();setTimeout(()=>document.body.classList.remove('printing'),300)}
+function analyseSummary(){
+  const text=(document.querySelector('[data-save="s4"]').value||'').trim();
+  const wc=countWords(text);
+  const fb=document.getElementById('fb-s4');
+  let notes=[];
+  if(wc===0){notes.push('Le résumé est vide : commencez par présenter le document.')}
+  else{
+    if(wc<130) notes.push('Un peu court ('+wc+' mots) — visez 130–180 mots.');
+    else if(wc>180) notes.push('Un peu long ('+wc+' mots) — allégez les détails secondaires.');
+    else notes.push('Longueur adaptée ('+wc+' mots).');
+    if(!/(autonomy|ai|four-day|goldman sachs|productivity)/i.test(text)) notes.push('Vérifiez que les éléments clés apparaissent (Autonomy, AI, four-day week, productivity…).');
+    if(/I think|in my opinion/i.test(text)) notes.push('Évitez l\'avis personnel : un résumé reste neutre et objectif.');
+    if(/A shorter working week is the most tangible way of ensuring that AI delivers benefits to workers as well as companies/i.test(text)) notes.push('Cette phrase semble copiée du texte — reformulez-la avec vos propres mots.');
+    if(!/^[A-Z]/.test(text)) notes.push('Commencez par une phrase qui présente clairement le document.');
+  }
+  fb.innerHTML='<b>Auto-vérification</b><ul>'+notes.map(n=>'<li>'+n+'</li>').join('')+'</ul>';
+  fb.classList.add('open');
+}
+function updateAll(){
+  const wc=countWords(document.querySelector('[data-save="s4"]').value);
+  document.getElementById('wcout').textContent=wc;
+  const box=document.getElementById('wcbox'),msg=document.getElementById('wcmsg');
+  box.classList.remove('ok','over');msg.textContent='';
+  if(wc>0){
+    if(wc<130){msg.textContent='· '+(130-wc)+' mot(s) restant(s) (cible 130–180)'}
+    else if(wc<=180){box.classList.add('ok');msg.textContent='· longueur adaptée ✓'}
+    else{box.classList.add('over');msg.textContent='· '+(wc-180)+' mot(s) de trop'}
+  }
+  document.getElementById('checkcount').textContent=Array.from(checks).filter(c=>c.checked).length;
+
+  let done=0;
+  document.querySelectorAll('[data-mcq]').forEach(box=>{if(state[box.dataset.mcq])done++});
+  ['r1','r2'].forEach(k=>{const el=document.querySelector('[data-save="'+k+'"]');if(el&&countWords(el.value)>0)done++});
+  const orderAnswered=Object.values(state.order||{}).filter(v=>v).length===5;
+  if(orderAnswered)done++;
+  if(wc>0)done++;
+  document.getElementById('pcount').textContent=done;
+  document.getElementById('pfill').style.width=(done/11*100)+'%';
+}
+updateAll();
+</script>
+</body>
+</html>

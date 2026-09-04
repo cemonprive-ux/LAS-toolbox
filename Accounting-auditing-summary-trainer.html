@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSCG UE12 — Summary Trainer · Accounting &amp; Auditing</title>
+<link rel="icon" type="image/png" href="assets/lsa-logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1a2744;--navy-deep:#0f1a33;--blue:#2d5fa6;--accent:#c8a84b;--green:#2a7a4b;--red:#b5302b;--bg:#f5f3ef;--surface:#fff;--border:#ddd5c5;--text:#2a2520;--muted:#7a7060}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16.5px}
+a{color:var(--blue)}
+.topbar{background:var(--navy-deep);color:rgba(255,255,255,.7);font-size:12.5px}
+.topbar-inner{max-width:900px;margin:0 auto;padding:9px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:rgba(255,255,255,.78);text-decoration:none;border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 13px;font-size:11.5px}
+.topbar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.mast{background:linear-gradient(135deg,var(--navy),var(--navy-deep));border-bottom:3px solid var(--accent);color:#fff}
+.mast-inner{max-width:900px;margin:0 auto;padding:34px 24px 28px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.mast h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.6rem);margin-top:8px;line-height:1.1}
+.mast h1 em{color:var(--accent);font-style:italic}
+.mast .sub{margin-top:12px;color:rgba(255,255,255,.82);font-size:15px;max-width:600px}
+.wrap{max-width:900px;margin:0 auto;padding:30px 24px 40px}
+.progress-wrap{position:sticky;top:0;z-index:20;background:rgba(245,243,239,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);padding:10px 24px;margin:0 -24px 26px}
+.progress-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.progress-inner .lbl{font-size:12.5px;font-weight:700;color:var(--navy);white-space:nowrap}
+.progress-inner .bar{flex:1;height:7px;border-radius:5px;background:var(--border);overflow:hidden}
+.progress-inner .fill{height:100%;background:var(--green);border-radius:5px;transition:width .3s;width:0%}
+.source{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:22px;overflow:hidden}
+.source-head{background:var(--navy);color:#fff;padding:12px 20px;font-size:13.5px;font-weight:700}
+.source-head span.note{display:block;font-weight:400;font-size:12px;color:rgba(255,255,255,.65);margin-top:2px}
+.article{padding:16px 22px 20px;font-size:15.5px}
+.article p{margin:10px 0}
+.article .title{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.15rem;margin-bottom:6px}
+.article .src{font-size:12.5px;color:var(--muted);font-style:italic;margin-top:14px;border-top:1px solid var(--border);padding-top:10px}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-bottom:20px;scroll-margin-top:70px}
+.step-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.step-num{width:38px;height:38px;border-radius:10px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;flex-shrink:0}
+.step h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.3rem;flex:1}
+.step p.instr{margin:14px 0;color:var(--text)}
+.qitem{border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:16px 0;background:#fcfbf8}
+.qitem .qtext{font-weight:600;color:var(--navy);margin-bottom:10px}
+.qitem .qtext i{color:var(--muted);font-weight:400;font-style:italic;font-size:13.5px;display:block;margin-top:3px}
+.mcq{display:flex;flex-direction:column;gap:8px}
+.mcq .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:9px;padding:9px 13px;cursor:pointer;background:#fff;transition:all .15s}
+.mcq .opt:hover{border-color:var(--blue)}
+.mcq .opt .k{font-weight:700;color:var(--blue);flex-shrink:0}
+.mcq .opt.correct{border-color:var(--green);background:#f1f7f2}
+.mcq .opt.wrong{border-color:var(--red);background:#fbf0ef}
+.mcq-fb{font-size:14px;margin-top:8px;font-style:italic;color:var(--muted)}
+textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--text);background:#fcfbf8;border:1px solid var(--border);border-radius:9px;padding:12px 14px;line-height:1.6;resize:vertical;min-height:70px}
+textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.btn{font-family:inherit;cursor:pointer;font-weight:600;font-size:14px;border-radius:22px;padding:9px 18px;border:1px solid var(--border);background:var(--surface);color:var(--navy)}
+.btn:hover{border-color:var(--accent);color:#a9883a}
+.btn.ghost{background:transparent;border:none;color:var(--blue);padding:9px 4px;text-decoration:underline}
+.reveal{display:none;margin-top:14px;border:1px solid var(--green);background:#f1f7f2;border-radius:10px;padding:14px 18px;font-size:14.5px}
+.reveal.open{display:block}
+.reveal b{color:var(--green)}
+.fb-panel{display:none;margin-top:12px;border:1px solid var(--blue);background:#eef3fa;border-radius:10px;padding:14px 18px;font-size:14.5px}
+.fb-panel.open{display:block}
+.fb-panel ul{margin:8px 0 0 18px}
+.fb-panel li{margin:5px 0}
+.orderlist{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.orderrow{display:flex;align-items:center;gap:12px;border:1px solid var(--border);border-radius:9px;padding:10px 14px;background:#fcfbf8}
+.orderrow span{flex:1}
+.orderrow select{font-family:inherit;font-size:14px;border:1px solid var(--border);border-radius:6px;padding:5px 8px;background:#fff}
+.orderrow.correct{border-color:var(--green);background:#f1f7f2}
+.orderrow.wrong{border-color:var(--red);background:#fbf0ef}
+.wc{font-size:12.5px;color:var(--muted);margin-top:6px}
+.wc b{color:var(--navy)}
+.wc.ok b{color:var(--green)}
+.wc.over b{color:var(--red)}
+.final{border:2px solid var(--accent);background:#faf6ec}
+.final h2{color:var(--navy)}
+.final-toggle{display:none;margin-top:16px}
+.final-toggle.open{display:block}
+.corrige h3{font-family:'Playfair Display',serif;color:var(--navy);margin:16px 0 8px;font-size:1.05rem}
+.corrige p{margin:8px 0}
+.corrige ul{margin:8px 0 0 18px}
+.corrige li{margin:6px 0}
+.corrige-foot{margin-top:20px;padding-top:12px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.check{list-style:none;display:flex;flex-direction:column;gap:2px;margin-top:6px}
+.check li{display:flex;align-items:flex-start;gap:12px;padding:11px 14px;border:1px solid var(--border);border-radius:9px;background:#fcfbf8;transition:all .15s}
+.check li:has(input:checked){border-color:var(--green);background:#f1f7f2}
+.check input{flex-shrink:0;width:20px;height:20px;margin-top:2px;accent-color:var(--green);cursor:pointer}
+.check label{flex:1;cursor:pointer;font-size:15px;color:var(--text)}
+.check li:has(input:checked) label{color:var(--green)}
+.check-foot{margin-top:12px;font-size:14px;color:var(--muted)}
+.check-foot b{color:var(--navy);font-variant-numeric:tabular-nums}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:36px 0 6px}
+footer{background:var(--navy-deep);color:rgba(255,255,255,.6);margin-top:36px;border-top:3px solid var(--accent);padding:20px 24px;text-align:center;font-size:13px}
+@media print{
+  body.printing .topbar,body.printing .mast,body.printing .progress-wrap,body.printing .step,body.printing .actions,body.printing footer,body.printing .source{display:none!important}
+  body.printing .final{display:block!important}
+  body.printing .final .row,body.printing .final .btn{display:none!important}
+  body.printing .final-toggle{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner"><span>Lycée Sidoine Apollinaire · Clermont-Ferrand</span><a href="accounting-auditing.html">← Retour à 2-Accounting and Auditing</a></div></div>
+
+<header class="mast">
+  <div class="mast-inner">
+    <span class="eyebrow">DSCG — UE12 Business English</span>
+    <h1>Document Synthesis Trainer <em>Part I — Summary Skills</em></h1>
+    <p class="sub">A guided sequence to identify, reformulate and structure a concise English summary of the KPMG article on the new International Sustainability Standards Board.</p>
+  </div>
+</header>
+
+<div class="progress-wrap"><div class="progress-inner"><span class="lbl">Progression <span id="pcount">0</span> / 11 exercices</span><div class="bar"><div class="fill" id="pfill"></div></div></div></div>
+
+<div class="wrap">
+
+<section class="source">
+  <div class="source-head">Source Document — Read carefully before attempting the exercises<span class="note">KPMG Newsroom — Adrian King, 4 November 2021</span></div>
+  <article class="article">
+    <p class="title">New international sustainability standards board is a 'game-changer'</p>
+    <p>The International Financial Reporting Standards (IFRS) Foundation, a not-for-profit international organisation responsible for developing a single set of high-quality global accounting standards, announced the formation of a new International Sustainability Standards Board (ISSB) on day three of the COP26. This announcement is a pivotal moment that has the potential to change the way boards and investors make financial investment decisions in the coming years.</p>
+    <p>Through this new Board, the FRS Foundation aims to put sustainability reporting on the same footing as financial reporting by establishing a sister body to the International Accounting Standards Board (the IASB Board). It is driven by global investors and is being introduced to give sustainability information the same rigor and comparability that the capital markets expect of financial information.</p>
+    <p>The intention behind the formation of the ISSB is to develop IFRS Sustainability Disclosure Standards, a comprehensive baseline that provides a common global reporting framework and transparent information for investors and other stakeholders to determine how sustainability impacts an organisations' financial value. The ISSB framework will enable this by changing how actions around sustainability are reported to the market, how climate and broader sustainability issues impact value in the short, medium, and long term, and the way companies view and manage their strategic risks.</p>
+    <p>The ISSB will sit alongside and work in close cooperation with the IASB, ensuring connectivity and compatibility between IFRS Accounting Standards and the IFRS Sustainability Disclosure Standards. The ISSB and the IASB will be independent and overseen by the IFRS Foundation Trustees, who are accountable to a Monitoring Board of capital market authorities.</p>
+    <p>The standards will be developed to ensure compatibility with requirements that are jurisdiction specific as well as standards which are aimed at a wider group of stakeholders. G20 Leaders and the Financial Stability Board have welcomed the IFRS Foundation's work programme to develop global baseline standards for sustainability disclosures.</p>
+    <p>The FRS Foundation will be taking a "climate first" approach leveraging the Taskforce on Climate related Financial Disclosures (TCFD) Guidelines for its first standard. The TCFD, in its role as a strategic risk framework, has acted as a catalyst to challenge Boards on the way they think about risks, stretched their planning horizons, and ultimately driven better strategic decisions. Taking the structure and thinking of the TCFD as a starting point for the first ISSB standard is a very smart move and will allow them to hit the ground running.</p>
+    <p>The IRS Foundation Trustees are currently appointing a Chair and Vice-Chair(s) to the ISSB and will commence searching for members to fill the additional board positions.</p>
+    <p>Given this announcement, you and your organisation should consider whether sustainability is treated as a communications process or as a core strategic risk and opportunity, and whether climate performance is given the attention it needs in this fast-paced and changing environment.</p>
+    <p>The first IRS Sustainability Disclosure Standard in climate will be a game-changer with the potential to fundamentally change how organisations report their risks and opportunities. Now is the time to prepare.</p>
+    <p class="src">Source: KPMG Newsroom, "New International Sustainability Standards Board is a 'game-changer'" — Adrian King, 4 November 2021.</p>
+  </article>
+</section>
+
+<section class="step" id="s1">
+  <div class="step-top"><div class="step-num">01</div><h2>Identify the Main Ideas</h2></div>
+  <p class="instr">Avant de rédiger un résumé, il faut localiser et comprendre les arguments clés. Répondez aux questions de compréhension.</p>
+
+  <div class="qitem"><div class="qtext">What is the <i>central subject</i> of the article?</div>
+    <div class="mcq" data-mcq="q1" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>The gradual evolution of accounting standards across different countries over many decades.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>The launch of a new international board tasked with regulating sustainability and climate-related reporting.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>The precise technical mechanics behind how global carbon trading markets are organised and priced.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>A direct comparison between environmental policies pursued by China and by the United States.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q1"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">When the article calls the ISSB a <i>"game-changer"</i>, it means that…</div>
+    <div class="mcq" data-mcq="q2" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>it is a minor, largely symbolic step that will not really affect how companies behave.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>it could fundamentally change how organisations report climate risks and how investors make decisions.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>it removes any further need for companies to publish standard financial reporting information.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>it confirms that COP26 produced a fully binding international treaty on carbon emissions.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q2"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">Why does the ISSB want to give sustainability information <i>"the same rigor and comparability"</i> as financial information?</div>
+    <div class="mcq" data-mcq="q3" data-correct="A">
+      <div class="opt" data-k="A"><span class="k">A</span><span>Because investors currently face inconsistent, poorly comparable disclosures about companies' climate performance.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>Because financial information is gradually being phased out in favour of purely ESG-based data.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>Because the IFRS Foundation wants to formally dissolve and replace the existing IASB board.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>Because external auditors had specifically requested a simpler, less demanding reporting framework overall.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q3"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">Why does the article mention the <i>TCFD</i>?</div>
+    <div class="mcq" data-mcq="q4" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>It is a rival organisation that is directly competing with the ISSB for influence.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>Its existing framework serves as the starting point for the ISSB's first climate standard.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>It is a private auditing firm that will formally examine the new ISSB's accounts.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>It was the previous official name used by the IFRS Foundation before this reform.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q4"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">What is the article's <i>overall stance</i> on the ISSB?</div>
+    <div class="mcq" data-mcq="q5" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>It is a bureaucratic distraction that most organisations should simply choose to ignore.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>It is a pivotal, positive development that organisations should start preparing for now.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>It is likely to fail because it lacks any real government or institutional backing.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>It only really concerns cryptocurrency companies and has no relevance for other sectors.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q5"></p>
+  </div>
+</section>
+
+<section class="step" id="s2">
+  <div class="step-top"><div class="step-num">02</div><h2>Reformulate &amp; Order</h2></div>
+  <p class="instr">Un résumé reformule sans recopier. Reformulez deux phrases, puis remettez les idées clés dans l'ordre logique d'un résumé.</p>
+
+  <div class="qitem"><div class="qtext">Reformulate the following sentence in your own words.<br><i>"It is driven by global investors and is being introduced to give sustainability information the same rigor and comparability that the capital markets expect of financial information."</i></div>
+    <label class="fl">Votre reformulation (en anglais) :</label>
+    <textarea data-save="r1" style="min-height:60px"></textarea>
+    <div class="row"><button class="btn ghost" onclick="toggle('rr1')">Vérifier ma reformulation</button></div>
+    <div class="reveal" id="rr1"><b>Modèle&nbsp;:</b> Global investors are behind this initiative, which aims to make sustainability data as reliable and comparable as financial figures already are.</div>
+  </div>
+
+  <div class="qitem"><div class="qtext">Reformulate the following sentence in your own words.<br><i>"The first IFRS Sustainability Disclosure Standard in climate will be a game-changer with the potential to fundamentally change how organisations report their risks and opportunities."</i></div>
+    <label class="fl">Votre reformulation (en anglais) :</label>
+    <textarea data-save="r2" style="min-height:60px"></textarea>
+    <div class="row"><button class="btn ghost" onclick="toggle('rr2')">Vérifier ma reformulation</button></div>
+    <div class="reveal" id="rr2"><b>Modèle&nbsp;:</b> This first climate standard could transform the way companies communicate about their risks and opportunities.</div>
+  </div>
+
+  <div class="qitem"><div class="qtext">Put these key ideas in the <i>logical order</i> of a summary.<i>Utilisez les menus pour numéroter de 1 à 5.</i></div>
+    <div class="orderlist" id="orderlist">
+      <div class="orderrow" data-correct="4"><span>The initiative is backed by the G20 and follows a "climate first" approach based on the TCFD.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="1"><span>The IFRS Foundation announces, at COP26, the creation of the ISSB.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="5"><span>Organisations are urged to prepare now, treating climate as a genuine strategic issue.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="2"><span>The goal is to give sustainability information the same rigour as financial information.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+      <div class="orderrow" data-correct="3"><span>The ISSB will change how firms report climate risk and manage strategic decisions.</span><select><option value="">–</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div>
+    </div>
+    <div class="row"><button class="btn" onclick="checkOrder()">Vérifier l'ordre</button><button class="btn ghost" onclick="revealOrder()">Afficher le bon ordre</button></div>
+    <p class="mcq-fb" id="orderfb"></p>
+  </div>
+</section>
+
+<section class="step" id="s3">
+  <div class="step-top"><div class="step-num">03</div><h2>Summary Conventions</h2></div>
+  <p class="instr">Quelques règles à respecter avant de rédiger. Vérifiez votre compréhension des conventions du résumé.</p>
+
+  <div class="qitem"><div class="qtext">In a DSCG summary, you should…</div>
+    <div class="mcq" data-mcq="q6" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>add your own personal opinions and develop several detailed examples from your own experience.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>reformulate the author's ideas in your own words, respecting the logical order and word limit.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>copy the most important sentences of the text word for word, in their original order.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>translate the entire article into French as faithfully and completely as you possibly can.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q6"></p>
+  </div>
+
+  <div class="qitem"><div class="qtext">Which register is appropriate for a summary?</div>
+    <div class="mcq" data-mcq="q7" data-correct="B">
+      <div class="opt" data-k="A"><span class="k">A</span><span>A first-person style that openly expresses the writer's own personal opinion throughout.</span></div>
+      <div class="opt" data-k="B"><span class="k">B</span><span>A neutral, objective tone written in the third person, with no long direct quotations.</span></div>
+      <div class="opt" data-k="C"><span class="k">C</span><span>A series of direct quotations taken from the text and linked together with connectors.</span></div>
+      <div class="opt" data-k="D"><span class="k">D</span><span>An informal, conversational tone, as if you were simply chatting with a close friend.</span></div>
+    </div>
+    <p class="mcq-fb" data-fb="q7"></p>
+  </div>
+</section>
+
+<section class="step" id="s4">
+  <div class="step-top"><div class="step-num">04</div><h2>Write Your Summary</h2></div>
+  <p class="instr">Rédigez un résumé du texte en anglais (environ 130–180 mots). Votre texte recevra un retour automatique sur plusieurs dimensions, puis vous pourrez comparer au corrigé.</p>
+  <label class="fl">Votre résumé (en anglais) :</label>
+  <textarea data-save="s4" style="min-height:220px"></textarea>
+  <div class="wc" id="wcbox">Résumé&nbsp;: <b id="wcout">0</b> mot(s) <span id="wcmsg"></span></div>
+  <div class="row"><button class="btn" onclick="analyseSummary()">Analyser mon résumé</button><button class="btn ghost" onclick="toggle('rfinal')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s4"></div>
+  <div class="reveal" id="rfinal">
+    <b>Corrigé — Résumé modèle</b>
+    <p>The article discusses the creation of the International Sustainability Standards Board (ISSB) by the IFRS Foundation, announced at COP26 in November 2021. The aim is to give sustainability information the same rigour and comparability as financial information, for investors and other stakeholders. The ISSB will change how companies report on sustainability, how climate issues affect value over time, and how firms manage strategic risks. It will work alongside the IASB, under the oversight of the IFRS Foundation Trustees. The initiative already has strong institutional backing from the G20 and the Financial Stability Board, and aims to build a single global baseline standard. Its first standard will follow a "climate first" approach, based on the existing TCFD framework, seen as a smart starting point. As board members are being appointed, organisations are urged to treat sustainability as a genuine strategic risk, not merely a communications exercise. The article presents this first climate standard as a game-changer for corporate reporting. <i>(≈ 155 mots)</i></p>
+    <p style="font-size:13px;color:var(--muted)">structure&nbsp;: sujet → objectif de comparabilité → ce que change l'ISSB → gouvernance → soutien institutionnel → première norme "climate first" → conclusion</p>
+  </div>
+</section>
+
+<section class="step" id="s6">
+  <div class="step-top"><div class="step-num">✓</div><h2>Checklist finale</h2></div>
+  <p class="instr">Avant de considérer votre résumé terminé, vérifiez que vous avez respecté toutes les étapes de la méthode.</p>
+  <ul class="check" id="checklist">
+    <li><input type="checkbox" id="c1" data-save="c1"><label for="c1">J'ai lu le document en entier avant de commencer les exercices.</label></li>
+    <li><input type="checkbox" id="c2" data-save="c2"><label for="c2">J'ai répondu aux 5 questions de compréhension de l'étape 1.</label></li>
+    <li><input type="checkbox" id="c3" data-save="c3"><label for="c3">J'ai reformulé les deux phrases avec mes propres mots, sans recopier le texte.</label></li>
+    <li><input type="checkbox" id="c4" data-save="c4"><label for="c4">J'ai vérifié l'ordre logique des idées clés.</label></li>
+    <li><input type="checkbox" id="c5" data-save="c5"><label for="c5">Mon résumé respecte la longueur demandée (130–180 mots).</label></li>
+    <li><input type="checkbox" id="c6" data-save="c6"><label for="c6">Mon résumé est rédigé dans mes propres mots, pas des phrases copiées du texte.</label></li>
+    <li><input type="checkbox" id="c7" data-save="c7"><label for="c7">Le ton est neutre et objectif — pas d'avis personnel ("I think…").</label></li>
+    <li><input type="checkbox" id="c8" data-save="c8"><label for="c8">Les idées apparaissent dans un ordre logique et cohérent.</label></li>
+    <li><input type="checkbox" id="c9" data-save="c9"><label for="c9">J'ai gardé les sigles et informations essentielles (ISSB, IFRS, TCFD, G20…).</label></li>
+    <li><input type="checkbox" id="c10" data-save="c10"><label for="c10">J'ai comparé mon résumé au corrigé et identifié ce qui manquait.</label></li>
+    <li><input type="checkbox" id="c11" data-save="c11"><label for="c11">J'ai vérifié l'orthographe et la grammaire de mon résumé.</label></li>
+  </ul>
+  <p class="check-foot"><b id="checkcount">0</b>&nbsp;/&nbsp;11 vérifications effectuées.</p>
+</section>
+
+<section class="step final" id="s5">
+  <div class="step-top"><div class="step-num">★</div><h2>Corrigé complet</h2></div>
+  <p class="instr">Résumé modèle et points clés, prêts pour l'impression.</p>
+  <div class="row"><button class="btn" onclick="toggleFinal()">Afficher le corrigé complet</button><button class="btn" onclick="printCorrige()">🖨 Imprimer le corrigé</button></div>
+  <div class="final-toggle" id="finalbox">
+    <div class="corrige">
+      <h3>Résumé modèle</h3>
+      <p>The article discusses the creation of the International Sustainability Standards Board (ISSB) by the IFRS Foundation, announced at COP26 in November 2021. The aim is to give sustainability information the same rigour and comparability as financial information, for investors and other stakeholders. The ISSB will change how companies report on sustainability, how climate issues affect value over time, and how firms manage strategic risks. It will work alongside the IASB, under the oversight of the IFRS Foundation Trustees. The initiative already has strong institutional backing from the G20 and the Financial Stability Board, and aims to build a single global baseline standard. Its first standard will follow a "climate first" approach, based on the existing TCFD framework, seen as a smart starting point. As board members are being appointed, organisations are urged to treat sustainability as a genuine strategic risk, not merely a communications exercise. The article presents this first climate standard as a game-changer for corporate reporting.</p>
+      <h3>Points clés (support oral)</h3>
+      <ul>
+        <li><b>Subject</b> — the IFRS Foundation creates the ISSB at COP26 (Nov. 2021).</li>
+        <li><b>Goal</b> — give sustainability information the same rigour as financial information.</li>
+        <li><b>What changes</b> — reporting, valuation of climate impact over time, strategic risk management.</li>
+        <li><b>Governance</b> — ISSB works with the IASB, overseen by the IFRS Foundation Trustees.</li>
+        <li><b>Backing</b> — strong support from the G20 and the Financial Stability Board.</li>
+        <li><b>First standard</b> — "climate first" approach, based on the existing TCFD framework.</li>
+        <li><b>Conclusion</b> — organisations are urged to prepare now; a genuine strategic issue, not just communication.</li>
+      </ul>
+      <div class="corrige-foot">DSCG UE12 — Corrigé type · Lycée Sidoine Apollinaire<br>Document&nbsp;: "New International Sustainability Standards Board is a 'game-changer'" (KPMG Newsroom, Nov. 2021)</div>
+    </div>
+  </div>
+</section>
+
+<div class="actions">
+  <a class="btn" href="accounting-auditing.html">← Revenir au chapitre</a>
+  <a class="btn" href="index.html">Revenir à l'accueil</a>
+</div>
+</div>
+
+<footer>Lycée Sidoine Apollinaire — Clermont-Ferrand · DSCG · 2-Accounting and Auditing</footer>
+
+<script>
+const STORE='lsa-summary-dst-accounting-v1';
+let state={}; try{state=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}
+const areas=document.querySelectorAll('textarea[data-save]');
+const checks=document.querySelectorAll('#checklist input');
+areas.forEach(el=>{const k=el.dataset.save; if(state[k]!==undefined) el.value=state[k]; el.addEventListener('input',()=>{save();updateAll()})});
+checks.forEach(el=>{const k=el.dataset.save; if(state[k]!==undefined) el.checked=state[k]; el.addEventListener('change',()=>{save();updateAll()})});
+
+document.querySelectorAll('[data-mcq]').forEach(box=>{
+  const key=box.dataset.mcq;
+  if(state[key]) selectMcq(box,state[key],false);
+  box.querySelectorAll('.opt').forEach(o=>o.addEventListener('click',()=>selectMcq(box,o.dataset.k,true)));
+});
+
+document.querySelectorAll('.orderrow select').forEach((sel,i)=>{
+  if(state.order && state.order[i]) sel.value=state.order[i];
+  sel.addEventListener('change',()=>{state.order=state.order||{};state.order[i]=sel.value;save();updateAll()});
+});
+
+function save(){
+  const o={order:state.order||{}};
+  document.querySelectorAll('[data-mcq]').forEach(box=>{o[box.dataset.mcq]=state[box.dataset.mcq]});
+  areas.forEach(el=>o[el.dataset.save]=el.value);
+  checks.forEach(el=>o[el.dataset.save]=el.checked);
+  localStorage.setItem(STORE,JSON.stringify(o));
+}
+function countWords(s){s=(s||'').trim();return s?s.split(/\s+/).filter(Boolean).length:0}
+function selectMcq(box,k,persist){
+  const correct=box.dataset.correct;
+  box.querySelectorAll('.opt').forEach(o=>{o.classList.remove('correct','wrong');if(o.dataset.k===k)o.classList.add(k===correct?'correct':'wrong')});
+  const fb=box.parentElement.querySelector('[data-fb="'+box.dataset.mcq+'"]');
+  if(fb) fb.textContent = k===correct ? 'Correct.' : 'Pas tout à fait — relisez le passage concerné.';
+  if(persist){state[box.dataset.mcq]=k;save();updateAll()}
+}
+function checkOrder(){
+  const rows=document.querySelectorAll('.orderrow');
+  let ok=0,total=rows.length,answered=0;
+  rows.forEach(r=>{
+    const sel=r.querySelector('select');
+    r.classList.remove('correct','wrong');
+    if(sel.value){answered++;if(sel.value===r.dataset.correct){r.classList.add('correct');ok++}else{r.classList.add('wrong')}}
+  });
+  document.getElementById('orderfb').textContent = answered<total ? 'Complétez les '+total+' menus avant de vérifier.' : ok+' / '+total+' bien placées.';
+  updateAll();
+}
+function revealOrder(){
+  const rows=document.querySelectorAll('.orderrow');
+  state.order=state.order||{};
+  rows.forEach((r,i)=>{
+    const sel=r.querySelector('select');
+    sel.value=r.dataset.correct;
+    r.classList.remove('wrong');r.classList.add('correct');
+    state.order[i]=sel.value;
+  });
+  document.getElementById('orderfb').textContent='Ordre correct affiché.';
+  save();updateAll();
+}
+function toggle(id){document.getElementById(id).classList.toggle('open')}
+function toggleFinal(){document.getElementById('finalbox').classList.toggle('open');updateAll()}
+function printCorrige(){document.getElementById('finalbox').classList.add('open');document.body.classList.add('printing');window.print();setTimeout(()=>document.body.classList.remove('printing'),300)}
+function analyseSummary(){
+  const text=(document.querySelector('[data-save="s4"]').value||'').trim();
+  const wc=countWords(text);
+  const fb=document.getElementById('fb-s4');
+  let notes=[];
+  if(wc===0){notes.push('Le résumé est vide : commencez par présenter le document.')}
+  else{
+    if(wc<130) notes.push('Un peu court ('+wc+' mots) — visez 130–180 mots.');
+    else if(wc>180) notes.push('Un peu long ('+wc+' mots) — allégez les détails secondaires.');
+    else notes.push('Longueur adaptée ('+wc+' mots).');
+    if(!/(issb|ifrs|tcfd|g20)/i.test(text)) notes.push('Vérifiez que les sigles clés apparaissent (ISSB, IFRS, TCFD, G20…).');
+    if(/I think|in my opinion/i.test(text)) notes.push('Évitez l\'avis personnel : un résumé reste neutre et objectif.');
+    if(/the same rigor and comparability that the capital markets expect/i.test(text)) notes.push('Cette phrase semble copiée du texte — reformulez-la avec vos propres mots.');
+    if(!/^[A-Z]/.test(text)) notes.push('Commencez par une phrase qui présente clairement le document.');
+  }
+  fb.innerHTML='<b>Auto-vérification</b><ul>'+notes.map(n=>'<li>'+n+'</li>').join('')+'</ul>';
+  fb.classList.add('open');
+}
+function updateAll(){
+  const wc=countWords(document.querySelector('[data-save="s4"]').value);
+  document.getElementById('wcout').textContent=wc;
+  const box=document.getElementById('wcbox'),msg=document.getElementById('wcmsg');
+  box.classList.remove('ok','over');msg.textContent='';
+  if(wc>0){
+    if(wc<130){msg.textContent='· '+(130-wc)+' mot(s) restant(s) (cible 130–180)'}
+    else if(wc<=180){box.classList.add('ok');msg.textContent='· longueur adaptée ✓'}
+    else{box.classList.add('over');msg.textContent='· '+(wc-180)+' mot(s) de trop'}
+  }
+  checks.forEach(c=>{});
+  document.getElementById('checkcount').textContent=Array.from(checks).filter(c=>c.checked).length;
+
+  let done=0;
+  document.querySelectorAll('[data-mcq]').forEach(box=>{if(state[box.dataset.mcq])done++});
+  ['r1','r2'].forEach(k=>{const el=document.querySelector('[data-save="'+k+'"]');if(el&&countWords(el.value)>0)done++});
+  const orderAnswered=Object.values(state.order||{}).filter(v=>v).length===5;
+  if(orderAnswered)done++;
+  if(wc>0)done++;
+  document.getElementById('pcount').textContent=done;
+  document.getElementById('pfill').style.width=(done/11*100)+'%';
+}
+updateAll();
+</script>
+</body>
+</html>

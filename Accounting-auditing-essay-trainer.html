@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSCG UE12 — Essay Trainer · Accounting &amp; Auditing</title>
+<link rel="icon" type="image/png" href="assets/lsa-logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1a2744;--navy-deep:#0f1a33;--blue:#2d5fa6;--accent:#c8a84b;--green:#2a7a4b;--red:#b5302b;--bg:#f5f3ef;--surface:#fff;--border:#ddd5c5;--text:#2a2520;--muted:#7a7060}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16.5px}
+a{color:var(--blue)}
+.topbar{background:var(--navy-deep);color:rgba(255,255,255,.7);font-size:12.5px}
+.topbar-inner{max-width:900px;margin:0 auto;padding:9px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:rgba(255,255,255,.78);text-decoration:none;border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 13px;font-size:11.5px}
+.topbar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.mast{background:linear-gradient(135deg,var(--navy),var(--navy-deep));border-bottom:3px solid var(--accent);color:#fff}
+.mast-inner{max-width:900px;margin:0 auto;padding:34px 24px 28px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.mast h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.6rem);margin-top:8px;line-height:1.1}
+.mast h1 em{color:var(--accent);font-style:italic}
+.qbox{margin-top:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:14px 18px}
+.qbox .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.qbox p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;margin-top:6px}
+.wrap{max-width:900px;margin:0 auto;padding:30px 24px 40px}
+.progress-wrap{position:sticky;top:0;z-index:20;background:rgba(245,243,239,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);padding:10px 24px;margin:0 -24px 26px}
+.progress-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.progress-inner .lbl{font-size:12.5px;font-weight:700;color:var(--navy);white-space:nowrap}
+.progress-inner .bar{flex:1;height:7px;border-radius:5px;background:var(--border);overflow:hidden}
+.progress-inner .fill{height:100%;background:var(--green);border-radius:5px;transition:width .3s;width:0%}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-bottom:20px;scroll-margin-top:70px}
+.step-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.step-num{width:38px;height:38px;border-radius:10px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;flex-shrink:0}
+.step h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.3rem;flex:1}
+.tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#faf6ec;color:var(--accent-deep,#a9883a);border:1px solid var(--accent);border-radius:20px;padding:3px 12px}
+.step p.instr{margin:14px 0;color:var(--text)}
+.step p.instr b{color:var(--navy)}
+.mcq{margin:14px 0;display:flex;flex-direction:column;gap:8px}
+.mcq .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:9px;padding:10px 14px;cursor:pointer;background:#fcfbf8;transition:all .15s}
+.mcq .opt:hover{border-color:var(--blue)}
+.mcq .opt .k{font-weight:700;color:var(--blue);flex-shrink:0}
+.mcq .opt.correct{border-color:var(--green);background:#f1f7f2}
+.mcq .opt.wrong{border-color:var(--red);background:#fbf0ef}
+.mcq-fb{font-size:14px;margin-top:4px;font-style:italic;color:var(--muted)}
+.sortlist{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sortitem{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--border);border-radius:9px;padding:10px 14px;background:#fcfbf8;flex-wrap:wrap}
+.sortitem span{flex:1;min-width:200px}
+.sortbtns{display:flex;gap:6px}
+.sortbtns button{font-family:inherit;cursor:pointer;font-weight:700;font-size:13px;border:1px solid var(--border);background:#fff;color:var(--navy);border-radius:7px;padding:5px 11px;transition:all .15s}
+.sortbtns button:hover{border-color:var(--blue)}
+.sortbtns button.correct{border-color:var(--green);background:#f1f7f2;color:var(--green)}
+.sortbtns button.wrong{border-color:var(--red);background:#fbf0ef;color:var(--red)}
+.sort-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:13.5px;color:var(--muted)}
+.sort-legend b{color:var(--navy)}
+.src-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;padding:2px 9px;margin-top:4px}
+.src-tag.src-doc{background:#eef3fa;color:var(--blue)}
+.src-tag.src-ext{background:#faf6ec;color:#a9883a}
+.reveal li small,.corrige li small{display:block}
+label.fl{display:block;font-weight:600;color:var(--navy);font-size:14.5px;margin:12px 0 6px}
+textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--text);background:#fcfbf8;border:1px solid var(--border);border-radius:9px;padding:12px 14px;line-height:1.6;resize:vertical;min-height:130px}
+textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.wc{font-size:12.5px;color:var(--muted);margin-top:6px}
+.wc b{color:var(--navy)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{font-family:inherit;cursor:pointer;font-weight:600;font-size:14px;border-radius:22px;padding:9px 18px;border:1px solid var(--border);background:var(--surface);color:var(--navy)}
+.btn:hover{border-color:var(--accent);color:#a9883a}
+.btn.ghost{background:transparent;border:none;color:var(--blue);padding:9px 4px;text-decoration:underline}
+.reveal{display:none;margin-top:16px;border:1px solid var(--green);background:#f1f7f2;border-radius:10px;padding:16px 20px}
+.reveal.open{display:block}
+.reveal h4{font-family:'Playfair Display',serif;color:var(--green);font-size:1.05rem;margin-bottom:8px}
+.reveal ul{margin-left:18px}
+.reveal li{margin:9px 0}
+.reveal li .fr{color:var(--muted);font-size:14px}
+.reveal li .en{display:block;font-style:italic;color:var(--text);margin-top:2px}
+.reveal p{font-style:italic}
+.fb-panel{display:none;margin-top:14px;border:1px solid var(--blue);background:#eef3fa;border-radius:10px;padding:14px 18px;font-size:14.5px}
+.fb-panel.open{display:block}
+.fb-panel ul{margin:8px 0 0 18px}
+.fb-panel li{margin:5px 0}
+.final{border:2px solid var(--accent);background:#faf6ec}
+.final h2{color:var(--navy)}
+.final-toggle{display:none;margin-top:16px}
+.final-toggle.open{display:block}
+.corrige h3{font-family:'Playfair Display',serif;color:var(--navy);margin:20px 0 8px;font-size:1.1rem}
+.corrige p{margin:8px 0}
+.corrige ul{margin-left:18px}
+.corrige li{margin:8px 0}
+.corrige li .fr{color:var(--muted);font-size:14px}
+.corrige li .en{display:block;font-style:italic;margin-top:2px}
+.corrige .trans{font-style:italic;color:var(--blue);margin:14px 0}
+.corrige-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:36px 0 6px}
+footer{background:var(--navy-deep);color:rgba(255,255,255,.6);margin-top:36px;border-top:3px solid var(--accent);padding:20px 24px;text-align:center;font-size:13px}
+@media print{
+  body.printing .topbar,body.printing .mast,body.printing .progress-wrap,body.printing .step,body.printing .actions,body.printing footer{display:none!important}
+  body.printing .final{display:block!important}
+  body.printing .final .row,body.printing .final .btn{display:none!important}
+  body.printing .final-toggle{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner"><span>Lycée Sidoine Apollinaire · Clermont-Ferrand</span><a href="accounting-auditing.html">← Retour à 2-Accounting and Auditing</a></div></div>
+
+<header class="mast">
+  <div class="mast-inner">
+    <span class="eyebrow">DSCG — UE12 Business English</span>
+    <h1>Structured Response Trainer <em>Part II — The Essay</em></h1>
+    <div class="qbox"><span class="lbl">Essay question</span><p>To what extent can new environmental accounting standards help fight climate change?</p></div>
+  </div>
+</header>
+
+<div class="progress-wrap"><div class="progress-inner"><span class="lbl">Progression <span id="pcount">0</span> / 9 étapes</span><div class="bar"><div class="fill" id="pfill"></div></div></div></div>
+
+<div class="wrap">
+
+<section class="step" id="s1">
+  <div class="step-top"><div class="step-num">1</div><h2>Brainstorm &amp; Sort</h2></div>
+  <p class="instr">Plan dialectique en trois temps&nbsp;: <b>I.</b> un levier réel (thèse) — <b>II.</b> un outil insuffisant (antithèse) — <b>III.</b> un complément nécessaire (synthèse). Classez chaque idée dans la bonne partie.</p>
+  <p class="instr">Cliquez sur la partie (I, II ou III) à laquelle chaque idée appartient, puis vérifiez votre réponse.</p>
+  <div class="sortlist" id="sortlist">
+    <div class="sortitem" data-correct="I"><span>Investors get climate information as rigorous as financial data.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="II"><span>A disclosure standard does not, by itself, cut a single tonne of emissions.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="III"><span>Standards should coexist with binding rules such as the European CSRD.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="I"><span>Boards are pushed to treat climate as a strategic risk, not just communication.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="II"><span>Adoption remains uneven because standards are "jurisdiction specific".<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="III"><span>Rigorous auditing is needed to prevent greenwashing.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="I"><span>The initiative is backed by the G20 and the Financial Stability Board, giving it global scale.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="II"><span>Without strict audits or penalties, companies may comply on paper only.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="III"><span>Disclosure is a precondition for action, but it cannot replace action itself.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+  </div>
+  <div class="sort-legend"><span><b>I</b> — a real lever</span><span><b>II</b> — an insufficient tool</span><span><b>III</b> — a necessary complement</span></div>
+  <div class="wc" id="sortscore"></div>
+</section>
+
+<section class="step" id="s2">
+  <div class="step-top"><div class="step-num">2</div><h2>Build the Introduction</h2></div>
+  <p class="instr">Une introduction efficace amène le sujet, pose la problématique, puis annonce le plan.</p>
+  <p class="instr">Which sentence is the best <i>opening line (amorce)</i> for this introduction?</p>
+  <div class="mcq" id="mcq2">
+    <div class="opt" data-k="A"><span class="k">A</span><span>In November 2021, at COP26, the IFRS Foundation announced the creation of a new board dedicated entirely to sustainability reporting.</span></div>
+    <div class="opt" data-k="B"><span class="k">B</span><span>This essay will first present the benefits of new accounting standards, then their limits, before proposing a balanced view.</span></div>
+    <div class="opt" data-k="C"><span class="k">C</span><span>For decades, financial reporting has told investors everything about profit, but almost nothing about a company's impact on the climate.</span></div>
+    <div class="opt" data-k="D"><span class="k">D</span><span>In my opinion, accounting standards are clearly useless against climate change and only serve to reassure investors.</span></div>
+  </div>
+  <p class="mcq-fb" id="mcq2fb"></p>
+  <label class="fl">Now write your own introduction. <span style="font-weight:400;font-style:italic">Amorce (contexte) → problématique → annonce du plan en trois parties. ≈ 70–110 mots.</span></label>
+  <textarea data-save="s2" data-wc="s2"></textarea>
+  <div class="wc">Introduction&nbsp;: <b data-wcout="s2">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s2','intro')">Analyser mon introduction</button><button class="btn ghost" onclick="toggle('r2')">Voir un modèle</button></div>
+  <div class="fb-panel" id="fb-s2"></div>
+  <div class="reveal" id="r2"><h4>Modèle — Introduction</h4><p>For decades, financial reporting has told investors everything about profit, but almost nothing about a company's impact on the climate. In November 2021, at COP26, the IFRS Foundation created the International Sustainability Standards Board (ISSB) to close that gap, giving climate information the same rigour and comparability as financial figures. This raises a central question: to what extent can such standards actually help fight climate change? This essay will first show that they are a genuine lever for accountability, then examine their limits, before arguing that they are best understood as a necessary but insufficient piece of the response.</p></div>
+</section>
+
+<section class="step" id="s3">
+  <div class="step-top"><div class="step-num">3</div><h2>Develop Part I</h2><span class="tag">Thèse · A real lever</span></div>
+  <p class="instr">Présentez les nouvelles normes comme un véritable levier de transparence et de pilotage du risque climatique. Rédigez un paragraphe argumenté avec une phrase d'amorce, des arguments et des exemples (≈ 120–180 mots).</p>
+  <label class="fl">Partie I — votre développement (en anglais) :</label>
+  <textarea data-save="s3" data-wc="s3"></textarea>
+  <div class="wc">Partie I&nbsp;: <b data-wcout="s3">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s3','part')">Analyser la Partie I</button><button class="btn ghost" onclick="toggle('r3')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s3"></div>
+  <div class="reveal" id="r3"><h4>Corrigé — Partie I : un véritable levier</h4>
+    <ul>
+      <li><span class="fr">Les normes donnent aux investisseurs une information climatique aussi rigoureuse que l'information financière.</span><span class="en">The ISSB was created to give sustainability information "the same rigor and comparability" as financial information.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Le climat devient un risque stratégique pour les conseils d'administration, et non un simple exercice de communication.</span><span class="en">Boards are pushed to treat climate as a core strategic risk rather than a communications exercise.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">L'approche « climate first » s'appuie sur le cadre déjà éprouvé du TCFD.</span><span class="en">The "climate first" approach builds on the existing TCFD framework, a proven strategic-risk model.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Le projet bénéficie d'un fort soutien institutionnel (G20, Financial Stability Board), ce qui lui donne une portée mondiale.</span><span class="en">Backing from the G20 and the Financial Stability Board gives the initiative real global scale.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">En redirigeant les capitaux, la transparence crée une incitation financière concrète à agir — un mécanisme de marché qui déborde le texte.</span><span class="en">Better disclosure can redirect capital towards companies that manage climate risk responsibly.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s4">
+  <div class="step-top"><div class="step-num">4</div><h2>Transition I → II</h2></div>
+  <p class="instr">Une transition rappelle la partie qui s'achève et annonce la suivante par un contraste. Rédigez la vôtre, puis comparez.</p>
+  <label class="fl">Votre transition (en anglais) :</label>
+  <textarea data-save="s4" data-wc="s4" style="min-height:70px"></textarea>
+  <div class="row"><button class="btn" onclick="analyse('s4','trans')">Analyser ma transition</button><button class="btn ghost" onclick="toggle('r4')">Voir le modèle</button></div>
+  <div class="fb-panel" id="fb-s4"></div>
+  <div class="reveal" id="r4"><h4>Modèle — Transition I → II</h4><p>However, giving companies a new reporting standard is not the same as forcing them to cut their emissions — and this is precisely where the limits of the ISSB framework appear.</p></div>
+</section>
+
+<section class="step" id="s5">
+  <div class="step-top"><div class="step-num">5</div><h2>Develop Part II</h2><span class="tag">Antithèse · An insufficient tool</span></div>
+  <p class="instr">Montrez que ces normes de reporting, seules, ne suffisent pas à réduire les émissions. Paragraphe argumenté (≈ 120–180 mots).</p>
+  <label class="fl">Partie II — votre développement (en anglais) :</label>
+  <textarea data-save="s5" data-wc="s5"></textarea>
+  <div class="wc">Partie II&nbsp;: <b data-wcout="s5">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s5','part')">Analyser la Partie II</button><button class="btn ghost" onclick="toggle('r5')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s5"></div>
+  <div class="reveal" id="r5"><h4>Corrigé — Partie II : un outil insuffisant</h4>
+    <ul>
+      <li><span class="fr">Une norme de reporting ne réduit, par elle-même, aucune émission — c'est un constat qui déborde le texte.</span><span class="en">A disclosure standard does not, by itself, cut a single tonne of CO2.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Les normes restent «&nbsp;jurisdiction specific&nbsp;», donc l'adoption reste inégale selon les pays.</span><span class="en">Standards are developed to fit requirements that are "jurisdiction specific", so adoption remains uneven.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Sans audit rigoureux ni sanctions, le risque de greenwashing demeure.</span><span class="en">Without strict auditing or penalties, companies may comply on paper while changing little in practice.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Le texte ne dit rien des obligations contraignantes plus fortes, comme la CSRD européenne — une norme qu'il faut connaître par ailleurs.</span><span class="en">The article says nothing about binding frameworks such as the European CSRD, which impose real obligations.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">L'efficacité dépend surtout de la réaction des investisseurs à l'information publiée, pas d'une obligation de résultat.</span><span class="en">Its effectiveness depends on investors acting on the disclosed information, not on any obligation of result.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s6">
+  <div class="step-top"><div class="step-num">6</div><h2>Transition II → III</h2></div>
+  <p class="instr">Cette transition doit reconnaître les limites de la Partie II tout en ouvrant vers une solution équilibrée (synthèse). Rédigez la vôtre, puis comparez au modèle.</p>
+  <label class="fl">Votre transition (en anglais) :</label>
+  <textarea data-save="s6" data-wc="s6" style="min-height:70px"></textarea>
+  <div class="row"><button class="btn" onclick="analyse('s6','trans')">Analyser ma transition</button><button class="btn ghost" onclick="toggle('r6')">Voir le modèle</button></div>
+  <div class="fb-panel" id="fb-s6"></div>
+  <div class="reveal" id="r6"><h4>Modèle — Transition II → III</h4><p>Yet these limits do not mean that accounting standards are useless; they mean that they should be seen as one piece of a larger response, not as a solution on their own.</p></div>
+</section>
+
+<section class="step" id="s7">
+  <div class="step-top"><div class="step-num">7</div><h2>Develop Part III</h2><span class="tag">Synthèse · A necessary complement</span></div>
+  <p class="instr">Proposez un équilibre&nbsp;: les normes comme condition nécessaire mais non suffisante, à combiner avec la réglementation contraignante et l'audit. Paragraphe argumenté (≈ 120–180 mots).</p>
+  <label class="fl">Partie III — votre développement (en anglais) :</label>
+  <textarea data-save="s7" data-wc="s7"></textarea>
+  <div class="wc">Partie III&nbsp;: <b data-wcout="s7">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s7','part')">Analyser la Partie III</button><button class="btn ghost" onclick="toggle('r7')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s7"></div>
+  <div class="reveal" id="r7"><h4>Corrigé — Partie III : un complément nécessaire</h4>
+    <ul>
+      <li><span class="fr">Les normes de reporting doivent coexister avec une réglementation contraignante (ex&nbsp;: CSRD, taxonomie verte).</span><span class="en">Disclosure standards should coexist with binding rules such as the European CSRD.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Un audit rigoureux et des sanctions sont nécessaires pour éviter le greenwashing.</span><span class="en">Rigorous auditing and real penalties are needed to prevent greenwashing.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">La gouvernance ISSB/IASB, sous la tutelle des IFRS Foundation Trustees, apporte une légitimité institutionnelle utile.</span><span class="en">Oversight by the IFRS Foundation Trustees gives the framework useful institutional legitimacy.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">L'information devient la condition préalable à l'action, mais ne remplace pas l'action elle-même.</span><span class="en">Disclosure is the precondition for action, but it cannot replace action itself.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Un cadre mondial soutenu par le G20 facilite la coordination internationale, indispensable face à un problème global.</span><span class="en">A globally-backed baseline helps coordinate the international response that a global problem requires.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s8">
+  <div class="step-top"><div class="step-num">8</div><h2>Write the Conclusion</h2></div>
+  <p class="instr">Reprenez le bilan des deux thèses, répondez à la problématique, puis ouvrez sur une perspective plus large. <span style="font-style:italic">≈ 80–120 mots.</span></p>
+  <label class="fl">Votre conclusion (en anglais) :</label>
+  <textarea data-save="s8" data-wc="s8"></textarea>
+  <div class="wc">Conclusion&nbsp;: <b data-wcout="s8">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s8','concl')">Analyser ma conclusion</button><button class="btn ghost" onclick="toggle('r8')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s8"></div>
+  <div class="reveal" id="r8"><h4>Corrigé — Conclusion</h4><p>New environmental accounting standards are a genuine step forward: they give investors and boards climate information as rigorous as financial data, and push companies to treat climate as a strategic risk. However, a reporting standard cannot, by itself, cut emissions; its impact depends on audit quality and on how investors act on the disclosed information. <i>Accounting standards can therefore support the fight against climate change, but they cannot win it alone.</i> They should be seen as one piece of a wider system that also needs binding regulation, rigorous auditing and genuine political will.</p></div>
+</section>
+
+<section class="step final" id="s9">
+  <div class="step-top"><div class="step-num">★</div><h2>Corrigé complet</h2></div>
+  <p class="instr">Le corrigé intégral, structuré en points pour servir de support à une restitution orale. Bouton d'impression en bas.</p>
+  <div class="row"><button class="btn" onclick="toggleFinal()">Afficher le corrigé complet</button><button class="btn" onclick="printCorrige()">🖨 Imprimer le corrigé</button></div>
+  <div class="final-toggle" id="finalbox">
+    <div class="corrige">
+      <h3>Introduction</h3>
+      <p>For decades, financial reporting has told investors everything about profit, but almost nothing about a company's impact on the climate. In November 2021, at COP26, the IFRS Foundation created the International Sustainability Standards Board (ISSB) to close that gap, giving climate information the same rigour and comparability as financial figures. This raises a central question: to what extent can such standards actually help fight climate change? This essay will first show that they are a genuine lever for accountability, then examine their limits, before arguing that they are best understood as a necessary but insufficient piece of the response.</p>
+
+      <h3>I. A real lever for accountability</h3>
+      <ul>
+        <li><span class="fr">Information climatique aussi rigoureuse que l'information financière.</span><span class="en">The ISSB gives sustainability information "the same rigor and comparability" as financial information.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Le climat devient un risque stratégique pour les conseils d'administration.</span><span class="en">Boards are pushed to treat climate as a core strategic risk, not mere communication.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Approche « climate first » appuyée sur le TCFD.</span><span class="en">The "climate first" approach builds on the proven TCFD framework.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Fort soutien institutionnel (G20, Financial Stability Board).</span><span class="en">Backing from the G20 and the Financial Stability Board gives the project global scale.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Redirection des capitaux vers une gestion responsable du risque climatique.</span><span class="en">Better disclosure can redirect capital towards climate-responsible companies.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      </ul>
+      <p class="trans">Transition I → II — However, giving companies a new reporting standard is not the same as forcing them to cut their emissions — and this is precisely where the limits of the ISSB framework appear.</p>
+
+      <h3>II. An insufficient tool on its own</h3>
+      <ul>
+        <li><span class="fr">Une norme de reporting ne réduit aucune émission par elle-même.</span><span class="en">A disclosure standard does not, by itself, cut a single tonne of CO2.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Adoption inégale selon les juridictions.</span><span class="en">Standards remain "jurisdiction specific", so adoption is uneven across countries.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Risque de greenwashing sans audit rigoureux.</span><span class="en">Without strict auditing, companies may comply on paper while changing little in practice.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Pas d'obligations contraignantes comme la CSRD.</span><span class="en">The article says nothing about binding frameworks such as the European CSRD.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Efficacité dépendante de la réaction des investisseurs, non d'une obligation de résultat.</span><span class="en">Effectiveness depends on investors acting on disclosure, not on any obligation of result.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      </ul>
+      <p class="trans">Transition II → III — Yet these limits do not mean that accounting standards are useless; they mean that they should be seen as one piece of a larger response, not as a solution on their own.</p>
+
+      <h3>III. A necessary complement</h3>
+      <ul>
+        <li><span class="fr">Coexistence avec une réglementation contraignante (CSRD, taxonomie verte).</span><span class="en">Disclosure standards should coexist with binding rules such as the CSRD.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Audit rigoureux et sanctions contre le greenwashing.</span><span class="en">Rigorous auditing and real penalties are needed to prevent greenwashing.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Gouvernance ISSB/IASB sous tutelle des IFRS Foundation Trustees.</span><span class="en">Oversight by the IFRS Foundation Trustees gives the framework institutional legitimacy.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">L'information est la condition préalable à l'action, pas un substitut.</span><span class="en">Disclosure is the precondition for action, but cannot replace action itself.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Cadre mondial (G20) qui facilite la coordination internationale.</span><span class="en">A globally-backed baseline helps coordinate the international response a global problem requires.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      </ul>
+
+      <h3>Conclusion</h3>
+      <p>New environmental accounting standards are a genuine step forward: they give investors and boards climate information as rigorous as financial data, and push companies to treat climate as a strategic risk. However, a reporting standard cannot, by itself, cut emissions; its impact depends on audit quality and on how investors act on the disclosed information. <i>Accounting standards can therefore support the fight against climate change, but they cannot win it alone.</i> They should be seen as one piece of a wider system that also needs binding regulation, rigorous auditing and genuine political will.</p>
+
+      <div class="corrige-foot">DSCG UE12 — Corrigé type · Lycée Sidoine Apollinaire<br>Question&nbsp;: To what extent can new environmental accounting standards help fight climate change?</div>
+    </div>
+  </div>
+</section>
+
+<div class="actions">
+  <a class="btn" href="accounting-auditing.html">← Revenir au chapitre</a>
+  <a class="btn" href="index.html">Revenir à l'accueil</a>
+</div>
+</div>
+
+<footer>Lycée Sidoine Apollinaire — Clermont-Ferrand · DSCG · 2-Accounting and Auditing</footer>
+
+<script>
+const STORE='lsa-essay-str-accounting-v1';
+let state={}; try{state=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}
+const areas=document.querySelectorAll('textarea[data-save]');
+areas.forEach(el=>{const k=el.dataset.save; if(state[k]!==undefined) el.value=state[k]; el.addEventListener('input',()=>{save();updateAll()})});
+if(state.mcq2) selectMcq(state.mcq2,false);
+document.querySelectorAll('#mcq2 .opt').forEach(o=>o.addEventListener('click',()=>selectMcq(o.dataset.k,true)));
+if(state.sort) Object.keys(state.sort).forEach(i=>applySort(i,state.sort[i],false));
+document.querySelectorAll('.sortitem').forEach((item,i)=>{
+  item.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{applySort(i,b.dataset.k,true)}));
+});
+
+function save(){const o={mcq2:state.mcq2,sort:state.sort||{}};areas.forEach(el=>o[el.dataset.save]=el.value);localStorage.setItem(STORE,JSON.stringify(o))}
+function applySort(i,k,persist){
+  const item=document.querySelectorAll('.sortitem')[i];
+  const correct=item.dataset.correct;
+  item.querySelectorAll('button').forEach(b=>{b.classList.remove('correct','wrong');if(b.dataset.k===k)b.classList.add(k===correct?'correct':'wrong')});
+  if(persist){state.sort=state.sort||{};state.sort[i]=k;save();updateAll()}
+  const items=document.querySelectorAll('.sortitem');
+  let done=0,ok=0;
+  items.forEach((it,idx)=>{const chosen=(state.sort||{})[idx];if(chosen!==undefined){done++;if(chosen===it.dataset.correct)ok++}});
+  document.getElementById('sortscore').innerHTML='Classées&nbsp;: <b>'+done+'</b> / '+items.length+' — bonnes réponses&nbsp;: <b>'+ok+'</b>';
+}
+function countWords(s){s=(s||'').trim();return s?s.split(/\s+/).filter(Boolean).length:0}
+function updateAll(){
+  document.querySelectorAll('[data-wcout]').forEach(b=>{const el=document.querySelector('textarea[data-wc="'+b.dataset.wcout+'"]');b.textContent=countWords(el?el.value:'')});
+  let done=0; const steps=['s2','s3','s4','s5','s6','s7','s8'];
+  steps.forEach(k=>{const el=document.querySelector('textarea[data-save="'+k+'"]');if(el&&countWords(el.value)>0)done++});
+  if(state.sort && Object.keys(state.sort).length>0)done++;
+  if(document.getElementById('finalbox').classList.contains('open'))done++;
+  document.getElementById('pcount').textContent=done;
+  document.getElementById('pfill').style.width=(done/9*100)+'%';
+}
+function selectMcq(k,persist){
+  document.querySelectorAll('#mcq2 .opt').forEach(o=>{o.classList.remove('correct','wrong');if(o.dataset.k===k)o.classList.add(k==='C'?'correct':'wrong')});
+  const fb=document.getElementById('mcq2fb');
+  const msgs={A:'Ce fait est intéressant mais mieux placé plus loin dans l\'introduction, pas comme amorce générale.',B:'C\'est une annonce de plan, pas une amorce : trop tôt, il faut d\'abord planter le décor.',C:'Bonne amorce : un constat général qui installe le sujet avant de le préciser.',D:'Une opinion tranchée n\'est pas une amorce neutre : évitez le jugement dès la première phrase.'};
+  fb.textContent=msgs[k]||'';
+  if(persist){state.mcq2=k;save()}
+}
+function toggle(id){document.getElementById(id).classList.toggle('open')}
+function toggleFinal(){document.getElementById('finalbox').classList.toggle('open');updateAll()}
+function printCorrige(){document.getElementById('finalbox').classList.add('open');document.body.classList.add('printing');window.print();setTimeout(()=>document.body.classList.remove('printing'),300)}
+function analyse(key,kind){
+  const el=document.querySelector('textarea[data-save="'+key+'"]');
+  const fb=document.getElementById('fb-'+key);
+  const text=(el.value||'').trim();
+  const wc=countWords(text);
+  let ranges={intro:[70,110],part:[120,180],trans:[15,40],concl:[80,120]};
+  const [lo,hi]=ranges[kind];
+  let notes=[];
+  if(wc===0){notes.push('Le champ est vide : commencez par une phrase d\'amorce ou un premier argument.')}
+  else{
+    if(wc<lo) notes.push('Un peu court ('+wc+' mots) — visez plutôt '+lo+'–'+hi+' mots pour développer votre idée.');
+    else if(wc>hi) notes.push('Un peu long ('+wc+' mots) — visez plutôt '+lo+'–'+hi+' mots, allégez les redites.');
+    else notes.push('Longueur adaptée ('+wc+' mots).');
+    if(kind==='part'){
+      if(!/(however|moreover|for example|for instance|in addition|as a result|indeed)/i.test(text)) notes.push('Ajoutez un linking word (however, moreover, for example…) pour structurer l\'argument.');
+      if(!/(issb|ifrs|tcfd|g20|csrd|standard)/i.test(text)) notes.push('Appuyez-vous sur un élément précis du document ou du cours (ISSB, IFRS, TCFD, G20, CSRD…).');
+    }
+    if(kind==='intro' && !/\?/.test(text)) notes.push('Une problématique est souvent formulée sous forme de question — vérifiez que la vôtre l\'est.');
+    if(kind==='concl' && /I think|in my opinion/i.test(text)) notes.push('Évitez « I think » en conclusion : reformulez la position de façon plus argumentée ("This shows that…").');
+  }
+  fb.innerHTML='<b>Auto-vérification</b><ul>'+notes.map(n=>'<li>'+n+'</li>').join('')+'</ul>';
+  fb.classList.add('open');
+}
+updateAll();
+</script>
+</body>
+</html>

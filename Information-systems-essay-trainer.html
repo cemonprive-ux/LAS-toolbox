@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSCG UE12 — Essay Trainer · Information Systems and New Technologies</title>
+<link rel="icon" type="image/png" href="assets/lsa-logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1a2744;--navy-deep:#0f1a33;--blue:#2d5fa6;--accent:#c8a84b;--green:#2a7a4b;--red:#b5302b;--bg:#f5f3ef;--surface:#fff;--border:#ddd5c5;--text:#2a2520;--muted:#7a7060}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16.5px}
+a{color:var(--blue)}
+.topbar{background:var(--navy-deep);color:rgba(255,255,255,.7);font-size:12.5px}
+.topbar-inner{max-width:900px;margin:0 auto;padding:9px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.topbar a{color:rgba(255,255,255,.78);text-decoration:none;border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:4px 13px;font-size:11.5px}
+.topbar a:hover{background:rgba(255,255,255,.1);color:#fff}
+.mast{background:linear-gradient(135deg,var(--navy),var(--navy-deep));border-bottom:3px solid var(--accent);color:#fff}
+.mast-inner{max-width:900px;margin:0 auto;padding:34px 24px 28px}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.mast h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,2.6rem);margin-top:8px;line-height:1.1}
+.mast h1 em{color:var(--accent);font-style:italic}
+.qbox{margin-top:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:14px 18px}
+.qbox .lbl{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.qbox p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;margin-top:6px}
+.wrap{max-width:900px;margin:0 auto;padding:30px 24px 40px}
+.progress-wrap{position:sticky;top:0;z-index:20;background:rgba(245,243,239,.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);padding:10px 24px;margin:0 -24px 26px}
+.progress-inner{max-width:900px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.progress-inner .lbl{font-size:12.5px;font-weight:700;color:var(--navy);white-space:nowrap}
+.progress-inner .bar{flex:1;height:7px;border-radius:5px;background:var(--border);overflow:hidden}
+.progress-inner .fill{height:100%;background:var(--green);border-radius:5px;transition:width .3s;width:0%}
+.step{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin-bottom:20px;scroll-margin-top:70px}
+.step-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.step-num{width:38px;height:38px;border-radius:10px;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;flex-shrink:0}
+.step h2{font-family:'Playfair Display',serif;color:var(--navy);font-size:1.3rem;flex:1}
+.tag{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:#faf6ec;color:var(--accent-deep,#a9883a);border:1px solid var(--accent);border-radius:20px;padding:3px 12px}
+.step p.instr{margin:14px 0;color:var(--text)}
+.step p.instr b{color:var(--navy)}
+.mcq{margin:14px 0;display:flex;flex-direction:column;gap:8px}
+.mcq .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:9px;padding:10px 14px;cursor:pointer;background:#fcfbf8;transition:all .15s}
+.mcq .opt:hover{border-color:var(--blue)}
+.mcq .opt .k{font-weight:700;color:var(--blue);flex-shrink:0}
+.mcq .opt.correct{border-color:var(--green);background:#f1f7f2}
+.mcq .opt.wrong{border-color:var(--red);background:#fbf0ef}
+.mcq-fb{font-size:14px;margin-top:4px;font-style:italic;color:var(--muted)}
+.sortlist{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.sortitem{display:flex;justify-content:space-between;align-items:center;gap:14px;border:1px solid var(--border);border-radius:9px;padding:10px 14px;background:#fcfbf8;flex-wrap:wrap}
+.sortitem span{flex:1;min-width:200px}
+.sortbtns{display:flex;gap:6px}
+.sortbtns button{font-family:inherit;cursor:pointer;font-weight:700;font-size:13px;border:1px solid var(--border);background:#fff;color:var(--navy);border-radius:7px;padding:5px 11px;transition:all .15s}
+.sortbtns button:hover{border-color:var(--blue)}
+.sortbtns button.correct{border-color:var(--green);background:#f1f7f2;color:var(--green)}
+.sortbtns button.wrong{border-color:var(--red);background:#fbf0ef;color:var(--red)}
+.sort-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px;font-size:13.5px;color:var(--muted)}
+.sort-legend b{color:var(--navy)}
+.src-tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;padding:2px 9px;margin-top:4px}
+.src-tag.src-doc{background:#eef3fa;color:var(--blue)}
+.src-tag.src-ext{background:#faf6ec;color:#a9883a}
+.reveal li small,.corrige li small{display:block}
+label.fl{display:block;font-weight:600;color:var(--navy);font-size:14.5px;margin:12px 0 6px}
+textarea{width:100%;font-family:inherit;font-size:15.5px;color:var(--text);background:#fcfbf8;border:1px solid var(--border);border-radius:9px;padding:12px 14px;line-height:1.6;resize:vertical;min-height:130px}
+textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.wc{font-size:12.5px;color:var(--muted);margin-top:6px}
+.wc b{color:var(--navy)}
+.row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.btn{font-family:inherit;cursor:pointer;font-weight:600;font-size:14px;border-radius:22px;padding:9px 18px;border:1px solid var(--border);background:var(--surface);color:var(--navy)}
+.btn:hover{border-color:var(--accent);color:#a9883a}
+.btn.ghost{background:transparent;border:none;color:var(--blue);padding:9px 4px;text-decoration:underline}
+.reveal{display:none;margin-top:16px;border:1px solid var(--green);background:#f1f7f2;border-radius:10px;padding:16px 20px}
+.reveal.open{display:block}
+.reveal h4{font-family:'Playfair Display',serif;color:var(--green);font-size:1.05rem;margin-bottom:8px}
+.reveal ul{margin-left:18px}
+.reveal li{margin:9px 0}
+.reveal li .fr{color:var(--muted);font-size:14px}
+.reveal li .en{display:block;font-style:italic;color:var(--text);margin-top:2px}
+.reveal p{font-style:italic}
+.fb-panel{display:none;margin-top:14px;border:1px solid var(--blue);background:#eef3fa;border-radius:10px;padding:14px 18px;font-size:14.5px}
+.fb-panel.open{display:block}
+.fb-panel ul{margin:8px 0 0 18px}
+.fb-panel li{margin:5px 0}
+.final{border:2px solid var(--accent);background:#faf6ec}
+.final h2{color:var(--navy)}
+.final-toggle{display:none;margin-top:16px}
+.final-toggle.open{display:block}
+.corrige h3{font-family:'Playfair Display',serif;color:var(--navy);margin:20px 0 8px;font-size:1.1rem}
+.corrige p{margin:8px 0}
+.corrige ul{margin-left:18px}
+.corrige li{margin:8px 0}
+.corrige li .fr{color:var(--muted);font-size:14px}
+.corrige li .en{display:block;font-style:italic;margin-top:2px}
+.corrige .trans{font-style:italic;color:var(--blue);margin:14px 0}
+.corrige-foot{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-size:13px;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:36px 0 6px}
+footer{background:var(--navy-deep);color:rgba(255,255,255,.6);margin-top:36px;border-top:3px solid var(--accent);padding:20px 24px;text-align:center;font-size:13px}
+@media print{
+  body.printing .topbar,body.printing .mast,body.printing .progress-wrap,body.printing .step,body.printing .actions,body.printing footer{display:none!important}
+  body.printing .final{display:block!important}
+  body.printing .final .row,body.printing .final .btn{display:none!important}
+  body.printing .final-toggle{display:block!important}
+}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="topbar-inner"><span>Lycée Sidoine Apollinaire · Clermont-Ferrand</span><a href="information-systems.html">← Retour à 4-Information Systems and New Technologies</a></div></div>
+
+<header class="mast">
+  <div class="mast-inner">
+    <span class="eyebrow">DSCG — UE12 Business English</span>
+    <h1>Structured Response Trainer <em>Part II — The Essay</em></h1>
+    <div class="qbox"><span class="lbl">Essay question</span><p>How will the emergence of new technologies reshape the professional world of tomorrow?</p></div>
+  </div>
+</header>
+
+<div class="progress-wrap"><div class="progress-inner"><span class="lbl">Progression <span id="pcount">0</span> / 9 étapes</span><div class="bar"><div class="fill" id="pfill"></div></div></div></div>
+
+<div class="wrap">
+
+<section class="step" id="s1">
+  <div class="step-top"><div class="step-num">1</div><h2>Brainstorm &amp; Sort</h2></div>
+  <p class="instr">Plan dialectique en trois temps&nbsp;: <b>I.</b> un levier réel d'amélioration du travail (thèse) — <b>II.</b> une transformation risquée et inégale (antithèse) — <b>III.</b> un avenir qui dépend de la gestion de la transition (synthèse). Classez chaque idée dans la bonne partie.</p>
+  <p class="instr">Cliquez sur la partie (I, II ou III) à laquelle chaque idée appartient, puis vérifiez votre réponse.</p>
+  <div class="sortlist" id="sortlist">
+    <div class="sortitem" data-correct="II"><span>Nearly half of European workers expect AI to have a major impact on their working lives within a year.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="III"><span>Cybersecurity expertise and integrating sustainability into daily practice will define tomorrow's professional.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="I"><span>Up to 28% of the UK workforce could move to a 32-hour, four-day week by 2033 thanks to AI.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="III"><span>"If AI is to be implemented fairly across the economy, it should usher in a new era of four-day working weeks for all."<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="II"><span>Generative tools that write articles or generate images already raise real job-security concerns for writers and illustrators.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="I"><span>Automation streamlines routine tasks, transforming job roles rather than simply destroying them.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="III"><span>Professionals will need to continually upskill, combining technical competence with soft skills such as adaptability.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="I"><span>Completed four-day week trials point to maintained or improved productivity, with real gains for worker wellbeing.<br><small class="src-tag src-doc">Idée tirée du texte</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+    <div class="sortitem" data-correct="II"><span>Without deliberate policy choices, productivity gains could be captured by employers as profit instead of shared as shorter hours.<br><small class="src-tag src-ext">Connaissance extérieure</small></span><div class="sortbtns"><button data-k="I">I</button><button data-k="II">II</button><button data-k="III">III</button></div></div>
+  </div>
+  <div class="sort-legend"><span><b>I</b> — a real lever</span><span><b>II</b> — a risky, uneven transformation</span><span><b>III</b> — a future that depends on how it is managed</span></div>
+  <div class="wc" id="sortscore"></div>
+</section>
+
+<section class="step" id="s2">
+  <div class="step-top"><div class="step-num">2</div><h2>Build the Introduction</h2></div>
+  <p class="instr">Une introduction efficace amène le sujet, pose la problématique, puis annonce le plan.</p>
+  <p class="instr">Which sentence is the best <i>opening line (amorce)</i> for this introduction?</p>
+  <div class="mcq" id="mcq2">
+    <div class="opt" data-k="A"><span class="k">A</span><span>In 2023, the think tank Autonomy calculated that 8.8 million UK workers could work a four-day week thanks to AI.</span></div>
+    <div class="opt" data-k="B"><span class="k">B</span><span>This essay will first show that AI improves working conditions, then examine its risks, before arguing that its impact depends on how it is managed.</span></div>
+    <div class="opt" data-k="C"><span class="k">C</span><span>For most of the twentieth century, technology changed how people worked without changing how many hours they worked.</span></div>
+    <div class="opt" data-k="D"><span class="k">D</span><span>In my opinion, AI will destroy far more jobs than it creates, and workers should be worried.</span></div>
+  </div>
+  <p class="mcq-fb" id="mcq2fb"></p>
+  <label class="fl">Now write your own introduction. <span style="font-weight:400;font-style:italic">Amorce (contexte) → problématique → annonce du plan en trois parties. ≈ 70–110 mots.</span></label>
+  <textarea data-save="s2" data-wc="s2"></textarea>
+  <div class="wc">Introduction&nbsp;: <b data-wcout="s2">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s2','intro')">Analyser mon introduction</button><button class="btn ghost" onclick="toggle('r2')">Voir un modèle</button></div>
+  <div class="fb-panel" id="fb-s2"></div>
+  <div class="reveal" id="r2"><h4>Modèle — Introduction</h4><p>For most of the twentieth century, technology changed how people worked without changing how many hours they worked. Generative AI tools are now challenging that assumption: a 2023 report by the think tank Autonomy suggests that up to 28 per cent of the UK workforce could move to a four-day week by 2033 thanks to AI-driven productivity gains. This raises a central question: how will the emergence of new technologies reshape the professional world of tomorrow? This essay will first show that new technologies are already becoming a genuine lever for better working conditions, then examine the risks and inequalities this transformation creates, before arguing that its ultimate impact will depend on how societies choose to manage it.</p></div>
+</section>
+
+<section class="step" id="s3">
+  <div class="step-top"><div class="step-num">3</div><h2>Develop Part I</h2><span class="tag">Thèse · A real lever</span></div>
+  <p class="instr">Présentez les nouvelles technologies comme un véritable levier d'amélioration des conditions de travail. Rédigez un paragraphe argumenté avec une phrase d'amorce, des arguments et des exemples (≈ 120–180 mots).</p>
+  <label class="fl">Partie I — votre développement (en anglais) :</label>
+  <textarea data-save="s3" data-wc="s3"></textarea>
+  <div class="wc">Partie I&nbsp;: <b data-wcout="s3">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s3','part')">Analyser la Partie I</button><button class="btn ghost" onclick="toggle('r3')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s3"></div>
+  <div class="reveal" id="r3"><h4>Corrigé — Partie I : un véritable levier</h4>
+    <ul>
+      <li><span class="fr">Selon Autonomy, 28% des salariés britanniques (8,8 millions) pourraient passer à une semaine de quatre jours d'ici 2033 grâce à l'IA.</span><span class="en">Autonomy's GPT-4 report finds that 28 per cent of the UK workforce — 8.8 million workers — could move to a 32-hour, four-day week by 2033.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">88% des salariés pourraient voir leurs heures réduites d'au moins 10%, à salaire égal.</span><span class="en">A further 88 per cent of the workforce could see working hours cut by at least 10 per cent while keeping the same pay.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Les essais de semaine de quatre jours déjà menés montrent une productivité maintenue ou améliorée, avec de réels bénéfices pour le bien-être des salariés.</span><span class="en">Completed four-day week trials point to maintained or improved productivity, with substantial benefits for worker wellbeing.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">L'automatisation transforme les tâches répétitives, libérant du temps pour un travail à plus forte valeur ajoutée plutôt que de simplement supprimer des emplois.</span><span class="en">Automation streamlines routine tasks, freeing employees for higher-value, more strategic work rather than simply eliminating jobs.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Le travail à distance et la collaboration numérique, portés par les mêmes technologies, rendent des horaires plus flexibles plus faciles à organiser.</span><span class="en">Remote work and digital collaboration tools, accelerated by the same wave of technology, make more flexible schedules easier to organise.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s4">
+  <div class="step-top"><div class="step-num">4</div><h2>Transition I → II</h2></div>
+  <p class="instr">Une transition rappelle la partie qui s'achève et annonce la suivante par un contraste. Rédigez la vôtre, puis comparez.</p>
+  <label class="fl">Votre transition (en anglais) :</label>
+  <textarea data-save="s4" data-wc="s4" style="min-height:70px"></textarea>
+  <div class="row"><button class="btn" onclick="analyse('s4','trans')">Analyser ma transition</button><button class="btn ghost" onclick="toggle('r4')">Voir le modèle</button></div>
+  <div class="fb-panel" id="fb-s4"></div>
+  <div class="reveal" id="r4"><h4>Modèle — Transition I → II</h4><p>However, presenting new technologies purely as a source of shorter hours and steady pay overlooks a more uncertain reality — one in which the same tools threaten jobs and widen inequalities between workers.</p></div>
+</section>
+
+<section class="step" id="s5">
+  <div class="step-top"><div class="step-num">5</div><h2>Develop Part II</h2><span class="tag">Antithèse · A risky, uneven transformation</span></div>
+  <p class="instr">Montrez que cette transformation reste risquée et inégale, et qu'elle ne profite pas automatiquement à tous. Paragraphe argumenté (≈ 120–180 mots).</p>
+  <label class="fl">Partie II — votre développement (en anglais) :</label>
+  <textarea data-save="s5" data-wc="s5"></textarea>
+  <div class="wc">Partie II&nbsp;: <b data-wcout="s5">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s5','part')">Analyser la Partie II</button><button class="btn ghost" onclick="toggle('r5')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s5"></div>
+  <div class="reveal" id="r5"><h4>Corrigé — Partie II : une transformation risquée et inégale</h4>
+    <ul>
+      <li><span class="fr">Près de la moitié des salariés européens interrogés par LinkedIn s'attendent à un impact majeur de l'IA sur leur vie professionnelle dans l'année à venir.</span><span class="en">Nearly half of European workers surveyed by LinkedIn expect AI to have a major impact on their working lives within the next year — a sign of real anxiety.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Des outils comme ChatGPT ou Bard peuvent déjà rédiger des articles entiers, et les générateurs d'images inquiètent directement les illustrateurs quant à leur sécurité de l'emploi.</span><span class="en">Generative tools such as ChatGPT and Bard can already write full articles or business plans, and image generators raise concrete fears for illustrators' job security.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Sans choix politiques délibérés, les gains de productivité liés à l'IA risquent d'être captés par les employeurs sous forme de profit plutôt que partagés en heures de travail réduites.</span><span class="en">Without deliberate policy choices, productivity gains from AI risk being captured by employers as profit rather than shared with workers as shorter hours.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">La transition favorise les salariés capables de se reconvertir rapidement, tandis que les métiers peu qualifiés ou répétitifs restent plus exposés.</span><span class="en">The transition favours workers who can reskill quickly, while those in low-skill or repetitive roles remain more exposed to displacement.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">De nouveaux enjeux éthiques apparaissent, liés à la protection des données et aux biais algorithmiques, à mesure que les décisions reposent davantage sur des systèmes automatisés.</span><span class="en">New ethical issues around data privacy and algorithmic bias emerge as more decisions rely on automated systems.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s6">
+  <div class="step-top"><div class="step-num">6</div><h2>Transition II → III</h2></div>
+  <p class="instr">Cette transition doit reconnaître les limites de la Partie II tout en ouvrant vers une solution équilibrée (synthèse). Rédigez la vôtre, puis comparez au modèle.</p>
+  <label class="fl">Votre transition (en anglais) :</label>
+  <textarea data-save="s6" data-wc="s6" style="min-height:70px"></textarea>
+  <div class="row"><button class="btn" onclick="analyse('s6','trans')">Analyser ma transition</button><button class="btn ghost" onclick="toggle('r6')">Voir le modèle</button></div>
+  <div class="fb-panel" id="fb-s6"></div>
+  <div class="reveal" id="r6"><h4>Modèle — Transition II → III</h4><p>Yet these risks do not mean that the professional world is doomed to suffer from new technologies; they mean that its future depends on how well workers, companies and governments manage the transition.</p></div>
+</section>
+
+<section class="step" id="s7">
+  <div class="step-top"><div class="step-num">7</div><h2>Develop Part III</h2><span class="tag">Synthèse · A future that depends on how it is managed</span></div>
+  <p class="instr">Proposez un équilibre&nbsp;: le monde professionnel de demain ne sera pas déterminé par la seule technologie, mais par la manière dont elle est gérée — équité, formation continue, éthique. Paragraphe argumenté (≈ 120–180 mots).</p>
+  <label class="fl">Partie III — votre développement (en anglais) :</label>
+  <textarea data-save="s7" data-wc="s7"></textarea>
+  <div class="wc">Partie III&nbsp;: <b data-wcout="s7">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s7','part')">Analyser la Partie III</button><button class="btn ghost" onclick="toggle('r7')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s7"></div>
+  <div class="reveal" id="r7"><h4>Corrigé — Partie III : un avenir qui dépend de la gestion de la transition</h4>
+    <ul>
+      <li><span class="fr">Le directeur de recherche d'Autonomy rappelle que l'équité n'est pas automatique&nbsp;: « if AI is to be implemented fairly across the economy, it should usher in a new era of four-day working weeks for all ».</span><span class="en">Autonomy's director of research argues that "if AI is to be implemented fairly across the economy, it should usher in a new era of four-day working weeks for all" — fairness requires a deliberate choice, not an automatic outcome.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      <li><span class="fr">Les professionnels devront se former en continu, en combinant compétences techniques et compétences comportementales telles que l'adaptabilité.</span><span class="en">Professionals will need to continually upskill, combining technical competence with soft skills such as adaptability and critical thinking.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">La cybersécurité devient une compétence professionnelle critique à mesure que l'économie dépend davantage des systèmes numériques.</span><span class="en">Cybersecurity expertise becomes a critical professional skill as more of the economy depends on digital systems.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Les entreprises devront aussi intégrer des pratiques durables dans leur fonctionnement, ajoutant une dimension environnementale à la transition.</span><span class="en">Businesses are also expected to integrate sustainability practices into their operations, adding an environmental dimension to the transition.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      <li><span class="fr">Les calculs d'Autonomy reposent sur une hypothèse de productivité modeste (1,5% par an, selon Goldman Sachs), ce qui suggère un changement progressif plutôt que brutal.</span><span class="en">Autonomy's own calculations rest on modest, realistic productivity assumptions — a 1.5 per cent annual increase, per Goldman Sachs — suggesting change will be gradual rather than sudden.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+    </ul>
+  </div>
+</section>
+
+<section class="step" id="s8">
+  <div class="step-top"><div class="step-num">8</div><h2>Write the Conclusion</h2></div>
+  <p class="instr">Reprenez le bilan des deux thèses, répondez à la problématique, puis ouvrez sur une perspective plus large. <span style="font-style:italic">≈ 80–120 mots.</span></p>
+  <label class="fl">Votre conclusion (en anglais) :</label>
+  <textarea data-save="s8" data-wc="s8"></textarea>
+  <div class="wc">Conclusion&nbsp;: <b data-wcout="s8">0</b> mot(s)</div>
+  <div class="row"><button class="btn" onclick="analyse('s8','concl')">Analyser ma conclusion</button><button class="btn ghost" onclick="toggle('r8')">Voir le corrigé</button></div>
+  <div class="fb-panel" id="fb-s8"></div>
+  <div class="reveal" id="r8"><h4>Corrigé — Conclusion</h4><p>New technologies are already reshaping the professional world: AI-driven productivity gains could allow millions of workers to move to shorter weeks without losing pay, as completed four-day week trials suggest. Yet this transformation also raises real concerns over job security, uneven benefits and new ethical challenges around data and algorithms. <i>The world of work tomorrow will therefore not be shaped by technology alone, but by the choices societies make about how fairly its gains are shared.</i> As Autonomy's director of research puts it, AI should "usher in a new era of four-day working weeks for all" — a goal that depends on deliberate policy, not on technology by itself.</p></div>
+</section>
+
+<section class="step final" id="s9">
+  <div class="step-top"><div class="step-num">★</div><h2>Corrigé complet</h2></div>
+  <p class="instr">Le corrigé intégral, structuré en points pour servir de support à une restitution orale. Bouton d'impression en bas.</p>
+  <div class="row"><button class="btn" onclick="toggleFinal()">Afficher le corrigé complet</button><button class="btn" onclick="printCorrige()">🖨 Imprimer le corrigé</button></div>
+  <div class="final-toggle" id="finalbox">
+    <div class="corrige">
+      <h3>Introduction</h3>
+      <p>For most of the twentieth century, technology changed how people worked without changing how many hours they worked. Generative AI tools are now challenging that assumption: a 2023 report by the think tank Autonomy suggests that up to 28 per cent of the UK workforce could move to a four-day week by 2033 thanks to AI-driven productivity gains. This raises a central question: how will the emergence of new technologies reshape the professional world of tomorrow? This essay will first show that new technologies are already becoming a genuine lever for better working conditions, then examine the risks and inequalities this transformation creates, before arguing that its ultimate impact will depend on how societies choose to manage it.</p>
+
+      <h3>I. A real lever for better working conditions</h3>
+      <ul>
+        <li><span class="fr">28% des salariés britanniques (8,8 millions) pourraient passer à une semaine de quatre jours d'ici 2033.</span><span class="en">Autonomy's report finds 28 per cent of the UK workforce — 8.8 million workers — could move to a 32-hour, four-day week by 2033.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">88% pourraient voir leurs heures réduites d'au moins 10%, à salaire égal.</span><span class="en">A further 88 per cent could see working hours cut by at least 10 per cent while keeping the same pay.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Les essais menés montrent une productivité maintenue ou améliorée, avec des bénéfices réels pour le bien-être.</span><span class="en">Completed trials point to maintained or improved productivity, with substantial benefits for worker wellbeing.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">L'automatisation transforme les tâches répétitives plutôt que de simplement supprimer des emplois.</span><span class="en">Automation streamlines routine tasks, freeing employees for higher-value work rather than simply eliminating jobs.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Le travail à distance et la collaboration numérique facilitent des horaires plus flexibles.</span><span class="en">Remote work and digital collaboration tools make more flexible schedules easier to organise.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      </ul>
+      <p class="trans">Transition I → II — However, presenting new technologies purely as a source of shorter hours and steady pay overlooks a more uncertain reality — one in which the same tools threaten jobs and widen inequalities between workers.</p>
+
+      <h3>II. A risky, uneven transformation</h3>
+      <ul>
+        <li><span class="fr">Près de la moitié des salariés européens s'attendent à un impact majeur de l'IA sur leur travail dans l'année à venir.</span><span class="en">Nearly half of European workers expect AI to have a major impact on their working lives within the next year.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Les outils génératifs menacent déjà la sécurité de l'emploi des rédacteurs et illustrateurs.</span><span class="en">Generative text and image tools already raise concrete job-security fears for writers and illustrators.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Sans action politique, les gains de productivité pourraient être captés par les employeurs plutôt que partagés.</span><span class="en">Without deliberate policy choices, productivity gains risk being captured by employers as profit rather than shared with workers.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">La transition favorise les salariés capables de se reconvertir rapidement.</span><span class="en">The transition favours workers who can reskill quickly, while low-skill or repetitive roles remain more exposed.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">De nouveaux enjeux éthiques (données, biais algorithmiques) émergent avec l'automatisation des décisions.</span><span class="en">New ethical issues around data privacy and algorithmic bias emerge as decisions rely more on automated systems.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+      </ul>
+      <p class="trans">Transition II → III — Yet these risks do not mean that the professional world is doomed to suffer from new technologies; they mean that its future depends on how well workers, companies and governments manage the transition.</p>
+
+      <h3>III. A future that depends on how it is managed</h3>
+      <ul>
+        <li><span class="fr">L'équité n'est pas automatique&nbsp;: elle exige un choix politique délibéré, selon Autonomy.</span><span class="en">"If AI is to be implemented fairly across the economy, it should usher in a new era of four-day working weeks for all" — fairness is a deliberate choice, not an automatic outcome.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+        <li><span class="fr">Formation continue en compétences techniques et comportementales.</span><span class="en">Professionals will need to continually upskill, combining technical competence with soft skills such as adaptability.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">La cybersécurité devient une compétence professionnelle critique.</span><span class="en">Cybersecurity expertise becomes critical as more of the economy depends on digital systems.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Intégration de pratiques durables dans les entreprises.</span><span class="en">Businesses are also expected to integrate sustainability practices into their operations.</span><small class="src-tag src-ext">Source&nbsp;: connaissances</small></li>
+        <li><span class="fr">Les hypothèses de productivité restent modestes (1,5% par an), suggérant un changement progressif.</span><span class="en">Autonomy's calculations rest on modest productivity assumptions — 1.5 per cent a year, per Goldman Sachs — suggesting gradual rather than sudden change.</span><small class="src-tag src-doc">Source&nbsp;: texte</small></li>
+      </ul>
+
+      <h3>Conclusion</h3>
+      <p>New technologies are already reshaping the professional world: AI-driven productivity gains could allow millions of workers to move to shorter weeks without losing pay, as completed four-day week trials suggest. Yet this transformation also raises real concerns over job security, uneven benefits and new ethical challenges around data and algorithms. The world of work tomorrow will therefore not be shaped by technology alone, but by the choices societies make about how fairly its gains are shared. As Autonomy's director of research puts it, AI should "usher in a new era of four-day working weeks for all" — a goal that depends on deliberate policy, not on technology by itself.</p>
+
+      <div class="corrige-foot">DSCG UE12 — Corrigé type · Lycée Sidoine Apollinaire<br>Question&nbsp;: How will the emergence of new technologies reshape the professional world of tomorrow?</div>
+    </div>
+  </div>
+</section>
+
+<div class="actions">
+  <a class="btn" href="information-systems.html">← Revenir au chapitre</a>
+  <a class="btn" href="index.html">Revenir à l'accueil</a>
+</div>
+</div>
+
+<footer>Lycée Sidoine Apollinaire — Clermont-Ferrand · DSCG · 4-Information Systems and New Technologies</footer>
+
+<script>
+const STORE='lsa-essay-str-infosys-v1';
+let state={}; try{state=JSON.parse(localStorage.getItem(STORE)||'{}')}catch(e){}
+const areas=document.querySelectorAll('textarea[data-save]');
+areas.forEach(el=>{const k=el.dataset.save; if(state[k]!==undefined) el.value=state[k]; el.addEventListener('input',()=>{save();updateAll()})});
+if(state.mcq2) selectMcq(state.mcq2,false);
+document.querySelectorAll('#mcq2 .opt').forEach(o=>o.addEventListener('click',()=>selectMcq(o.dataset.k,true)));
+if(state.sort) Object.keys(state.sort).forEach(i=>applySort(i,state.sort[i],false));
+document.querySelectorAll('.sortitem').forEach((item,i)=>{
+  item.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{applySort(i,b.dataset.k,true)}));
+});
+
+function save(){const o={mcq2:state.mcq2,sort:state.sort||{}};areas.forEach(el=>o[el.dataset.save]=el.value);localStorage.setItem(STORE,JSON.stringify(o))}
+function applySort(i,k,persist){
+  const item=document.querySelectorAll('.sortitem')[i];
+  const correct=item.dataset.correct;
+  item.querySelectorAll('button').forEach(b=>{b.classList.remove('correct','wrong');if(b.dataset.k===k)b.classList.add(k===correct?'correct':'wrong')});
+  if(persist){state.sort=state.sort||{};state.sort[i]=k;save();updateAll()}
+  const items=document.querySelectorAll('.sortitem');
+  let done=0,ok=0;
+  items.forEach((it,idx)=>{const chosen=(state.sort||{})[idx];if(chosen!==undefined){done++;if(chosen===it.dataset.correct)ok++}});
+  document.getElementById('sortscore').innerHTML='Classées&nbsp;: <b>'+done+'</b> / '+items.length+' — bonnes réponses&nbsp;: <b>'+ok+'</b>';
+}
+function countWords(s){s=(s||'').trim();return s?s.split(/\s+/).filter(Boolean).length:0}
+function updateAll(){
+  document.querySelectorAll('[data-wcout]').forEach(b=>{const el=document.querySelector('textarea[data-wc="'+b.dataset.wcout+'"]');b.textContent=countWords(el?el.value:'')});
+  let done=0; const steps=['s2','s3','s4','s5','s6','s7','s8'];
+  steps.forEach(k=>{const el=document.querySelector('textarea[data-save="'+k+'"]');if(el&&countWords(el.value)>0)done++});
+  if(state.sort && Object.keys(state.sort).length>0)done++;
+  if(document.getElementById('finalbox').classList.contains('open'))done++;
+  document.getElementById('pcount').textContent=done;
+  document.getElementById('pfill').style.width=(done/9*100)+'%';
+}
+function selectMcq(k,persist){
+  document.querySelectorAll('#mcq2 .opt').forEach(o=>{o.classList.remove('correct','wrong');if(o.dataset.k===k)o.classList.add(k==='C'?'correct':'wrong')});
+  const fb=document.getElementById('mcq2fb');
+  const msgs={A:'Ce fait est intéressant mais mieux placé plus loin dans l\'introduction, pas comme amorce générale.',B:'C\'est une annonce de plan, pas une amorce : trop tôt, il faut d\'abord planter le décor.',C:'Bonne amorce : un constat général qui installe le sujet avant de le préciser.',D:'Une opinion tranchée n\'est pas une amorce neutre : évitez le jugement dès la première phrase.'};
+  fb.textContent=msgs[k]||'';
+  if(persist){state.mcq2=k;save()}
+}
+function toggle(id){document.getElementById(id).classList.toggle('open')}
+function toggleFinal(){document.getElementById('finalbox').classList.toggle('open');updateAll()}
+function printCorrige(){document.getElementById('finalbox').classList.add('open');document.body.classList.add('printing');window.print();setTimeout(()=>document.body.classList.remove('printing'),300)}
+function analyse(key,kind){
+  const el=document.querySelector('textarea[data-save="'+key+'"]');
+  const fb=document.getElementById('fb-'+key);
+  const text=(el.value||'').trim();
+  const wc=countWords(text);
+  let ranges={intro:[70,110],part:[120,180],trans:[15,40],concl:[80,120]};
+  const [lo,hi]=ranges[kind];
+  let notes=[];
+  if(wc===0){notes.push('Le champ est vide : commencez par une phrase d\'amorce ou un premier argument.')}
+  else{
+    if(wc<lo) notes.push('Un peu court ('+wc+' mots) — visez plutôt '+lo+'–'+hi+' mots pour développer votre idée.');
+    else if(wc>hi) notes.push('Un peu long ('+wc+' mots) — visez plutôt '+lo+'–'+hi+' mots, allégez les redites.');
+    else notes.push('Longueur adaptée ('+wc+' mots).');
+    if(kind==='part'){
+      if(!/(however|moreover|for example|for instance|in addition|as a result|indeed)/i.test(text)) notes.push('Ajoutez un linking word (however, moreover, for example…) pour structurer l\'argument.');
+      if(!/(ai|autonomy|four-day|productivity|reskill|cybersecurity|automation)/i.test(text)) notes.push('Appuyez-vous sur un élément précis du document ou du cours (AI, Autonomy, four-day week, reskilling, cybersecurity…).');
+    }
+    if(kind==='intro' && !/\?/.test(text)) notes.push('Une problématique est souvent formulée sous forme de question — vérifiez que la vôtre l\'est.');
+    if(kind==='concl' && /I think|in my opinion/i.test(text)) notes.push('Évitez « I think » en conclusion : reformulez la position de façon plus argumentée ("This shows that…").');
+  }
+  fb.innerHTML='<b>Auto-vérification</b><ul>'+notes.map(n=>'<li>'+n+'</li>').join('')+'</ul>';
+  fb.classList.add('open');
+}
+updateAll();
+</script>
+</body>
+</html>
