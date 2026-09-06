@@ -293,9 +293,9 @@ textarea{min-height:80px}
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">A</span> A significant share of UK workers could work fewer hours thanks to AI</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">B</span> AI will replace most human jobs within a decade</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">C</span> UK productivity is falling sharply</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> AI will replace most human jobs within a decade</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">B</span> AI could let many UK workers work fewer hours</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">C</span> UK productivity has fallen sharply this year</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
@@ -313,9 +313,9 @@ textarea{min-height:80px}
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cB-common">
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cB')"><span class="ltr">A</span> Concerns about job losses are widespread, but the report offers a more hopeful view</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">B</span> AI has no impact on jobs at all</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">C</span> Only European workers care about AI</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">A</span> AI has no meaningful impact on jobs at all</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">B</span> Only European workers care about AI's impact</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cB')"><span class="ltr">C</span> Job-loss fears are real, but AI also raises hopes</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
@@ -324,9 +324,9 @@ textarea{min-height:80px}
 
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about AI and working hours to the right label.</p>
-        <div class="match-row"><span>"Autonomy's GPT-4 report calculates that exactly 8.8 million workers, or 28.03% of the UK workforce, spread across every local authority, could move to a 32-hour week by the year 2033."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row"><span>"AI could let a significant share of the UK workforce work fewer hours for the same pay."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"AI is going to change the way people work quite a lot."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"Autonomy's report says 8.8 million UK workers could move to a 32-hour week by 2033."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"AI could let a significant share of UK workers work fewer hours for the same pay."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"AI is going to change how people work in the future."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>

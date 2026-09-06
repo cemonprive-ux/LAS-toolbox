@@ -294,9 +294,9 @@ textarea{min-height:80px}
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">A</span> Retailers let customers keep certain items when the cost of recovering them outweighs their value</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">B</span> Retailers never accept returns on clothing</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">C</span> Plastic straws are the most commonly returned product</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> Retailers never accept returns on clothing</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">B</span> Plastic straws are the most commonly returned product</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">C</span> Retailers keep items when recovery costs exceed their value</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
@@ -314,8 +314,8 @@ textarea{min-height:80px}
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cB-common">
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cB')"><span class="ltr">A</span> Growing return volumes and processing costs, fuelled by pandemic-era online shopping habits, are pushing retailers to tighten their return policies</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">B</span> The COVID-19 pandemic ended online shopping altogether</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">A</span> The COVID-19 pandemic ended online shopping altogether</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cB')"><span class="ltr">B</span> Rising return costs are pushing retailers to tighten policies</button>
           <button class="opt-btn" onclick="condenseCommon(this,false,'cB')"><span class="ltr">C</span> Retailers have stopped worrying about the cost of returns</button>
         </div>
         <div class="flow-arrow">↓</div>
@@ -325,9 +325,9 @@ textarea{min-height:80px}
 
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about return fraud to the right label.</p>
-        <div class="match-row"><span>"Last year, roughly 14% of returns were fraudulent, costing retailers exactly $101 billion, according to a joint report from the National Retail Federation and Appriss Retail covering the 2023 holiday season."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"Last year, exactly 14% of returns were fraudulent, costing retailers $101 billion, per a joint NRF and Appriss Retail report."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
         <div class="match-row"><span>"Return fraud, from returning worn clothing to organised scams, costs retailers over $100 billion a year."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"Fraud is a problem for some businesses."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"Fraud is a growing problem for many retailers today."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>
