@@ -156,14 +156,14 @@ footer a{color:rgba(255,255,255,.8)}
  .fiche th,.fiche td{padding:6px 7px}
 }
 </style>
-</head>
+<style>.visit-count{margin-top:8px;opacity:.5}.visit-count img{height:16px;vertical-align:middle;filter:grayscale(1) brightness(1.6)}</style></head>
 <body>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#1a2744"/><rect x="60" y="72" width="80" height="3" fill="#c8a84b"/><text x="100" y="62" font-family="Georgia,serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle">GA</text><text x="100" y="108" font-family="Georgia,serif" font-size="17" fill="#c8a84b" text-anchor="middle" letter-spacing="3">B2</text></svg></template>
 <div class="topbar"><div class="topbar-inner"><span class="place"><span class="dot"></span>Lycée Sidoine Apollinaire · Clermont-Ferrand</span><a class="back" href="index.html">← Retour à l'accueil</a></div></div>
 <header class="head"><div class="head-inner"><img src="assets/lsa-logo.png" alt="Logo LSA"><div><div class="kicker">Anglais · Boîte à outils</div><h1>Grammar Assistant — B2</h1></div></div></header>
 <nav class="navbar"><div class="navbar-inner"><div class="crumb" id="crumb"></div><div id="navbtns" style="display:flex;gap:8px;flex-wrap:wrap"></div></div></nav>
 <main id="app"></main>
-<footer><div class="in"><img src="assets/lsa-logo.png" alt=""><span>LSA Toolbox · outils des étudiants de M. Blanchet · <a href="index.html">accueil</a></span></div></footer>
+<footer><div class="in"><img src="assets/lsa-logo.png" alt=""><span>LSA Toolbox · outils des étudiants de M. Blanchet · <a href="index.html">accueil</a></span></div><div class="visit-count" id="visitCount"></div></footer>
 
 <script src="assets/grammar-verbe.js"></script>
 <script src="assets/grammar-nom.js"></script>
@@ -369,5 +369,5 @@ function vRes(){
 }
 render();
 </script>
-</body>
+<script>(function(){var k=(location.pathname.split("/").pop()||"index").replace(".html","");var e=document.getElementById("visitCount");if(e){e.innerHTML='<img src="https://api.visitorbadge.io/api/visitors?path=lsa-toolbox-'+encodeURIComponent(k)+'&label=Visites&countColor=%23c8a84b&labelColor=%230f1a33&style=flat-square" alt="compteur de visites">'}})();</script></body>
 </html>

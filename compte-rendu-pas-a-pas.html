@@ -231,7 +231,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.62);margin-top:42px;b
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 }
 </style>
-</head>
+<style>.visit-count{margin-top:8px;opacity:.5}.visit-count img{height:16px;vertical-align:middle;filter:grayscale(1) brightness(1.6)}</style></head>
 <body>
 
 <!-- ═══════════ TOP BAR ═══════════ -->
@@ -681,7 +681,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.62);margin-top:42px;b
       <a href="index.html">Accueil</a>
     </nav>
   </div>
-</footer>
+<div class="visit-count" id="visitCount"></div></footer>
 
 <script>
 (function(){
@@ -805,5 +805,5 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.62);margin-top:42px;b
   updateAll();
 })();
 </script>
-</body>
+<script>(function(){var k=(location.pathname.split("/").pop()||"index").replace(".html","");var e=document.getElementById("visitCount");if(e){e.innerHTML='<img src="https://api.visitorbadge.io/api/visitors?path=lsa-toolbox-'+encodeURIComponent(k)+'&label=Visites&countColor=%23c8a84b&labelColor=%230f1a33&style=flat-square" alt="compteur de visites">'}})();</script></body>
 </html>

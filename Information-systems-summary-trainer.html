@@ -92,6 +92,8 @@ textarea:focus{outline:none;border-color:var(--blue);background:#fff}
 .check-foot b{color:var(--navy);font-variant-numeric:tabular-nums}
 .actions{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin:36px 0 6px}
 footer{background:var(--navy-deep);color:rgba(255,255,255,.6);margin-top:36px;border-top:3px solid var(--accent);padding:20px 24px;text-align:center;font-size:13px}
+.visit-count{margin-top:6px;opacity:.5}
+.visit-count img{height:16px;vertical-align:middle;filter:grayscale(1) brightness(1.6)}
 @media print{
   body.printing .topbar,body.printing .mast,body.printing .progress-wrap,body.printing .step,body.printing .actions,body.printing footer,body.printing .source{display:none!important}
   body.printing .final{display:block!important}
@@ -313,7 +315,7 @@ footer{background:var(--navy-deep);color:rgba(255,255,255,.6);margin-top:36px;bo
 </div>
 </div>
 
-<footer>Lycée Sidoine Apollinaire — Clermont-Ferrand · DSCG · 4-Information Systems and New Technologies</footer>
+<footer>Lycée Sidoine Apollinaire — Clermont-Ferrand · DSCG · 4-Information Systems and New Technologies<div class="visit-count" id="visitCount"></div></footer>
 
 <script>
 const STORE='lsa-summary-dst-infosys-v1';
@@ -415,6 +417,10 @@ function updateAll(){
   document.getElementById('pfill').style.width=(done/11*100)+'%';
 }
 updateAll();
+(function(){
+  const key=location.pathname.split('/').pop()||'index';
+  document.getElementById('visitCount').innerHTML='<img src="https://api.visitorbadge.io/api/visitors?path=lsa-toolbox-'+encodeURIComponent(key)+'&label=Visites&countColor=%23c8a84b&labelColor=%230f1a33&style=flat-square" alt="compteur de visites">';
+})();
 </script>
 </body>
 </html>
