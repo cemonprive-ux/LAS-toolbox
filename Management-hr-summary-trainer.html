@@ -222,10 +222,10 @@ textarea{min-height:80px}
 
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Parental leave policy comparisons are not discussed in the article.')"><span class="ltr">A</span> A detailed comparison of parental leave policies across different European countries.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses this survey and what it reveals about sabbaticals.')"><span class="ltr">B</span> A survey suggesting that sabbatical leave is becoming a key way for employers to manage retention and wellbeing.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','No such legal right or government plan is mentioned in the article.')"><span class="ltr">C</span> A government plan to make sabbatical leave a legal right for all employees in the UK.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Remote working technology and productivity are not the subject of this article.')"><span class="ltr">D</span> A study on how remote working technology has changed employee productivity levels.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Parental leave policy comparisons are not discussed in the article.')"><span class="ltr">A</span> A detailed comparison of parental leave policies across several European countries.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses this survey and what it reveals about sabbaticals.')"><span class="ltr">B</span> A survey suggesting sabbatical leave is becoming key to how employers manage retention.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','No such legal right or government plan is mentioned in the article.')"><span class="ltr">C</span> A government plan to make sabbatical leave a legal right for every employee in the UK.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Remote working technology and productivity are not the subject of this article.')"><span class="ltr">D</span> A study on how remote working technology has changed employee productivity overall.</button>
         </div>
         <div class="fb" id="u1-fb"></div>
       </div>
@@ -233,9 +233,9 @@ textarea{min-height:80px}
       <div class="card" id="u2"><div class="q">What is the <em>AUTHOR'S POSITION</em> on this topic?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article and the experts it quotes describe clear benefits for employers, not a waste of money.')"><span class="ltr">A</span> Sabbaticals are mostly a waste of money for employers and rarely benefit the business.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the article, through several experts, presents sabbaticals as an effective and growing HR tool.')"><span class="ltr">B</span> Sabbaticals are an effective way for employers to boost employee wellbeing and retention, and their use is likely to keep growing.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the article, through several experts, presents sabbaticals as an effective and growing HR tool.')"><span class="ltr">B</span> Sabbaticals effectively boost employee wellbeing and retention, and their use keeps growing.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article notes sabbaticals are more common in the public/charity sector, but does not say private firms cannot afford them.')"><span class="ltr">C</span> Only public sector organisations can realistically afford to offer sabbatical leave.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article explicitly says workers increasingly value meaning over salary — the opposite of this option.')"><span class="ltr">D</span> Employees only care about salary, so sabbaticals make little real difference.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article explicitly says workers increasingly value meaning over salary — the opposite of this option.')"><span class="ltr">D</span> Employees only really care about salary, so sabbaticals make little difference to them.</button>
         </div>
         <div class="fb" id="u2-fb"></div>
       </div>
@@ -477,8 +477,8 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='A survey suggesting that sabbatical leave is becoming a key way for employers to manage retention and wellbeing.';
-  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Sabbaticals are an effective way for employers to boost employee wellbeing and retention, and their use is likely to keep growing.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='A survey suggesting sabbatical leave is becoming key to how employers manage retention.';
+  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Sabbaticals effectively boost employee wellbeing and retention, and their use keeps growing.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';
     s.innerHTML='<strong>Topic:</strong> '+state.u.topicText+'<br><strong>Author\'s position:</strong> '+state.u.posText;

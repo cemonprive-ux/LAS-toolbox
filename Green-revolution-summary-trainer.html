@@ -217,10 +217,10 @@ textarea{min-height:80px}
 
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The report is not about the cost of green technology, but about what drives behavioural change.')"><span class="ltr">A</span> The financial cost of adopting green technologies for businesses.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses a report on what drives sustainable behaviour in brands and consumers.')"><span class="ltr">B</span> The factors that can drive sustainable behaviour in brands and consumers, including technology and peer pressure.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article is not about government regulation as such.')"><span class="ltr">C</span> How governments should regulate corporate environmental practices.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Social media is not discussed in the article.')"><span class="ltr">D</span> The negative impact of social media on consumer environmental awareness.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The report is not about the cost of green technology, but about what drives behavioural change.')"><span class="ltr">A</span> The financial cost of adopting green technologies across different business sectors.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses a report on what drives sustainable behaviour in brands and consumers.')"><span class="ltr">B</span> The factors, like technology and peer pressure, that drive sustainable brand and consumer behaviour.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article is not about government regulation as such.')"><span class="ltr">C</span> How national governments should regulate corporate environmental practices and reporting.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Social media is not discussed in the article.')"><span class="ltr">D</span> The negative impact of social media use on consumer environmental awareness and habits.</button>
         </div>
         <div class="fb" id="u1-fb"></div>
       </div>
@@ -228,7 +228,7 @@ textarea{min-height:80px}
       <div class="card" id="u2"><div class="q">What is the <em>AUTHOR'S POSITION</em> on this topic?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The report explicitly says reprimanding people doesn\'t work — the opposite of this option.')"><span class="ltr">A</span> Businesses and consumers should be punished more strictly for unsustainable behaviour.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the report favours \u201cnudging\u201d through peer pressure and technology, while also calling for stronger government support.')"><span class="ltr">B</span> Sustainable behaviour is best encouraged through "nudges" — peer pressure and technology — rather than reprimands, though governments must also remove financial and regulatory barriers.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the report favours \u201cnudging\u201d through peer pressure and technology, while also calling for stronger government support.')"><span class="ltr">B</span> Nudging through peer pressure and technology works better than reprimands, though barriers remain.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The report treats both social pressure and technology as important, not just technology.')"><span class="ltr">C</span> Technology is the only factor that matters; social and competitive pressure is irrelevant.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The report discusses barriers facing businesses too, not just consumers.')"><span class="ltr">D</span> Consumers alone are responsible for driving sustainable change; businesses bear no responsibility.</button>
         </div>
@@ -473,8 +473,8 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='The factors that can drive sustainable behaviour in brands and consumers, including technology and peer pressure.';
-  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Sustainable behaviour is best encouraged through "nudges" — peer pressure and technology — rather than reprimands, though governments must also remove financial and regulatory barriers.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='The factors, like technology and peer pressure, that drive sustainable brand and consumer behaviour.';
+  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Nudging through peer pressure and technology works better than reprimands, though barriers remain.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';
     s.innerHTML='<strong>Topic:</strong> '+state.u.topicText+'<br><strong>Author\'s position:</strong> '+state.u.posText;

@@ -222,10 +222,10 @@ textarea{min-height:80px}
 
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','No new government regulation on returns is discussed in the article.')"><span class="ltr">A</span> A new government regulation forcing retailers to accept all product returns.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article explains this practice and the logistics/marketing strategy behind it.')"><span class="ltr">B</span> How some retailers let customers keep unwanted items and get refunded anyway, as part of a wider strategy to manage the rising cost of returns.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Warehouse automation technology is not the subject of this article.')"><span class="ltr">C</span> The rise of warehouse robots that speed up order fulfilment.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article does not compare shipping carriers or delivery speed.')"><span class="ltr">D</span> A comparison of delivery speed between major shipping carriers.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','No new government regulation on returns is discussed in the article.')"><span class="ltr">A</span> A new government regulation forcing all retailers to accept every product return.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article explains this practice and the logistics/marketing strategy behind it.')"><span class="ltr">B</span> How some retailers let customers keep unwanted items and still get a full refund.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Warehouse automation technology is not the subject of this article.')"><span class="ltr">C</span> The rise of warehouse robots that speed up online order fulfilment times.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article does not compare shipping carriers or delivery speed.')"><span class="ltr">D</span> A comparison of delivery speed offered by several major shipping carriers.</button>
         </div>
         <div class="fb" id="u1-fb"></div>
       </div>
@@ -233,8 +233,8 @@ textarea{min-height:80px}
       <div class="card" id="u2"><div class="q">What is the <em>AUTHOR'S POSITION</em> on this topic?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article explicitly states the opposite: frequent returners can be a retailer\'s most profitable customers.')"><span class="ltr">A</span> Frequent returners are always unprofitable and should be banned from shopping platforms.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the article shows retailers using returnless refunds, algorithms and stricter policies together to manage rising return costs, while distinguishing genuinely profitable frequent returners.')"><span class="ltr">B</span> Retailers increasingly use returnless refunds, algorithms and stricter return policies to balance customer satisfaction against the rising cost of returns and fraud.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article does not argue that returns should be eliminated altogether — only that some are managed differently.')"><span class="ltr">C</span> Online retailers should eliminate returns altogether to cut costs.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the article shows retailers using returnless refunds, algorithms and stricter policies together to manage rising return costs, while distinguishing genuinely profitable frequent returners.')"><span class="ltr">B</span> Retailers combine returnless refunds and algorithms to manage the rising cost of returns.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article does not argue that returns should be eliminated altogether — only that some are managed differently.')"><span class="ltr">C</span> Online retailers should eliminate all returns entirely in order to cut costs.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article says returnless refunds are expanding, not shrinking or a passing trend.')"><span class="ltr">D</span> Returnless refunds are a temporary trend that most retailers are already abandoning.</button>
         </div>
         <div class="fb" id="u2-fb"></div>
@@ -477,8 +477,8 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='How some retailers let customers keep unwanted items and get refunded anyway, as part of a wider strategy to manage the rising cost of returns.';
-  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Retailers increasingly use returnless refunds, algorithms and stricter return policies to balance customer satisfaction against the rising cost of returns and fraud.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='How some retailers let customers keep unwanted items and still get a full refund.';
+  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Retailers combine returnless refunds and algorithms to manage the rising cost of returns.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';
     s.innerHTML='<strong>Topic:</strong> '+state.u.topicText+'<br><strong>Author\'s position:</strong> '+state.u.posText;

@@ -248,20 +248,20 @@ textarea{min-height:80px}
 
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','This is a detail from paragraph 2, not the article\'s subject.')"><span class="ltr">A</span> The long history of physical cash over thousands of years.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses the possible digital pound and its risks.')"><span class="ltr">B</span> Whether the Bank of England should issue a digital pound, and what risks this involves.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Cryptocurrencies are mentioned briefly, but the article is not about how they work.')"><span class="ltr">C</span> How cryptocurrencies such as Bitcoin technically work.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','China is used as a point of comparison, not as the main subject.')"><span class="ltr">D</span> China's monetary policy and its rivalry with Western finance.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','This is a detail from paragraph 2, not the article\'s subject.')"><span class="ltr">A</span> The long and largely uneventful history of cash as a means of payment.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses the possible digital pound and its risks.')"><span class="ltr">B</span> Whether the Bank of England should launch a digital pound, and the risks this involves.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Cryptocurrencies are mentioned briefly, but the article is not about how they work.')"><span class="ltr">C</span> The technical process by which cryptocurrencies like Bitcoin are mined and traded.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','China is used as a point of comparison, not as the main subject.')"><span class="ltr">D</span> China's monetary policy and its long-standing rivalry with Western finance.</button>
         </div>
         <div class="fb" id="u1-fb"></div>
       </div>
 
       <div class="card" id="u2"><div class="q">What is the <em>AUTHOR'S POSITION</em> on this topic?</div>
         <div class="opts">
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article is clearly more cautious than this — it does not call for immediate adoption.')"><span class="ltr">A</span> The digital pound is urgently needed and should be adopted right away.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article is clearly more cautious than this — it does not call for immediate adoption.')"><span class="ltr">A</span> The digital pound is urgently needed and should be rolled out as soon as possible.</button>
           <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — the article ends by calling the digital pound \u201can idea whose time has yet to come\u201d and asks for a real debate.')"><span class="ltr">B</span> The digital pound is a premature idea, and a genuine public debate is needed first.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article says it is technically feasible \u201ceventually\u201d, not impossible.')"><span class="ltr">C</span> A digital pound is technically impossible to build.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article actually warns against the Chinese model of state control, not for copying it.')"><span class="ltr">D</span> The UK should copy China's model of state-controlled digital currency.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article says it is technically feasible \u201ceventually\u201d, not impossible.')"><span class="ltr">C</span> Building a digital pound is technically impossible with today's technology.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article actually warns against the Chinese model of state control, not for copying it.')"><span class="ltr">D</span> The UK should closely copy China's model of state-controlled digital currency.</button>
         </div>
         <div class="fb" id="u2-fb"></div>
       </div>
@@ -515,7 +515,7 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='Whether the Bank of England should issue a digital pound, and what risks this involves.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='Whether the Bank of England should launch a digital pound, and the risks this involves.';
   if(cardId==='u2')state.u.posOk=ok, state.u.posText='The digital pound is a premature idea, and a genuine public debate is needed first.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';

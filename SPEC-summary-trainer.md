@@ -38,6 +38,7 @@ Au bas de la page (étape Check, à côté de "← Back to Write"), toujours un 
 - Les QCM/options doivent être de longueur globalement égale et toutes plausibles (pas d'option absurde qui trahit la réponse par sa brièveté).
 - Dans les exercices Condense (3.1/3.2, « Find the common idea ») : varier la position de la bonne réponse (pas toujours en A), et équilibrer la longueur des 3 options — la bonne réponse ne doit jamais être systématiquement la plus longue.
 - Dans le calibrage 3.3 (« Too detailed / Appropriate / Too vague ») : équilibrer autant que possible la longueur des 3 phrases candidates (éviter qu'une phrase soit 3-4x plus longue que les autres).
+- Dans Understand (Step 1, u1/u2) et plus généralement pour tout QCM à plusieurs propositions : la bonne réponse ne doit jamais être systématiquement la plus longue — équilibrer la longueur de toutes les options tout en gardant chaque distracteur crédible (pas d'option absurde qui trahit la réponse par sa brièveté ou sa longueur).
 - Le modèle final (étape 7) doit être vérifié réellement entre 130 et 180 mots (idéalement 150–165) — compter les mots avant de livrer.
 - Chaque `.card`/exercice interactif référencé par `checkMCQ`/`checkReformulate` DOIT porter l'`id` attendu par son `onclick` — vérifier après écriture que chaque bouton répond au clic (bug fréquent : carte sans id).
 - Aucun modèle/corrigé ne doit s'afficher par défaut : toujours derrière un bouton de révélation.

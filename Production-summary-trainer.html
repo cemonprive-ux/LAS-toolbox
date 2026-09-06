@@ -225,9 +225,9 @@ textarea{min-height:80px}
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u1','No new international trade agreement is discussed in the article.')"><span class="ltr">A</span> The negotiation of a new free-trade agreement between the United States and its neighbours.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article explains who ends up paying for Trump\'s tariffs, and why this varies.')"><span class="ltr">B</span> How the cost of Trump's tariffs is shared between the United States and its trading partners, depending on the product and country involved.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article does not discuss domestic US tax policy on income or corporations.')"><span class="ltr">C</span> A proposal to reform US corporate tax rates to fund domestic manufacturing.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Currency exchange rates are not the subject of this article.')"><span class="ltr">D</span> The impact of currency exchange rate fluctuations on American exporters.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article explains who ends up paying for Trump\'s tariffs, and why this varies.')"><span class="ltr">B</span> How the cost of Trump's tariffs is shared between the US and its trading partners.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article does not discuss domestic US tax policy on income or corporations.')"><span class="ltr">C</span> A proposal to reform US corporate tax rates in order to fund domestic manufacturing.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Currency exchange rates are not the subject of this article.')"><span class="ltr">D</span> The impact of currency exchange rate fluctuations on American export businesses.</button>
         </div>
         <div class="fb" id="u1-fb"></div>
       </div>
@@ -235,7 +235,7 @@ textarea{min-height:80px}
       <div class="card" id="u2"><div class="q">What is the <em>AUTHOR'S POSITION</em> on this topic?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article says the opposite: the US has considerable leverage as the world\'s largest importer.')"><span class="ltr">A</span> The United States has little real leverage in a trade war and will always come out worse off.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — despite US leverage, the article, backed by economists, expects the cost to land mainly on American businesses and consumers, with the exact impact depending on each product\'s and country\'s market position.')"><span class="ltr">B</span> Economists expect the cost of tariffs to fall largely on American businesses and consumers, though the exact impact depends on each country's and product's position in the global market.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u2','Correct — despite US leverage, the article, backed by economists, expects the cost to land mainly on American businesses and consumers, with the exact impact depending on each product\'s and country\'s market position.')"><span class="ltr">B</span> Economists expect the tariff cost to fall mainly on American businesses and consumers.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article does not argue that tariffs are always paid entirely by exporting countries — this varies by product.')"><span class="ltr">C</span> Exporting countries always absorb the full cost of tariffs, regardless of the product.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u2','The article shows Canada keeps leverage over oil and gas precisely because of its infrastructure link to the US, not despite it.')"><span class="ltr">D</span> Countries with small export volumes to the US, like Canada, have no leverage at all.</button>
         </div>
@@ -479,8 +479,8 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='How the cost of Trump\'s tariffs is shared between the United States and its trading partners, depending on the product and country involved.';
-  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Economists expect the cost of tariffs to fall largely on American businesses and consumers, though the exact impact depends on each country\'s and product\'s position in the global market.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='How the cost of Trump\'s tariffs is shared between the US and its trading partners.';
+  if(cardId==='u2')state.u.posOk=ok, state.u.posText='Economists expect the tariff cost to fall mainly on American businesses and consumers.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';
     s.innerHTML='<strong>Topic:</strong> '+state.u.topicText+'<br><strong>Author\'s position:</strong> '+state.u.posText;

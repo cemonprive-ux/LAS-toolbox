@@ -220,9 +220,9 @@ textarea{min-height:80px}
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u1','This is not the article\'s subject — accounting standards themselves are a starting point, not the focus.')"><span class="ltr">A</span> The gradual evolution of accounting standards across different countries over many decades.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses the creation and role of this new board.')"><span class="ltr">B</span> The launch of a new international board tasked with regulating sustainability and climate-related reporting.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Carbon markets are not discussed in the article at all.')"><span class="ltr">C</span> The precise technical mechanics behind how global carbon trading markets are organised and priced.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','China and the US are not mentioned in the article.')"><span class="ltr">D</span> A direct comparison between environmental policies pursued by China and by the United States.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses the creation and role of this new board.')"><span class="ltr">B</span> The launch of a new international board that will regulate sustainability and climate reporting.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Carbon markets are not discussed in the article at all.')"><span class="ltr">C</span> The precise technical mechanics behind how global carbon trading markets are organised.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,false,'u1','China and the US are not mentioned in the article.')"><span class="ltr">D</span> A direct comparison between the environmental policies of China and the United States.</button>
         </div>
         <div class="fb" id="u1-fb"></div>
       </div>
@@ -475,7 +475,7 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='The launch of a new international board tasked with regulating sustainability and climate-related reporting.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='The launch of a new international board that will regulate sustainability and climate reporting.';
   if(cardId==='u2')state.u.posOk=ok, state.u.posText='It is a pivotal, positive development that organisations should start preparing for now.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';

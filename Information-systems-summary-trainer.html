@@ -222,7 +222,7 @@ textarea{min-height:80px}
       <div class="card" id="u1"><div class="q">What is the <em>TOPIC</em> of this article?</div>
         <div class="opts">
           <button class="opt-btn" onclick="checkMCQ(this,false,'u1','The article is not a technical comparison of AI models.')"><span class="ltr">A</span> A detailed technical comparison of the different generative AI models released since 2021.</button>
-          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses this think tank\'s report and its implications.')"><span class="ltr">B</span> A think tank's report suggesting AI could allow millions of UK workers to move to a four-day week.</button>
+          <button class="opt-btn" onclick="checkMCQ(this,true,'u1','Correct — the whole article discusses this think tank\'s report and its implications.')"><span class="ltr">B</span> A think tank's report suggesting AI could let millions of UK workers move to a four-day week.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u1','No such government proposal is discussed in the article.')"><span class="ltr">C</span> A government proposal to legally cap working hours across all sectors of the UK economy.</button>
           <button class="opt-btn" onclick="checkMCQ(this,false,'u1','Freelance photographers are not discussed in the article.')"><span class="ltr">D</span> A study on how AI image generators are affecting the earnings of freelance photographers.</button>
         </div>
@@ -476,7 +476,7 @@ function checkMCQ(btn,ok,cardId,explain){
   if(ok){btn.classList.add('correct');fb.className='fb show ok';fb.innerHTML='<strong>Correct.</strong> '+explain;}
   else{btn.classList.add('wrong');card.querySelectorAll('.opt-btn').forEach(b=>{if(b.getAttribute('onclick').includes(',true,'))b.classList.add('correct')});fb.className='fb show no';fb.innerHTML='<strong>Not quite.</strong> '+explain;}
   state.done[STEPS[state.cur]]=true;
-  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='A think tank\'s report suggesting AI could allow millions of UK workers to move to a four-day week.';
+  if(cardId==='u1')state.u.topicOk=ok, state.u.topicText='A think tank\'s report suggesting AI could let millions of UK workers move to a four-day week.';
   if(cardId==='u2')state.u.posOk=ok, state.u.posText='Beyond job-loss fears, AI could also offer a genuine, tangible benefit: shorter working hours.';
   if(state.u.topicOk!==undefined&&state.u.posOk!==undefined){
     const s=document.getElementById('uSummary');s.style.display='block';
