@@ -1,51 +1,77 @@
-# SPEC — Essay Trainer DSCG (« Structured Response Trainer »)
+# SPEC — Essay Trainer DSCG (« Structured Oral Response Trainer »)
 
-Référence exacte : `Accounting-auditing-essay-trainer.html`. Copier ce fichier et l'adapter au sujet/texte du nouveau chapitre — ne pas repartir de zéro.
+Référence exacte : `Digital-currency-essay-trainer.html`. Copier ce fichier et l'adapter au sujet/texte du nouveau chapitre — ne pas repartir de zéro. Ce modèle **remplace** l'ancien plan dialectique thèse/antithèse/synthèse : la finalité n'est jamais une dissertation écrite mais une préparation à une réponse ORALE structurée.
 
-## Principe
+## Principe directeur
 
-Plan **dialectique en trois temps** : I. Thèse — II. Antithèse — III. Synthèse, sur une question « To what extent… ? ». 9 étapes numérotées + un corrigé complet imprimable.
+QUESTION → ANALYSE → BRAINSTORM → CONNECT → BUILD → ORGANISE → PREPARE → SPEAK → CHECK. Le plan n'est jamais imposé à l'avance (jamais de « for/against/compromise » automatique) : il découle du type de question (to what extent / should / is X a threat or opportunity / how can / why / what impact). Chaque argument doit combiner **texte + connaissances personnelles**, jamais l'un sans l'autre.
 
 ## Structure des étapes (identique à chaque chapitre)
 
-1. **Brainstorm & Sort** — liste de 9 idées (mélange texte/connaissances), classées par l'étudiant en cliquant I / II / III, vérification immédiate (bouton correct/wrong).
-2. **Build the Introduction** — QCM 4 choix (A–D) pour repérer la meilleure amorce (la bonne réponse est toujours un constat général neutre, jamais une annonce de plan ni une opinion tranchée) + feedback ; puis textarea libre (~70–110 mots) + bouton *Analyser* + reveal *Voir un modèle*.
-3. **Develop Part I** (Thèse) — paragraphe argumenté ~120–180 mots + *Analyser* + *Voir le corrigé* (5 bullets, chacun tagué **texte** ou **connaissances**, mélange des deux).
-4. **Transition I → II** — courte transition ~15–40 mots + *Analyser* + *Voir le modèle*.
-5. **Develop Part II** (Antithèse) — même format que l'étape 3.
-6. **Transition II → III** — même format que l'étape 4.
-7. **Develop Part III** (Synthèse) — même format que l'étape 3.
-8. **Write the Conclusion** — ~80–120 mots, bilan + réponse à la problématique + ouverture, *Analyser* + *Voir le corrigé*.
-9. **★ Corrigé complet** — bouton *Afficher le corrigé complet* (intro, I/II/III avec bullets tagués, transitions, conclusion) + bouton *Imprimer le corrigé* (masque tout le reste via `body.printing`).
+0. **Header** navy avec titre « Structured Oral Response Trainer · [Thème] », badge UE6, `.lede` d'intro méthodo, `.question-box` avec la question de discussion, bouton `.source-toggle` (« 📄 Show source text ») qui ouvre le panneau source.
+1. **Analyse the Question** — QCM identifier l'instruction word (4 options) + textarea « reformulate in simple words » avec *Analyser* (heuristique : pas de oui/non binaire, présence d'un mot de degré) + *Voir un modèle*.
+2. **Identify the Type of Question** — tableau générique question-type → structure (`.qtype-grid`, ligne active surlignée or) + QCM confirmant la structure adaptée à CETTE question + `.strategy-box` annonçant le plan retenu (Part 1/2/3).
+3. **Brainstorm & Sort** — 9 idées mélangées (texte/connaissances), classées par l'étudiant dans les 3 parties du plan (boutons, vérif immédiate), badge `.src-tag src-doc` / `.src-tag src-ext` sur chaque idée, résumé final X/9.
+4. **Connect Document and Knowledge** — exemple travaillé (From the document / From your knowledge / Argument you can build) puis exercice libre à compléter par l'étudiant + *Analyser* (détecte référence au texte ET référence aux connaissances) + *Voir un exemple*.
+5. **Build a Strong Argument** — rappel weak/better/stronger (Idea only → +Explain → +Example), puis scaffold **Idea → Explain → Example → Link** (4 textarea) pour Part 1 puis Part 2, *Analyser mon argument* (heuristique mots-clés par thème) + *Voir un modèle* (reveal `.model-box` avec les 4 champs rédigés).
+6. **Organise the Response** — QCM : quel plan est le plus logique pour CETTE question (piège = résumé du texte, piège = plan chronologique/liste).
+7. **Prepare Your Introduction** — QCM repérer la meilleure amorce générale (options mélangées, PAS dans l'ordre logique/chronologique : jamais amorce en A, annonce de plan en B, opinion tranchée en C, fait trop précis en D dans cet ordre — varier l'ordre à chaque page) ; puis 3 textarea (Position / Main issue / Announce structure) + *Analyser* + *Voir un modèle*.
+8. **Nuance Your Answer** — rappel binaire→nuancé, exercice réécriture avec *Analyser* (détecte may/can/could/to some extent/depending on/unless…) + *Voir un modèle*.
+9. **Build Your Oral Roadmap** — 6 blocs `.roadmap-part` (Position, Introduction, Part 1, Part 2, Part 3 optionnelle, Conclusion), chacun : textarea notes courtes + alerte si >15 mots (« keep your notes short ») + bouton **« Possible answer »** (reveal avec une réponse courte modèle, toujours présent sur chaque bloc) + bouton global *Vérifier mes notes*.
+10. **Oral Language Toolkit** — 9 catégories en `<details>` (opinion, introducing argument, explaining, example, referring to document, personal knowledge, contrasting, nuancing, concluding), formulations fixes réutilisables à l'identique sur toutes les pages.
+11. **Oral Challenge** — zone timer (3:00 par défaut, Démarrer/Pause/Réinitialiser), consigne « use your notes only, do not read a fully written answer ».
+12. **Final Checklist** — 12 items fixes (cf. liste ci-dessous), identiques sur toutes les pages.
+★ **Possible Oral Version** — reveal d'un corrigé complet en notes courtes par partie (intro/Part1/Part2/Part3/conclusion), bullets tagués `.src` (texte §n / connaissances), jamais un texte à lire mot à mot.
+
+## Checklist fixe (12 items, ne pas modifier le texte)
+I answered the exact question · My position is clear · My response is logically organised · I used relevant ideas from the document · I added personal knowledge · I developed my arguments (idea → explain → example) · I used relevant examples · I linked my arguments to the question · I used appropriate linking words · I nuanced my answer · My conclusion clearly answers the question · I used notes rather than reading a written text.
+
+## Règle des boutons « Voir un modèle / Possible answer »
+
+**Toujours proposer un modèle quand c'est pertinent** — jamais laisser un exercice de production libre sans bouton reveal associé (`.btn.ghost` → `reveal('id-model')` → `.model-box`). Ne jamais l'afficher par défaut : toujours un clic explicite. Accès progressif : Student task → Hint/Analyser → Modèle.
+
+## Panneau texte source
+
+Bouton `.source-toggle` dans le header → `.source-panel` (tiroir fixe, hors écran par défaut `translateX(-100%)`, glisse depuis la GAUCHE), `.source-backdrop` en overlay cliquable pour fermer, `.source-head` avec titre + bouton Imprimer (`printSource()` → `body.printing-source` + `window.print()`, restauré par l'event `afterprint`) + bouton ✕. Sur mobile : `.source-panel{width:100vw}`. Le texte source complet (article) est reproduit intégralement dans `.source-body`.
+
+## Progression (step-nav en pastilles, identique au Summary Trainer)
+
+`.step-nav-wrap` sticky sous le header, pastilles rondes numérotées cliquables (`.step-pill`), pastille active surlignée or, pastille visitée cochée verte (`✓`), clic = scroll fluide vers la section (`goStep`). Liste `NAV_STEPS` = les 12 étapes ci-dessus. JAMAIS la barre linéaire simple (`.progress-fill` %) — toujours le style pastilles du Summary Trainer.
 
 ## Règle du double ancrage (texte + connaissances)
 
-**Obligatoire dans le Brainstorm ET dans chaque partie (I/II/III)** : les arguments doivent venir à la fois du document source et des connaissances personnelles attendues de l'étudiant (cours, actualité, théories). Chaque item/bullet porte un badge visible :
-- `<small class="src-tag src-doc">Idée tirée du texte / Source : texte</small>` — reformule un élément du document.
-- `<small class="src-tag src-ext">Connaissance extérieure / Source : connaissances</small>` — savoir hors document (ex. cadre réglementaire connexe, théorie économique, exemple d'actualité).
+Obligatoire dans le Brainstorm ET dans chaque argument construit : mélange de `src-doc` (reformule le document, avec référence de paragraphe si possible) et `src-ext` (connaissance personnelle — théorie économique, exemple d'entreprise/pays, actualité). Ne jamais un exercice 100% texte ou 100% connaissances.
 
-Chaque partie doit contenir au moins 1 item de chaque type. Ne jamais mettre 100% texte ou 100% connaissances dans une partie.
+## Type de plan — jamais figé
+
+Ne jamais enseigner un plan unique. Toujours afficher le tableau générique question-type → structure, et n'indiquer qu'ensuite quelle structure convient à LA question de la page (via `.qtype-grid .c.active` et `.strategy-box`).
 
 ## Progression, feedback, persistance
 
-- Barre de progression sticky en haut : `Progression X / 9 étapes`, remplie via `localStorage` (une clé unique par page, ex. `lsa-essay-str-<chapitre>-v1`).
-- Bouton *Analyser mon X* : vérification heuristique locale (pas d'appel API) — longueur (mots) vs plage cible, présence de linking words, présence de mots-clés du document/cours, alerte si "I think/in my opinion" en conclusion. Jamais présenté comme une correction par IA — toujours "Auto-vérification".
-- Bouton *Voir un modèle / Voir le corrigé* : reveal togglé, ne se ferme pas automatiquement.
-- Toutes les réponses (textarea, QCM, brainstorm) sont sauvegardées en `localStorage` à chaque `input`/`click`.
+- `localStorage`, une clé unique par page : `lsa-oral-str-<chapitre>-v1`. Tous les champs `[data-persist]` sont sauvegardés à chaque `input`/`change` et restaurés au chargement.
+- Boutons *Analyser* : vérification heuristique locale (mots-clés, longueur, nuance, présence doc+connaissances) — jamais présentée comme une correction IA.
+- Timer par défaut 3:00, facilement modifiable dans le code (`timerSeconds`).
 
 ## Charte visuelle (reprise identique)
 
-- Polices : Playfair Display (titres) + Source Serif 4 (texte), Google Fonts.
-- Couleurs : navy `#1a2744` / navy-deep `#0f1a33` / bleu `#2d5fa6` / or accent `#c8a84b` / vert `#2a7a4b` / rouge `#b5302b` / fond crème `#f5f3ef`.
-- Bandeau supérieur navy→navy-deep, liseré or 3px, encadré `.qbox` avec la question de l'essai.
-- Composants : `.step` (carte blanche, numéro rond bleu), `.tag` (pilule dorée pour Thèse/Antithèse/Synthèse), `.mcq .opt` (options cliquables, vert=correct/rouge=faux), `.sortitem` (brainstorm cliquable I/II/III), `.reveal`/`.fb-panel` (fond vert/bleu clair), `.final` (carte encadrée or pour le corrigé complet).
-- Impression : classe `body.printing` masque tout sauf `.final`, affiche `.final-toggle` en entier — bouton *Imprimer le corrigé* l'active puis appelle `window.print()`.
+- Polices : Cormorant Garamond (titres, italique pour citations) + Karla (texte) + DM Mono (labels/kickers). Google Fonts.
+- Couleurs : navy `#0d1b2a` / navy-mid `#1a2f45` / or `#c9a355` / or clair `#e8c87a` / crème fond `#fdfcfa` / vert correct `#2e7d5e` / rouge faux `#9b2335` / warn or foncé `#7a5c00`. Trois teintes de parties : part1 vert `#1a5c4a`, part2 brun-rouge `#8a2f1d`, part3 bleu-violet `#3a3a6b`.
+- Bandeau supérieur navy, liseré or 3px en bas, `.question-box` encadré or à gauche.
+- Composants réutilisables : `.ex-card`, `.strategy-box`, `.mcq-btn`, `.idea-card`/`.sort-btn`, `.scaffold`/`.scaffold-row` (Idea/Explain/Example/Link), `.roadmap-part`, `.toolkit-cat`, `.model-box` (bordure top colorée t1/t2/t3), `.correction-block`/`.cb-head`/`.cb-body`, `.checklist`, `.timer-box`.
+- Impression : `@media print` masque tout sauf `.print-only` par défaut ; `body.printing-source` bascule pour n'imprimer QUE `.source-panel` (le texte source).
+
+## Navigation & compteur (rappel des règles globales du site)
+
+Bouton retour au chapitre + bouton retour à l'accueil dans `.topbar`. Badge de compteur de visites (`visitorbadge.io`) juste avant `</body>`.
 
 ## Adapter à un nouveau chapitre
 
-1. Remplacer la question d'essai (`.qbox p`) et le titre de page.
-2. Réécrire les 9 idées du Brainstorm et les bullets des 3 parties avec le contenu du nouveau chapitre, en conservant le ratio texte/connaissances et les tags `src-doc`/`src-ext`.
-3. Réécrire les 4 options du QCM (étape 2) sur le même schéma : A = fait secondaire mal placé, B = annonce de plan (piège), C = constat général neutre (**bonne réponse**), D = opinion tranchée à éviter.
-4. Réécrire intro/transitions/conclusion modèles avec le vocabulaire du nouveau sujet.
-5. Changer la clé `localStorage` (`lsa-essay-str-<chapitre>-v1`).
-6. Lier depuis le hub du chapitre (`<chapitre>.html`) et copier dans `site-a-publier/`.
+1. Remplacer la question de discussion (`.question-box .q-text`), le titre de page, le badge chapitre, les liens topbar (retour chapitre).
+2. Remplacer le texte source complet dans `.source-panel .source-body` (article intégral du nouveau chapitre) + le lede/source dans le panneau.
+3. Réécrire les 9 idées du Brainstorm (`IDEAS`) et les bullets de la Possible Oral Version avec le contenu du nouveau chapitre, en conservant le ratio texte/connaissances et les tags `src-doc`/`src-ext`.
+4. Adapter le tableau `.qtype-grid` si le type de question change, et mettre à jour la ligne `.active` + `.strategy-box`.
+5. Réécrire les options du QCM Step 7 (introduction) sur le même schéma (amorce générale correcte / annonce de plan piège / opinion tranchée piège / fait trop précis piège), en VARIANT l'ordre des options (ne jamais répéter le même ordre A-B-C-D que la page précédente).
+6. Réécrire les modèles (`reveal` model-box) de Build 1/2, Nuance, Introduction, et les « Possible answer » du Roadmap avec le vocabulaire du nouveau sujet.
+7. Garder identiques : Oral Language Toolkit (9 catégories, formulations fixes), Final Checklist (12 items fixes), structure du timer, step-nav en pastilles.
+8. Changer la clé `localStorage` (`lsa-oral-str-<chapitre>-v1`).
+9. Lier depuis le hub du chapitre (`<chapitre>.html`) et copier dans `site-a-publier/`.
