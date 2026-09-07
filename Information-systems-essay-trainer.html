@@ -464,11 +464,12 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 
   <div class="ex-card" id="exPlan">
     <div class="ex-q">Which plan is the most logical for this question?</div>
+    <p class="section-sub" style="margin:-0.4rem 0 1rem">Les quatre options utilisent les mêmes idées du plan retenu. Une seule les organise dans un ordre qui construit un raisonnement.</p>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Une liste chronologique des outils d\u2019IA ne r\u00e9pond pas \u00e0 la question pos\u00e9e.')"><span class="letter">A</span> ChatGPT → image generators → future AI tools</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','R\u00e9sumer le document ne r\u00e9pond pas \u00e0 la question pos\u00e9e.')"><span class="letter">B</span> Summary of the document → personal opinion</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. Chaque partie r\u00e9pond directement \u00e0 \u00ab how will \u2026 reshape \u00bb, en couvrant l\u2019organisation du travail, ses nouvelles exigences, puis les conditions de r\u00e9ussite.')"><span class="letter">C</span> Transformation of work → new demands &amp; risks → conditions for success</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','\u00c9num\u00e9rer des pays n\u2019est pas un plan argumentatif.')"><span class="letter">D</span> List of countries testing the four-day week</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. On décrit d’abord comment le travail change, on identifie ensuite les nouvelles exigences que ce changement fait naître, puis on précise les conditions pour que la transformation profite à tous — chaque partie explique la suivante.')"><span class="letter">A</span> Transformation of work → new demands &amp; risks → conditions for success</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Séduisant mais prématuré : énoncer de nouvelles exigences avant d’avoir montré quelle transformation les provoque prive le raisonnement de sa cause.')"><span class="letter">B</span> New demands &amp; risks → transformation of work → conditions for success</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Cela évoque les conditions de réussite avant même d’avoir présenté les risques auxquels elles répondent — l’ordre inverse la logique de cause à effet.')"><span class="letter">C</span> Transformation of work → conditions for success → new demands &amp; risks</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Cela place la conclusion (les conditions de réussite) en ouverture, avant même d’avoir présenté la transformation et ses risques.')"><span class="letter">D</span> Conditions for success → new demands &amp; risks → transformation of work</button>
     </div>
     <div class="feedback" id="exPlan-fb"></div>
   </div>
@@ -610,21 +611,8 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <li>Overall…</li><li>On balance…</li><li>I would therefore argue that…</li><li>To conclude…</li>
   </ul></details>
 
-  <!-- ═══ STEP 11 — ORAL CHALLENGE ═══ -->
-  <div class="section-title"><span class="section-num">11</span> Oral Challenge</div>
-  <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
-
-  <div class="ex-card">
-    <div class="ex-q">Speak now, from your roadmap above.</div>
-    <div class="timer-box">
-      <div class="timer-display" id="timerDisplay">0:00</div>
-      <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
-      <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
-    </div>
-  </div>
-
   <!-- ═══ STEP 12 — FINAL CHECKLIST ═══ -->
-  <div class="section-title"><span class="section-num">12</span> Final Checklist</div>
+  <div class="section-title"><span class="section-num">11</span> Final Checklist</div>
   <p class="section-sub">Cochez chaque point avant de considérer votre préparation terminée.</p>
 
   <div class="ex-card">
@@ -641,6 +629,19 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
       <label><input type="checkbox" id="ck10" data-persist onchange="onCheck()"> I nuanced my answer.</label>
       <label><input type="checkbox" id="ck11" data-persist onchange="onCheck()"> My conclusion clearly answers the question.</label>
       <label><input type="checkbox" id="ck12" data-persist onchange="onCheck()"> I used notes rather than reading a written text.</label>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 11 — ORAL CHALLENGE ═══ -->
+  <div class="section-title"><span class="section-num">12</span> Oral Challenge</div>
+  <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
+
+  <div class="ex-card">
+    <div class="ex-q">Speak now, from your roadmap above.</div>
+    <div class="timer-box">
+      <div class="timer-display" id="timerDisplay">0:00</div>
+      <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
+      <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
     </div>
   </div>
 
@@ -737,8 +738,8 @@ const NAV_STEPS = [
   ['intro','INTRO','#exIntroMcq'],
   ['nuance','NUANCE','#exNuance'],
   ['roadmap','PREPARE','#rm-position'],
-  ['challenge','SPEAK','#timerDisplay'],
-  ['checklist','CHECK','#checklist']
+  ['checklist','CHECK','#checklist'],
+  ['challenge','SPEAK','#timerDisplay']
 ];
 const done = new Set();
 function mark(id){ done.add(id); updateProgress(); }

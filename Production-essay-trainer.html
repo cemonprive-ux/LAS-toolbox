@@ -3,44 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DSCG UE6 — Structured Oral Response Trainer · Digital Currency</title>
+<title>DSCG UE12 — Structured Oral Response Trainer · Tariffs and Global Supply Chains</title>
 <link rel="icon" type="image/png" href="assets/lsa-logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Mono:wght@400;500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
-  --navy: #0d1b2a;
-  --navy-mid: #1a2f45;
-  --navy-light: #2a4a65;
-  --gold: #c9a355;
-  --gold-light: #e8c87a;
-  --gold-pale: rgba(201,163,85,.1);
-  --ice: #e8f0f5;
-  --white: #f9f7f4;
-  --paper: #fdfcfa;
-  --text: #1c2b3a;
-  --muted: #6b7f90;
-  --border: #d4dde5;
-  --correct: #2e7d5e;
-  --correct-bg: #e8f5ef;
-  --wrong: #9b2335;
-  --wrong-bg: #fce8eb;
-  --warn: #7a5c00;
-  --warn-bg: #fdf3d6;
-  --part1: #1a5c4a;
-  --part1-bg: #e7f3ef;
-  --part2: #8a2f1d;
-  --part2-bg: #f8eae5;
-  --part3: #3a3a6b;
-  --part3-bg: #eceaf4;
+  --navy: #0d1b2a; --navy-mid: #1a2f45; --navy-light: #2a4a65;
+  --gold: #c9a355; --gold-light: #e8c87a; --gold-pale: rgba(201,163,85,.1);
+  --ice: #e8f0f5; --white: #f9f7f4; --paper: #fdfcfa; --text: #1c2b3a; --muted: #6b7f90; --border: #d4dde5;
+  --correct: #2e7d5e; --correct-bg: #e8f5ef; --wrong: #9b2335; --wrong-bg: #fce8eb; --warn: #7a5c00; --warn-bg: #fdf3d6;
+  --part1: #1a5c4a; --part1-bg: #e7f3ef; --part2: #8a2f1d; --part2-bg: #f8eae5; --part3: #3a3a6b; --part3-bg: #eceaf4;
 }
-
 html { scroll-behavior: smooth; }
 body { background: var(--paper); color: var(--text); font-family: 'Karla', sans-serif; font-weight: 400; line-height: 1.65; min-height: 100vh; }
 a { color: inherit; }
-
-/* ── TOP BAR ── */
 .topbar { background: var(--navy); color: rgba(255,255,255,.75); font-size: 12.5px; }
 .topbar-inner { max-width: 900px; margin: 0 auto; padding: 9px 2rem; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
 .topbar .place { display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; letter-spacing: .1em; font-size: 11px; }
@@ -48,8 +25,6 @@ a { color: inherit; }
 .topbar .links { display: flex; gap: .5rem; }
 .topbar a.back { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.78); text-decoration: none; border: 1px solid rgba(255,255,255,.18); border-radius: 20px; padding: 4px 13px; transition: all .2s; font-size: 11.5px; }
 .topbar a.back:hover { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(201,163,85,.6); }
-
-/* ── HEADER ── */
 .site-header { background: var(--navy); color: white; padding: 2.4rem 2rem 2rem; position: relative; overflow: hidden; }
 .site-header::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
 .site-header::before { content: ''; position: absolute; top: -60px; right: -60px; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(201,163,85,.12) 0%, transparent 65%); pointer-events: none; }
@@ -61,8 +36,6 @@ a { color: inherit; }
 .question-box { background: rgba(255,255,255,.06); border-left: 3px solid var(--gold); padding: .9rem 1.2rem; border-radius: 0 6px 6px 0; margin-top: 1.2rem; }
 .question-box .q-label { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
 .question-box .q-text { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; color: #fff; }
-
-/* ── SOURCE PANEL ── */
 .source-toggle { display: inline-flex; align-items: center; gap: .45rem; background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: .45rem 1rem; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .04em; cursor: pointer; margin-top: 1.1rem; transition: all .18s; }
 .source-toggle:hover { border-color: var(--gold); background: rgba(255,255,255,.14); }
 .source-backdrop { position: fixed; inset: 0; background: rgba(13,27,42,.45); z-index: 190; opacity: 0; pointer-events: none; transition: opacity .2s; }
@@ -77,10 +50,9 @@ a { color: inherit; }
 .source-body { padding: 1.2rem 1.3rem; overflow-y: auto; font-size: .87rem; line-height: 1.65; flex: 1; }
 .source-body p { margin-bottom: .85rem; }
 .source-body p.lede { font-weight: 600; color: var(--navy); font-size: .95rem; font-family: 'Cormorant Garamond', serif; }
+.source-body .hl { background: linear-gradient(transparent 55%, rgba(201,163,85,.35) 55%); padding: 0 .1rem; font-weight: 500; }
 .source-body .src { font-size: .74rem; color: var(--muted); font-style: italic; border-top: 1px solid var(--border); padding-top: .7rem; margin-top: .3rem; word-break: break-all; }
 @media (max-width: 600px) { .source-panel { width: 100vw; max-width: 100vw; } }
-
-/* ── STEP NAV (progress) ── */
 .step-nav-wrap { background: var(--navy-mid); position: sticky; top: 0; z-index: 60; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
 .step-nav { max-width: 900px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
 .step-nav::-webkit-scrollbar { display: none; }
@@ -91,28 +63,20 @@ a { color: inherit; }
 .step-pill.done .num { background: rgba(46,125,94,.85); border-color: transparent; color: #fff; }
 .step-pill.done .num::before { content: '✓'; }
 .step-pill.done .num span { display: none; }
-
-/* ── MAIN ── */
 .main { max-width: 900px; margin: 0 auto; padding: 2.2rem 2rem 4rem; }
-
 .section-title { display: flex; align-items: center; gap: .9rem; font-family: 'Cormorant Garamond', serif; font-size: 1.75rem; font-weight: 700; color: var(--navy); margin: 2.8rem 0 .4rem; }
 .section-num { font-family: 'DM Mono', monospace; font-size: .85rem; color: var(--gold); background: var(--navy); width: 2.2rem; height: 2.2rem; display: flex; align-items: center; justify-content: center; border-radius: 6px; flex-shrink: 0; }
 .section-sub { color: var(--muted); font-size: .9rem; margin-bottom: 1.4rem; max-width: 680px; }
-
 .part-tag { display:inline-block; font-family:'DM Mono',monospace; font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; padding:.2rem .6rem; border-radius:3px; margin-left:.6rem; vertical-align:middle; }
 .tag-1 { background: var(--part1-bg); color: var(--part1); }
 .tag-2 { background: var(--part2-bg); color: var(--part2); }
 .tag-3 { background: var(--part3-bg); color: var(--part3); }
-
 .ex-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 1.4rem 1.5rem; margin-bottom: 1.1rem; box-shadow: 0 2px 12px rgba(13,27,42,.04); }
 .ex-q { font-weight: 600; color: var(--navy); margin-bottom: 1rem; font-size: 1rem; }
 .ex-q em { font-style: italic; color: var(--gold); }
 .ex-q .sub { display: block; font-weight: 400; color: var(--muted); font-size: .84rem; margin-top: .25rem; }
-
 .strategy-box { background: var(--gold-pale); border: 1px dashed var(--gold); border-radius: 8px; padding: .85rem 1.1rem; margin-bottom: 1.1rem; font-size: .88rem; color: var(--navy-mid); }
 .strategy-box .lbl { font-family: 'DM Mono', monospace; font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .3rem; }
-
-/* MCQ */
 .mcq-options { display: flex; flex-direction: column; gap: .55rem; }
 .mcq-btn { text-align: left; background: var(--white); border: 1.5px solid var(--border); border-radius: 7px; padding: .75rem .9rem; font-family: inherit; font-size: .9rem; color: var(--text); cursor: pointer; transition: all .18s; display: flex; gap: .65rem; align-items: flex-start; line-height: 1.45; }
 .mcq-btn:hover:not(:disabled) { border-color: var(--gold); }
@@ -120,14 +84,11 @@ a { color: inherit; }
 .mcq-btn:disabled { cursor: default; }
 .mcq-btn.correct { border-color: var(--correct); background: var(--correct-bg); } .mcq-btn.correct .letter { color: var(--correct); }
 .mcq-btn.wrong { border-color: var(--wrong); background: var(--wrong-bg); } .mcq-btn.wrong .letter { color: var(--wrong); }
-
 .feedback { margin-top: .9rem; padding: .85rem 1rem; border-radius: 7px; font-size: .86rem; line-height: 1.55; display: none; }
 .feedback.show { display: block; }
 .feedback.ok { background: var(--correct-bg); border-left: 3px solid var(--correct); color: #1d5340; }
 .feedback.no { background: var(--wrong-bg); border-left: 3px solid var(--wrong); color: #6e1826; }
 .feedback strong { font-weight: 700; }
-
-/* Idea sorting */
 .idea-card { background: white; border: 1.5px solid var(--border); border-radius: 8px; padding: .8rem 1rem; margin-bottom: .7rem; }
 .idea-text { font-size: .9rem; margin-bottom: .45rem; }
 .src-tag { font-family: 'DM Mono', monospace; font-size: .6rem; letter-spacing: .06em; text-transform: uppercase; padding: .15rem .5rem; border-radius: 3px; display: inline-block; margin-bottom: .5rem; }
@@ -142,8 +103,6 @@ a { color: inherit; }
 .idea-fb { font-size: .8rem; margin-top: .5rem; display: none; }
 .idea-fb.show { display: block; }
 .idea-fb.ok { color: var(--correct); } .idea-fb.no { color: var(--wrong); }
-
-/* Fields */
 .field-label { font-size: .84rem; color: var(--muted); margin-bottom: .4rem; }
 textarea, input[type=text] { width: 100%; font-family: inherit; font-size: .92rem; border: 1.5px solid var(--border); border-radius: 7px; padding: .75rem .9rem; color: var(--text); background: #fff; resize: vertical; min-height: 100px; line-height: 1.6; }
 textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold); }
@@ -154,8 +113,6 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 .btn.ghost { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
 .btn.ghost:hover { border-color: var(--gold); }
 .toolbar { display: flex; gap: .7rem; flex-wrap: wrap; margin-top: 1rem; }
-
-/* Heuristic panels */
 .fb-grid { display: grid; gap: .9rem; margin-top: 1.2rem; }
 .fb-panel { border: 1px solid var(--border); border-radius: 9px; background: white; overflow: hidden; }
 .fb-panel-head { padding: .7rem 1rem; font-family: 'DM Mono', monospace; font-size: .76rem; letter-spacing: .04em; text-transform: uppercase; display: flex; align-items: center; gap: .55rem; border-bottom: 1px solid var(--border); }
@@ -170,10 +127,6 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 .lvl-ok .fb-panel-head { background: var(--correct-bg); color: #1d5340; } .lvl-ok .ic { background: var(--correct); color: white; }
 .lvl-warn .fb-panel-head { background: var(--warn-bg); color: var(--warn); } .lvl-warn .ic { background: var(--warn); color: white; }
 .lvl-bad .fb-panel-head { background: var(--wrong-bg); color: #6e1826; } .lvl-bad .ic { background: var(--wrong); color: white; }
-.coverage-track { height: 8px; background: var(--ice); border-radius: 99px; overflow: hidden; margin: .5rem 0 .7rem; }
-.coverage-fill { height: 100%; background: linear-gradient(90deg, var(--gold), var(--correct)); border-radius: 99px; transition: width .6s; }
-
-/* Model reveal */
 .reveal { display: none; margin-top: 1rem; }
 .reveal.show { display: block; }
 .model-box { background: var(--navy); color: #eef3f7; border-radius: 10px; padding: 1.4rem 1.6rem; margin-top: 1rem; }
@@ -188,15 +141,11 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 .model-box li:last-child { border-bottom: none; }
 .model-box .en { display:block; color: var(--gold-light); font-style: italic; font-size: .85rem; margin-top: .15rem; }
 .model-box .meta { font-family: 'DM Mono', monospace; font-size: .72rem; color: var(--gold); margin-top: .6rem; letter-spacing: .05em; }
-
-/* Reference table (question type -> structure) */
 .qtype-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; font-size: .82rem; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
 .qtype-grid .h { background: var(--navy); color: var(--gold-light); font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; padding: .6rem .8rem; }
 .qtype-grid .c { padding: .6rem .8rem; border-top: 1px solid var(--border); background: white; }
 .qtype-grid .c.active { background: var(--gold-pale); font-weight: 600; color: var(--navy); border-left: 3px solid var(--gold); }
 @media (max-width: 600px) { .qtype-grid { grid-template-columns: 1fr; } .qtype-grid .h:nth-child(2) { display: none; } }
-
-/* Argument scaffold IDEA→EXPLAIN→EXAMPLE→LINK */
 .scaffold { display: grid; gap: .8rem; margin-top: .6rem; }
 .scaffold-row label { font-family: 'DM Mono', monospace; font-size: .66rem; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: .3rem; }
 .scaffold-row textarea { min-height: 52px; }
@@ -206,16 +155,12 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 .wb-line.better { background: var(--warn-bg); color: var(--warn); }
 .wb-line.stronger { background: var(--correct-bg); color: #1d5340; }
 .wb-line .lvl-lbl { font-family: 'DM Mono', monospace; font-size: .64rem; letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: .25rem; opacity: .8; }
-
-/* Oral roadmap */
 .roadmap-part { border: 1px solid var(--border); border-radius: 9px; padding: 1rem 1.1rem; margin-bottom: .9rem; background: white; }
 .roadmap-part h5 { font-family: 'DM Mono', monospace; font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-bottom: .6rem; }
 .roadmap-fields { display: grid; gap: .6rem; }
 .roadmap-fields textarea { min-height: 44px; font-size: .86rem; }
 .note-tip { font-size: .74rem; color: var(--warn); margin-top: .25rem; display: none; }
 .note-tip.show { display: block; }
-
-/* Toolkit */
 .toolkit-cat { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: .6rem; overflow: hidden; }
 .toolkit-cat summary { padding: .7rem 1rem; cursor: pointer; font-family: 'DM Mono', monospace; font-size: .76rem; text-transform: uppercase; letter-spacing: .05em; color: var(--navy); background: var(--white); list-style: none; }
 .toolkit-cat summary::-webkit-details-marker { display: none; }
@@ -223,18 +168,12 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 .toolkit-cat[open] summary::before { content: '– '; }
 .toolkit-cat ul { list-style: none; padding: .3rem 1rem 1rem; }
 .toolkit-cat li { font-size: .87rem; padding: .3rem 0; font-style: italic; color: var(--text); }
-
-/* Oral challenge / timer */
 .timer-box { display: flex; align-items: center; gap: 1.2rem; margin-top: 1rem; flex-wrap: wrap; }
 .timer-display { font-family: 'DM Mono', monospace; font-size: 2.1rem; color: var(--navy); min-width: 4.5rem; }
 .timer-display.low { color: var(--wrong); }
-
-/* Checklist */
 .checklist { display: flex; flex-direction: column; gap: .6rem; }
 .checklist label { display: flex; gap: .65rem; align-items: flex-start; font-size: .9rem; cursor: pointer; }
 .checklist input[type=checkbox] { width: 18px; height: 18px; margin-top: .15rem; accent-color: var(--gold); flex-shrink: 0; }
-
-/* Full correction */
 .correction-block { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 1rem; }
 .cb-head { padding: .8rem 1.1rem; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; color: white; }
 .cb-head.h1 { background: var(--part1); } .cb-head.h2 { background: var(--part2); } .cb-head.h3 { background: var(--part3); } .cb-head.hn { background: var(--navy); }
@@ -246,11 +185,9 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 .cb-body li::before { content: '◆'; position: absolute; left: 0; color: var(--gold); font-size: .7rem; top: .55rem; }
 .cb-body li .en { display: block; font-style: italic; color: var(--navy-light); font-size: .86rem; margin-top: .2rem; }
 .cb-body li .src { font-family: 'DM Mono', monospace; font-size: .68rem; color: var(--muted); }
-
 .print-only { display: none; }
 .visit-count { text-align: center; padding: .8rem 0 1.4rem; }
 .visit-count img { height: 16px; vertical-align: middle; }
-
 @media (max-width: 600px) {
   .main { padding: 1.4rem 1.1rem 3rem; }
   .ex-card { padding: 1.1rem; }
@@ -274,9 +211,9 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   <div class="topbar-inner">
     <span class="place"><span class="dot"></span>Lycée Sidoine Apollinaire · Clermont-Ferrand</span>
     <div class="links">
-      <a class="back" href="digital-currency.html">
+      <a class="back" href="production.html">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
-        Chapitre 1 · Finance
+        Chapitre 6 · Production
       </a>
       <a class="back" href="index.html">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
@@ -288,12 +225,12 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 
 <header class="site-header">
   <div class="header-inner">
-    <div class="badge">DSCG — UE6 Business English · Épreuve orale, partie 2</div>
-    <h1>Structured Oral Response Trainer<br><em>Digital Currency</em></h1>
+    <div class="badge">DSCG — UE12 Business English · Épreuve orale, partie 2</div>
+    <h1>Structured Oral Response Trainer<br><em>Tariffs and Global Supply Chains</em></h1>
     <p class="lede">Cette page prépare une réponse ORALE structurée à la question posée sur le texte, pas une dissertation écrite. Vous apprenez une méthode transférable : analyser la question, construire des arguments avec le texte ET vos connaissances, préparer des notes courtes, puis parler à partir de ces notes.</p>
     <div class="question-box">
       <div class="q-label">Discussion question</div>
-      <div class="q-text">To what extent is digital currency the future of society?</div>
+      <div class="q-text">How do tariffs affect global supply chains?</div>
     </div>
     <button class="source-toggle" onclick="toggleSource(true)">📄 Show source text</button>
   </div>
@@ -302,15 +239,20 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 <aside class="source-panel" id="sourcePanel">
   <div class="source-head"><div class="dot"></div><span class="sp-title">Source Document</span><button onclick="printSource()">🖶 Imprimer</button><button onclick="toggleSource(false)">✕</button></div>
   <div class="source-body">
-    <p class="lede">The Guardian view on the digital pound: an impetuous idea with a risky momentum of its own</p>
-    <p>Two years ago, the House of Lords looked into whether the Bank of England should issue digital pounds to be held in electronic wallets. Peers were unconvinced, asking if this wasn't “a solution in search of a problem”. Last December, MPs on the Treasury select committee said the same thing. The government's response, however, was to tell the public to prepare for a “Britcoin” to be in use by the end of the decade.</p>
-    <p>Physical money has been around for thousands of years for good reason. Cash is convenient, reliable and anonymous. It seems unlikely that these advantages could be replicated online. State-backed e-cash might look inevitable to officials who say money is already digital, pointing to cryptocurrencies and smartphone payments. But central bank digital currencies (CBDCs) are different. A Britcoin would shift the management burden from commercial banks to Threadneedle Street.</p>
-    <p>Paul Tucker, a former deputy Bank governor, argued in his book Global Discord that the West is responding to China's digital renminbi, which potentially gives the state social control through direct access to banking transactions. Yet the UK government can already spy on commercial bank accounts. It doesn't do so without good reason. Brett Scott, a former broker and the author of Cloudmoney, accepts that there is a geopolitical rivalry. The difference, he says, is that private corporations can push their agendas harder in the West than in Beijing.</p>
-    <p>During the pandemic, finance and technology firms accelerated moves towards a cashless society, which saw hitherto unimaginable levels of surveillance and data extraction. A world without notes and coins would hurt those least able to afford it. Poor and elderly people often prefer to budget with cash. A million UK adults don't have a bank account. The Royal Society of Arts calculated that going cash-free risked 10 million Britons losing control of their finances. The prospect of a cashless society also unnerved central banks. They worried about being dominated by commercial banks. Their answer: central banks should have their own digital currencies.</p>
-    <p>However, if central banks pushed CBDCs, they risked destabilising the financial institutions they oversaw. Central banks can't go bankrupt. People would vote with their feet if they could effectively open accounts at the Bank of England. According to a 2019 survey of 23 central banks, 82% of respondents worried that digital currencies could cause runs on banks. To address concerns, caps on CBDC holdings have been suggested. But limits may put off many from using digital pounds.</p>
-    <p>Mr Scott rightly compares the digitalisation of money to Uberisation — a process where convenience is traded for societal threats that older behaviours kept in check. That's why we need a debate rather than passively accepting state-backed digital money. Facebook's global cryptocurrency, Diem, was killed off by money-laundering concerns. But pervasive monitoring of spending changes society's psychology for the worse.</p>
-    <p>Right-wing conspiracy theories have been launched by excitable talk about the potential to place conditions on who can use digital money, for what, and with whom. Technically feasible? Eventually. Politically realisable? Gradually. Desirable? Well, that depends on your perspective. Maybe in developing countries, a digital central bank currency could be used — as was attempted briefly in Ecuador — to stymie an overly powerful, and US-aligned, domestic finance sector. But for the UK, it is an idea whose time has yet to come.</p>
-    <p class="src">The Guardian, 12 February 2024 — theguardian.com/commentisfree/2024/feb/12/the-guardian-view-on-the-digital-pound-an-impetuous-idea-with-a-risky-momentum-of-its-own</p>
+    <p class="lede">Who pays for Trump's tariffs? Depends on the product and the country.</p>
+    <p>Since taking office, President Donald Trump has threatened tariffs on an array of trading partners, including Mexico, Canada, Europe, Colombia and India. He has instituted a 10 percent tariff on Chinese goods and a 25 percent tariff on aluminum and steel imports.</p>
+    <p>Which nation ultimately bears the cost of a tariff depends on what that country makes and its pull in the global market. But <span class="hl">economists warn that the added tax will largely fall on American businesses and consumers</span>.</p>
+    <p>The United States is the largest importer of goods in the world, giving it significant sway in a trade war. It is also the top export market for more than 20 countries, making exports to the United States a sizable portion of many countries' economies.</p>
+    <p>Mexico's and Canada's economies are the most reliant on exports to the United States; both countries were threatened with 25 percent tariffs that are now under a 30-day reprieve. But that doesn't mean they are necessarily the most vulnerable to tariffs. <span class="hl">Who bears the cost and risk of the trade tax depends more on the product than where it is made.</span></p>
+    <p>A country is most vulnerable if it primarily produces goods that can easily be made in many places, such as garments or agricultural products, and the United States is its biggest customer. In those cases, American importers could substitute goods from another country to avoid paying the tariff. The exporter might have to lower their prices and eat the cost of the tariff to keep selling to the United States. […]</p>
+    <p>On the other hand, a country that is the main source of a particular good has a lot more leverage. […]</p>
+    <p>Many Chinese goods fall into this category because China dominates the global market for many products Americans buy. Even when faced with a 10 percent tariff, American importers will have to continue buying products such as laptops and smartphones from China because no other country can produce the same volume for American consumers.</p>
+    <p>Sometimes a country with a relatively small slice of the export market can keep its grip on American markets because it has the infrastructure to deliver the goods. If a tariff is applied to Canada, for instance, Canadian exporters of crude oil and natural gas won't need to reduce their prices because American pipelines and refineries are set up specifically for Canadian fossil fuels.</p>
+    <p>Some products are more complex, with supply chains crossing borders several times, so tariffs pile up with additional costs. A vehicle assembled in Mexico can have parts from the United States and Canada. Tariffs might hurt the Mexican businesses that assemble the vehicles, but they will also hurt American factories that supply the parts.</p>
+    <p><span class="hl">Broad tariffs for close trade partners or essential goods can have ripple effects across the entire economy.</span> If a company has to pay more for its imports because of a tariff, it might need to raise prices or lay off workers to stay in business. […]</p>
+    <p>The negative effects can be magnified if countries retaliate with tariffs of their own, potentially reducing the demand for American goods abroad. <span class="hl">After China imposed retaliatory tariffs on American goods in 2018, American exports to China dropped by 26 percent.</span></p>
+    <p>Last week, China announced counter-tariffs against the United States just minutes after the Trump administration announced its 10 percent levy on Chinese goods. […]</p>
+    <p class="src">Source: The Washington Post, "Who pays for Trump's tariffs? Depends on the product and the country." — Alyssa Fowers and Luis Melgar, 11 February 2025.</p>
   </div>
 </aside>
 <div class="source-backdrop" id="sourceBackdrop" onclick="toggleSource(false)"></div>
@@ -319,26 +261,24 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 
 <main class="main">
 
-  <!-- ═══ STEP 1 — ANALYSE THE QUESTION ═══ -->
   <div class="section-title"><span class="section-num">01</span> Analyse the Question</div>
   <p class="section-sub">Ne répondez pas trop vite. Identifiez d'abord ce que la question demande exactement avant de chercher des arguments.</p>
-
   <div class="strategy-box"><span class="lbl">Exam strategy</span>Before looking for arguments, make sure you know exactly what the question asks.</div>
 
   <div class="ex-card" id="exInstr">
     <div class="ex-q">What is the <em>instruction phrase</em> in this question — the part that tells you what kind of answer is expected?</div>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exInstr','C\'est le sujet (topic), pas l\'instruction : il vous dit DE QUOI on parle, pas COMMENT r\u00e9pondre.')"><span class="letter">A</span> digital currency</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exInstr','Exact. \u00ab To what extent \u00bb demande une r\u00e9ponse nuanc\u00e9e, par degr\u00e9s \u2014 jamais un simple oui/non.')"><span class="letter">B</span> to what extent</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exInstr','C\'est un mot-cl\u00e9 du sujet, pas l\'instruction elle-m\u00eame.')"><span class="letter">C</span> society</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exInstr','C\'est un mot-cl\u00e9 du sujet, pas l\'instruction elle-m\u00eame.')"><span class="letter">D</span> future</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exInstr','C\'est le sujet trait\u00e9 par la question, pas l\'instruction qui indique comment y r\u00e9pondre.')"><span class="letter">A</span> tariffs</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exInstr','Exact. \u00ab How do… affect \u00bb demande d\u2019expliquer un m\u00e9canisme et ses effets \u2014 jamais un simple oui/non.')"><span class="letter">B</span> how do … affect</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exInstr','C\'est l\'objet vis\u00e9 par les effets, pas l\'instruction elle-m\u00eame.')"><span class="letter">C</span> global supply chains</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exInstr','C\'est un simple auxiliaire, pas l\'instruction qui structure la r\u00e9ponse.')"><span class="letter">D</span> do</button>
     </div>
     <div class="feedback" id="exInstr-fb"></div>
   </div>
 
   <div class="ex-card" id="exReform">
     <div class="ex-q">In simple words, what do you have to discuss?<span class="sub">Reformulez la question avec vos propres mots, sans recopier son vocabulaire. ≈ 15–30 mots.</span></div>
-    <textarea id="reformText" data-persist placeholder="I have to discuss whether…"></textarea>
+    <textarea id="reformText" data-persist placeholder="I have to explain the different ways that…"></textarea>
     <div class="toolbar">
       <button class="btn gold" onclick="analyzeReform()">Analyser ma reformulation</button>
       <button class="btn ghost" onclick="reveal('exReform-model')">Voir un modèle</button>
@@ -346,21 +286,20 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <div class="fb-grid" id="exReform-fb"></div>
     <div class="reveal" id="exReform-model">
       <div class="model-box"><h4>Modèle — reformulation</h4>
-      <p>I have to decide how important digital currency is likely to become for society — will it dominate the way we live and pay, or will it stay limited, alongside cash?</p>
+      <p>I have to explain the different ways tariffs disrupt supply chains — from raising costs to reshaping sourcing decisions — and show how severe these effects are depending on the product and the country involved.</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══ STEP 2 — QUESTION TYPE → STRUCTURE ═══ -->
   <div class="section-title"><span class="section-num">02</span> Identify the Type of Question</div>
   <p class="section-sub">Le plan dépend de la question posée — il n'existe pas un plan unique pour toutes les questions du DSCG. Voici quelques types courants :</p>
 
   <div class="ex-card">
     <div class="qtype-grid">
       <div class="h">Question type</div><div class="h">Possible structure</div>
-      <div class="c">To what extent…?</div><div class="c active">advantages / limits / overall assessment</div>
+      <div class="c">To what extent…?</div><div class="c">advantages / limits / overall assessment</div>
       <div class="c">Should companies…?</div><div class="c">arguments in favour / arguments against / position</div>
-      <div class="c">Is X a threat or an opportunity?</div><div class="c">opportunities / threats / conditions</div>
+      <div class="c">How do X affect Y?</div><div class="c active">mechanisms / severity factors / broader consequences</div>
       <div class="c">How can…?</div><div class="c">problem / possible solutions / limitations</div>
       <div class="c">Why…?</div><div class="c">causes / consequences</div>
       <div class="c">What impact…?</div><div class="c">effects on stakeholders / positive / negative</div>
@@ -368,42 +307,39 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   </div>
 
   <div class="ex-card" id="exQtype">
-    <div class="ex-q">Given the phrase <em>« to what extent »</em>, which structure fits this question best?</div>
+    <div class="ex-q">Given the phrase <em>« how do … affect »</em>, which structure fits this question best?</div>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exQtype','C\'est le sch\u00e9ma dialectique classique th\u00e8se/antith\u00e8se/synth\u00e8se \u2014 il fonctionne, mais n\u2019est pas le seul possible, et \u00ab to what extent \u00bb appelle plut\u00f4t un bilan par degr\u00e9s.')"><span class="letter">A</span> for / against / compromise</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exQtype','Ce sch\u00e9ma convient \u00e0 une question \u00ab why \u00bb, pas \u00e0 une question de degr\u00e9.')"><span class="letter">B</span> causes / consequences</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exQtype','Exact. \u00ab To what extent \u00bb demande de peser des avantages, des limites, puis de conclure sur un degr\u00e9 \u2014 pas un simple pour/contre.')"><span class="letter">C</span> advantages / limits / overall assessment</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exQtype','Ce sch\u00e9ma convient \u00e0 une question \u00ab how can \u00bb (probl\u00e8me \u2192 solutions), pas ici.')"><span class="letter">D</span> problem / solutions / limitations</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exQtype','Ce sch\u00e9ma convient \u00e0 une question \u00ab to what extent \u00bb qui demande de peser un bilan, pas ici.')"><span class="letter">A</span> advantages / limits / overall assessment</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exQtype','Exact. \u00ab How do X affect Y \u00bb demande d\u2019expliquer les m\u00e9canismes en jeu, ce qui fait varier leur intensit\u00e9, puis leurs cons\u00e9quences plus larges.')"><span class="letter">B</span> mechanisms / severity factors / broader consequences</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exQtype','Ce sch\u00e9ma convient \u00e0 une question \u00ab why \u00bb, pas \u00e0 une question sur un m\u00e9canisme d\u2019effet.')"><span class="letter">C</span> causes / consequences</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exQtype','C\'est le sch\u00e9ma dialectique classique th\u00e8se/antith\u00e8se/synth\u00e8se \u2014 il fonctionne parfois, mais n\u2019est pas adapt\u00e9 \u00e0 une question qui demande d\u2019expliquer un m\u00e9canisme.')"><span class="letter">D</span> for / against / compromise</button>
     </div>
     <div class="feedback" id="exQtype-fb"></div>
   </div>
 
-  <div class="strategy-box"><span class="lbl">For this question</span>Part 1 — Advantages · Part 2 — Limits · Part 3 — Overall assessment. Une autre question du DSCG demanderait une autre structure : ne mémorisez jamais un plan unique.</div>
+  <div class="strategy-box"><span class="lbl">For this question</span>Part 1 — Direct cost effects · Part 2 — Structural effects on sourcing · Part 3 — Broader ripple effects &amp; overall assessment. Une autre question du DSCG demanderait une autre structure : ne mémorisez jamais un plan unique.</div>
 
-  <!-- ═══ STEP 3 — BRAINSTORM ═══ -->
   <div class="section-title"><span class="section-num">03</span> Brainstorm &amp; Sort</div>
-  <p class="section-sub">Classez chaque idée dans la bonne partie : <strong>Advantages</strong>, <strong>Limits</strong>, ou <strong>Overall assessment</strong>. Certaines viennent du texte, d'autres de vos connaissances — les deux sont nécessaires.</p>
-
+  <p class="section-sub">Classez chaque idée dans la bonne partie : <strong>Direct cost effects</strong>, <strong>Structural effects on sourcing</strong>, ou <strong>Broader ripple effects &amp; assessment</strong>. Certaines viennent du texte, d'autres de vos connaissances — les deux sont nécessaires.</p>
   <div class="strategy-box"><span class="lbl">Rule</span>Do not rely only on the document. Use it as a starting point, then add relevant knowledge and examples.</div>
 
   <div id="ideaList"></div>
   <div class="feedback" id="sortSummary"></div>
 
-  <!-- ═══ STEP 4 — CONNECT DOCUMENT AND KNOWLEDGE ═══ -->
   <div class="section-title"><span class="section-num">04</span> Connect Document and Knowledge</div>
   <p class="section-sub">Un bon argument enrichit le document avec vos connaissances — il ne se contente pas de le paraphraser.</p>
 
   <div class="ex-card">
     <div class="ex-q">Worked example</div>
     <div class="weak-better">
-      <div class="wb-line"><span class="lvl-lbl">From the document</span>Digital payments may create privacy concerns as spending is monitored. <span class="src-tag src-doc">texte, §3 &amp; 6</span></div>
-      <div class="wb-line"><span class="lvl-lbl">From your knowledge</span>Companies and governments already collect increasing amounts of personal data. <span class="src-tag src-ext">connaissances</span></div>
-      <div class="wb-line better"><span class="lvl-lbl">Argument you can build</span>Digital currencies may be efficient, but strong data-protection rules are necessary to prevent excessive surveillance.</div>
+      <div class="wb-line"><span class="lvl-lbl">From the document</span>Some products cross borders several times, so tariffs pile up — a vehicle assembled in Mexico can have parts from the US and Canada. <span class="src-tag src-doc">texte, §9</span></div>
+      <div class="wb-line"><span class="lvl-lbl">From your knowledge</span>The US-Mexico-Canada trade agreement (USMCA) exists precisely to give North American manufacturers duty-free access across these borders. <span class="src-tag src-ext">connaissances</span></div>
+      <div class="wb-line better"><span class="lvl-lbl">Argument you can build</span>Tariffs threaten to undo decades of North American supply chain integration built under USMCA, since a single tax at one border now damages factories in all three countries at once.</div>
     </div>
   </div>
 
   <div class="ex-card" id="exConnect">
-    <div class="ex-q">Your turn.<span class="sub">From the document: a cashless society could exclude poor, elderly and unbanked people (doc, §4). From your knowledge: think of a policy, technology or country example that helps financial inclusion. Build one argument connecting the two.</span></div>
+    <div class="ex-q">Your turn.<span class="sub">From the document: companies dominating global production, like China with laptops and smartphones, keep leverage and don't need to lower prices even under a tariff (doc, §7). From your knowledge: think of a company that has diversified its sourcing away from a single country (e.g. Apple moving some production to Vietnam or India). Build one argument connecting the two.</span></div>
     <textarea id="connectText" data-persist placeholder="From the document… From my knowledge… Therefore…"></textarea>
     <div class="toolbar">
       <button class="btn gold" onclick="analyzeConnect()">Analyser mon argument</button>
@@ -412,31 +348,30 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <div class="fb-grid" id="exConnect-fb"></div>
     <div class="reveal" id="exConnect-model">
       <div class="model-box"><h4>Exemple possible</h4>
-      <p>A cashless society could exclude vulnerable people, but mobile-money systems such as M-Pesa in Kenya show that digital tools can also improve financial inclusion when they are designed for accessibility rather than convenience alone.</p>
+      <p>Because China's dominance in electronics gives it leverage that tariffs alone cannot break, companies such as Apple have started diversifying production toward Vietnam and India — showing that firms respond to tariff exposure by restructuring their supply chains rather than simply accepting the extra cost.</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══ STEP 5 — BUILD A STRONG ARGUMENT ═══ -->
   <div class="section-title"><span class="section-num">05</span> Build a Strong Argument</div>
   <p class="section-sub">Un argument oral efficace suit quatre temps : <strong>IDEA → EXPLAIN → EXAMPLE → LINK</strong>.</p>
 
   <div class="ex-card">
     <div class="ex-q">Why this matters</div>
     <div class="weak-better">
-      <div class="wb-line weak"><span class="lvl-lbl">Idea only — too weak</span>Digital currency is convenient.</div>
-      <div class="wb-line better"><span class="lvl-lbl">+ Explain — better</span>Digital currency is convenient because it allows instant payments without needing physical cash or a bank branch.</div>
-      <div class="wb-line stronger"><span class="lvl-lbl">+ Example — stronger</span>…For example, mobile-money systems such as M-Pesa already let people in Kenya pay and transfer money using only a basic phone.</div>
+      <div class="wb-line weak"><span class="lvl-lbl">Idea only — too weak</span>Tariffs make imported goods more expensive.</div>
+      <div class="wb-line better"><span class="lvl-lbl">+ Explain — better</span>Tariffs make imported goods more expensive, but who actually pays that extra cost depends on whether the exporting country can be easily replaced.</div>
+      <div class="wb-line stronger"><span class="lvl-lbl">+ Example — stronger</span>…For example, garment exporters often have to lower their own prices to keep selling to the US, because importers can simply switch to another supplier.</div>
     </div>
   </div>
 
   <div class="ex-card" id="exBuild1">
-    <div class="ex-q">Part 1 — Advantages <span class="part-tag tag-1">Build one argument</span></div>
+    <div class="ex-q">Part 1 — Direct cost effects <span class="part-tag tag-1">Build one argument</span></div>
     <div class="scaffold">
-      <div class="scaffold-row"><label>Idea</label><textarea id="b1-idea" data-persist placeholder="Digital currency could…"></textarea></div>
-      <div class="scaffold-row"><label>Explain</label><textarea id="b1-explain" data-persist placeholder="This matters because…"></textarea></div>
+      <div class="scaffold-row"><label>Idea</label><textarea id="b1-idea" data-persist placeholder="Tariffs shift costs onto…"></textarea></div>
+      <div class="scaffold-row"><label>Explain</label><textarea id="b1-explain" data-persist placeholder="This happens because…"></textarea></div>
       <div class="scaffold-row"><label>Example</label><textarea id="b1-example" data-persist placeholder="For example…"></textarea></div>
-      <div class="scaffold-row"><label>Link to the question</label><textarea id="b1-link" data-persist placeholder="This shows that digital currency…"></textarea></div>
+      <div class="scaffold-row"><label>Link to the question</label><textarea id="b1-link" data-persist placeholder="This shows that tariffs…"></textarea></div>
     </div>
     <div class="toolbar">
       <button class="btn gold" onclick="analyzeScaffold('b1',THEMES1,'Part 1')">Analyser mon argument</button>
@@ -445,19 +380,19 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <div class="fb-grid" id="exBuild1-fb"></div>
     <div class="reveal" id="exBuild1-model">
       <div class="model-box t1"><h4>Modèle — Part 1</h4>
-      <p><em>Idea —</em> Digital currency could make everyday payments faster and more efficient.</p>
-      <p><em>Explain —</em> Because it removes the need for physical handling of cash and lets transactions happen instantly, even across borders.</p>
-      <p><em>Example —</em> For example, mobile-money systems such as M-Pesa already let millions of people in Kenya pay and transfer money using only a basic phone.</p>
-      <p><em>Link —</em> This shows that digital currency can genuinely modernise how society exchanges money, at least where infrastructure allows it.</p>
+      <p><em>Idea —</em> A tariff does not automatically make the exporting country pay — the cost often shifts depending on who has market power.</p>
+      <p><em>Explain —</em> Because when a good can easily be sourced elsewhere, importers can simply switch suppliers, forcing the exporter to absorb the cost; but when a country dominates supply, importers have no alternative.</p>
+      <p><em>Example —</em> For example, China's dominance in laptops and smartphones means a 10 percent tariff is largely paid by American consumers, since importers keep buying from China anyway.</p>
+      <p><em>Link —</em> This shows that the direct cost of a tariff is not fixed — it depends on which side of the trade relationship holds more leverage.</p>
       </div>
     </div>
   </div>
 
   <div class="ex-card" id="exBuild2">
-    <div class="ex-q">Part 2 — Limits <span class="part-tag tag-2">Build one argument</span></div>
+    <div class="ex-q">Part 2 — Structural effects on sourcing <span class="part-tag tag-2">Build one argument</span></div>
     <div class="scaffold">
-      <div class="scaffold-row"><label>Idea</label><textarea id="b2-idea" data-persist placeholder="Digital currency could also…"></textarea></div>
-      <div class="scaffold-row"><label>Explain</label><textarea id="b2-explain" data-persist placeholder="This is a concern because…"></textarea></div>
+      <div class="scaffold-row"><label>Idea</label><textarea id="b2-idea" data-persist placeholder="Tariffs also push companies to…"></textarea></div>
+      <div class="scaffold-row"><label>Explain</label><textarea id="b2-explain" data-persist placeholder="This matters because…"></textarea></div>
       <div class="scaffold-row"><label>Example</label><textarea id="b2-example" data-persist placeholder="For example…"></textarea></div>
       <div class="scaffold-row"><label>Link to the question</label><textarea id="b2-link" data-persist placeholder="This shows that…"></textarea></div>
     </div>
@@ -468,41 +403,39 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <div class="fb-grid" id="exBuild2-fb"></div>
     <div class="reveal" id="exBuild2-model">
       <div class="model-box t2"><h4>Modèle — Part 2</h4>
-      <p><em>Idea —</em> Digital currency could increase surveillance of ordinary spending.</p>
-      <p><em>Explain —</em> Because every digital transaction can be recorded and monitored by banks, companies or governments, unlike anonymous cash.</p>
-      <p><em>Example —</em> For example, the text notes that programmable money could let authorities decide who can spend money, where and for what purpose.</p>
-      <p><em>Link —</em> This shows that, if left unregulated, digital currency could weaken individual privacy and freedom.</p>
+      <p><em>Idea —</em> Tariffs push companies to redesign their supply chains, not just accept higher costs.</p>
+      <p><em>Explain —</em> Because with multi-stage production, a tariff on one country can hurt several economies linked in the same chain, so firms diversify sourcing to reduce their exposure.</p>
+      <p><em>Example —</em> For example, a vehicle assembled in Mexico with US and Canadian parts means a tariff on Mexico also damages American parts suppliers, pushing manufacturers to reconsider where they locate production.</p>
+      <p><em>Link —</em> This shows that tariffs can reshape entire production networks, not just prices, as firms try to insulate themselves from future trade disputes.</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══ STEP 6 — ORGANISE THE RESPONSE ═══ -->
   <div class="section-title"><span class="section-num">06</span> Organise the Response</div>
   <p class="section-sub">Le plan doit répondre à la question, pas simplement suivre l'ordre du texte.</p>
 
   <div class="ex-card" id="exPlan">
     <div class="ex-q">Which plan is the most logical for this question?</div>
-    <p class="section-sub" style="margin:-0.4rem 0 1rem">Les quatre options utilisent les mêmes idées du plan retenu. Une seule les organise dans un ordre qui construit un raisonnement.</p>
+    <p class="section-sub" style="margin:-0.4rem 0 1rem">Les quatre options utilisent les mêmes trois idées. Une seule les organise dans un ordre qui construit un raisonnement — réfléchissez à ce qui doit logiquement expliquer quoi.</p>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. On présente d’abord ce que la monnaie numérique permettrait, on en expose ensuite les dangers, puis on peut juger jusqu’à quel point elle façonnera vraiment la société — chaque partie nourrit l’évaluation finale.')"><span class="letter">A</span> Advantages → Limits → Overall assessment</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Séduisant mais prématuré : pointer les dangers d’une technologie avant même d’avoir montré ce qu’elle apporte prive l’auditeur de repères — les avantages doivent être établis en premier.')"><span class="letter">B</span> Limits → Advantages → Overall assessment</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Cela place la conclusion (le degré d’adoption) en ouverture, ce qui revient à donner la réponse avant d’avoir pesé les arguments qui la justifient.')"><span class="letter">C</span> Overall assessment → Advantages → Limits</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Presque : mais l’évaluation globale doit tenir compte des dangers, qui ne sont pas encore exposés à ce stade — l’évaluer avant de les présenter est prématuré.')"><span class="letter">D</span> Advantages → Overall assessment → Limits</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. On part de l\u2019effet le plus direct et imm\u00e9diat (qui paie le co\u00fbt), on explique ensuite comment les entreprises r\u00e9agissent \u00e0 cet effet (restructuration des cha\u00eenes), puis on \u00e9largit aux cons\u00e9quences globales que cette r\u00e9action produit (repr\u00e9sailles, effets d\u2019entra\u00eenement). Chaque partie explique la suivante.')"><span class="letter">A</span> Direct cost effects → Structural effects on sourcing → Broader ripple effects</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','S\u00e9duisant mais invers\u00e9\u00a0: on d\u00e9crit d\u2019abord comment les entreprises r\u00e9agissent (diversification, relocalisation) avant m\u00eame d\u2019avoir expliqu\u00e9 \u00e0 quel effet direct elles r\u00e9agissent. Une r\u00e9action doit suivre, pas pr\u00e9c\u00e9der, le probl\u00e8me qui la d\u00e9clenche.')"><span class="letter">B</span> Structural effects on sourcing → Direct cost effects → Broader ripple effects</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Cela ressemble \u00e0 un plan, mais organise la r\u00e9ponse par pays (Mexique, Chine, Canada) plut\u00f4t que par type d\u2019effet\u00a0: le m\u00eame raisonnement serait r\u00e9p\u00e9t\u00e9 trois fois au lieu d\u2019\u00eatre construit une seule fois. Un bon plan regroupe les id\u00e9es par nature, pas par exemple.')"><span class="letter">C</span> Case study: Mexico → Case study: China → Case study: Canada</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Presque juste, mais l\u2019ordre final est invers\u00e9\u00a0: les effets d\u2019entra\u00eenement (repr\u00e9sailles, ondes de choc \u00e9conomiques) sont la cons\u00e9quence des r\u00e9organisations de cha\u00eenes d\u2019approvisionnement \u2014 ils doivent donc venir apr\u00e8s, pas avant.')"><span class="letter">D</span> Direct cost effects → Broader ripple effects → Structural effects on sourcing</button>
     </div>
     <div class="feedback" id="exPlan-fb"></div>
   </div>
 
-  <!-- ═══ STEP 7 — PREPARE YOUR POSITION & INTRODUCTION ═══ -->
   <div class="section-title"><span class="section-num">07</span> Prepare Your Introduction</div>
   <p class="section-sub">À l'oral, l'introduction reste courte : position → problème principal → annonce du plan, en 3 phrases directes.</p>
 
   <div class="ex-card" id="exIntroMcq">
     <div class="ex-q">Which sentence is the best <em>opening line</em>?</div>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exIntroMcq','Une amorce reste neutre : pas de jugement tranch\u00e9 d\u00e8s la premi\u00e8re phrase.')"><span class="letter">A</span> In my opinion, digital currency is clearly dangerous and should never replace cash.</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exIntroMcq','C\'est l\'annonce du plan : elle vient \u00e0 la fin de l\'introduction, pas en ouverture.')"><span class="letter">B</span> I will first present the advantages of digital currency, then its dangers, before proposing a balanced view.</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exIntroMcq','Exact : une bonne amorce part d\'une id\u00e9e g\u00e9n\u00e9rale avant d\'amener le sujet.')"><span class="letter">C</span> Money has always evolved with economic and technological progress, and today digital tools are transforming how people pay.</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exIntroMcq','Trop pr\u00e9cis : on entre directement dans le document. Une amorce part d\'une id\u00e9e plus g\u00e9n\u00e9rale.')"><span class="letter">D</span> In 2024, a Guardian editorial warned that the Bank of England was preparing a digital pound before the end of the decade.</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exIntroMcq','C\'est l\'annonce du plan : elle vient \u00e0 la fin de l\'introduction, pas en ouverture.')"><span class="letter">A</span> This response will first look at direct costs, then at structural effects, before assessing the overall picture.</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exIntroMcq','Trop pr\u00e9cis : on entre directement dans le d\u00e9tail de l\'actualit\u00e9. Une amorce part d\'une id\u00e9e plus g\u00e9n\u00e9rale.')"><span class="letter">B</span> In February 2025, President Trump threatened tariffs on Mexico, Canada, Europe, Colombia and India.</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exIntroMcq','Exact : une bonne amorce part d\'une id\u00e9e g\u00e9n\u00e9rale avant d\'amener le sujet.')"><span class="letter">C</span> Modern products are rarely made in a single country, which means a tax at one border can travel through an entire production chain.</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exIntroMcq','Une amorce reste neutre : pas de jugement tranch\u00e9 d\u00e8s la premi\u00e8re phrase.')"><span class="letter">D</span> Tariffs are clearly a self-defeating policy that only harms the country that imposes them.</button>
     </div>
     <div class="feedback" id="exIntroMcq-fb"></div>
   </div>
@@ -510,8 +443,8 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   <div class="ex-card" id="exIntroBuild">
     <div class="ex-q">Build your 3-line oral introduction<span class="sub">Une phrase par ligne. Restez court — c'est ce que vous direz, pas ce que vous lirez.</span></div>
     <div class="scaffold">
-      <div class="scaffold-row"><label>1 — Position</label><textarea id="int-position" data-persist placeholder="Digital currency is likely to…, but…"></textarea></div>
-      <div class="scaffold-row"><label>2 — Main issue</label><textarea id="int-issue" data-persist placeholder="It offers real benefits, but it also raises…"></textarea></div>
+      <div class="scaffold-row"><label>1 — Position</label><textarea id="int-position" data-persist placeholder="Tariffs are likely to…, but…"></textarea></div>
+      <div class="scaffold-row"><label>2 — Main issue</label><textarea id="int-issue" data-persist placeholder="Their effect on cost is clear, but…"></textarea></div>
       <div class="scaffold-row"><label>3 — Announce structure</label><textarea id="int-plan" data-persist placeholder="I will first consider… before examining…"></textarea></div>
     </div>
     <div class="toolbar">
@@ -521,27 +454,26 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <div class="fb-grid" id="exIntroBuild-fb"></div>
     <div class="reveal" id="exIntroBuild-model">
       <div class="model-box"><h4>Modèle — introduction orale</h4>
-      <p>Digital currency is likely to play an important role in the future, but I do not think it will completely replace cash.</p>
-      <p>It offers major benefits, but it also creates significant economic and social risks.</p>
-      <p>I will first consider its main advantages before examining its limits.</p>
+      <p>Tariffs affect global supply chains in ways that go well beyond a simple price increase, and the severity of the effect can vary a great deal.</p>
+      <p>They clearly raise costs somewhere in the chain, but who pays and how deeply the chain is restructured depends on the product and the country involved.</p>
+      <p>I will first consider their direct cost effects before examining how they reshape sourcing decisions and their broader ripple effects.</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══ STEP 8 — TEACH NUANCE ═══ -->
   <div class="section-title"><span class="section-num">08</span> Nuance Your Answer</div>
-  <p class="section-sub">« To what extent » n'accepte jamais une réponse tout-ou-rien. Utilisez may, can, could, to some extent, depending on, unless…</p>
+  <p class="section-sub">Une question sur un mécanisme n'accepte jamais une réponse tout-ou-rien. Utilisez may, can, could, to some extent, depending on, unless…</p>
 
   <div class="ex-card">
     <div class="weak-better">
-      <div class="wb-line weak"><span class="lvl-lbl">Too binary</span>Digital currency will replace cash.</div>
-      <div class="wb-line stronger"><span class="lvl-lbl">Nuanced</span>Digital currency may become increasingly important, but whether it can replace cash will depend on public trust, accessibility and regulation.</div>
+      <div class="wb-line weak"><span class="lvl-lbl">Too binary</span>Tariffs make supply chains collapse.</div>
+      <div class="wb-line stronger"><span class="lvl-lbl">Nuanced</span>Tariffs can seriously disrupt supply chains, but the extent of the disruption depends on how easily a product can be resourced and whether the exporting country holds real market leverage.</div>
     </div>
   </div>
 
   <div class="ex-card" id="exNuance">
-    <div class="ex-q">Rewrite this claim with more nuance:<span class="sub">« Programmable digital money is dangerous. » Utilisez au moins un mot de nuance.</span></div>
-    <textarea id="nuanceText" data-persist placeholder="Programmable digital money can…"></textarea>
+    <div class="ex-q">Rewrite this claim with more nuance:<span class="sub">« Tariffs always force companies to move their production out of the targeted country. » Utilisez au moins un mot de nuance.</span></div>
+    <textarea id="nuanceText" data-persist placeholder="Tariffs may…"></textarea>
     <div class="toolbar">
       <button class="btn gold" onclick="analyzeNuance()">Analyser ma nuance</button>
       <button class="btn ghost" onclick="reveal('exNuance-model')">Voir un modèle</button>
@@ -549,12 +481,11 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <div class="fb-grid" id="exNuance-fb"></div>
     <div class="reveal" id="exNuance-model">
       <div class="model-box"><h4>Modèle — nuance</h4>
-      <p>Programmable digital money can raise concerns about control, but this risk largely depends on the legal safeguards put in place, and would not necessarily apply unless governments chose to restrict its use.</p>
+      <p>Tariffs can push companies to relocate part of their production, but this largely depends on whether the targeted country has unique advantages, such as infrastructure or a dominant market share, that keep it hard to replace.</p>
       </div>
     </div>
   </div>
 
-  <!-- ═══ STEP 9 — BUILD YOUR ORAL ROADMAP ═══ -->
   <div class="section-title"><span class="section-num">09</span> Build Your Oral Roadmap</div>
   <p class="section-sub">Do not write your full answer. Use keywords and short notes — you should speak from your notes, not read them.</p>
 
@@ -562,42 +493,41 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <h5>My position</h5>
     <div class="roadmap-fields"><textarea id="rm-position" data-persist oninput="checkNoteLength(this)" placeholder="keywords only"></textarea><div class="note-tip" id="tip-rm-position">Keep your notes short. You should speak from your notes, not read them.</div></div>
     <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-position-model')">Possible answer</button></div>
-    <div class="reveal" id="rm-position-model"><div class="model-box"><p>important role — but not fully replace cash</p></div></div>
+    <div class="reveal" id="rm-position-model"><div class="model-box"><p>real disruption — but severity varies a lot by product/country</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Introduction</h5>
     <div class="roadmap-fields"><textarea id="rm-intro" data-persist oninput="checkNoteLength(this)" placeholder="keywords only"></textarea><div class="note-tip" id="tip-rm-intro">Keep your notes short. You should speak from your notes, not read them.</div></div>
     <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-intro-model')">Possible answer</button></div>
-    <div class="reveal" id="rm-intro-model"><div class="model-box"><p>benefits vs risks — plan: advantages / limits / assessment</p></div></div>
+    <div class="reveal" id="rm-intro-model"><div class="model-box"><p>tax at one border → travels through chain — plan: cost / sourcing / ripple</p></div></div>
   </div>
   <div class="roadmap-part">
-    <h5>Part 1 — Advantages <span class="part-tag tag-1">argument · example</span></h5>
+    <h5>Part 1 — Direct cost effects <span class="part-tag tag-1">argument · example</span></h5>
     <div class="roadmap-fields"><textarea id="rm-p1" data-persist oninput="checkNoteLength(this)" placeholder="argument — example"></textarea><div class="note-tip" id="tip-rm-p1">Keep your notes short. You should speak from your notes, not read them.</div></div>
     <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-p1-model')">Possible answer</button></div>
-    <div class="reveal" id="rm-p1-model"><div class="model-box t1"><p>faster/cheaper payments, financial inclusion — e.g. M-Pesa Kenya</p></div></div>
+    <div class="reveal" id="rm-p1-model"><div class="model-box t1"><p>cost falls on side with less leverage — e.g. China electronics, consumers pay</p></div></div>
   </div>
   <div class="roadmap-part">
-    <h5>Part 2 — Limits <span class="part-tag tag-2">argument · example</span></h5>
+    <h5>Part 2 — Structural effects on sourcing <span class="part-tag tag-2">argument · example</span></h5>
     <div class="roadmap-fields"><textarea id="rm-p2" data-persist oninput="checkNoteLength(this)" placeholder="argument — example"></textarea><div class="note-tip" id="tip-rm-p2">Keep your notes short. You should speak from your notes, not read them.</div></div>
     <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-p2-model')">Possible answer</button></div>
-    <div class="reveal" id="rm-p2-model"><div class="model-box t2"><p>exclusion, surveillance, social control — e.g. unbanked adults, §4</p></div></div>
+    <div class="reveal" id="rm-p2-model"><div class="model-box t2"><p>multi-country chains hit at once — e.g. Mexico vehicle assembly, diversification</p></div></div>
   </div>
   <div class="roadmap-part">
-    <h5>Part 3 — Overall assessment <span class="part-tag tag-3">optional</span></h5>
+    <h5>Part 3 — Broader ripple effects &amp; overall assessment <span class="part-tag tag-3">optional</span></h5>
     <div class="roadmap-fields"><textarea id="rm-p3" data-persist oninput="checkNoteLength(this)" placeholder="argument — example"></textarea><div class="note-tip" id="tip-rm-p3">Keep your notes short. You should speak from your notes, not read them.</div></div>
     <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-p3-model')">Possible answer</button></div>
-    <div class="reveal" id="rm-p3-model"><div class="model-box t3"><p>coexist with cash, strong rules, trust (Keynes)</p></div></div>
+    <div class="reveal" id="rm-p3-model"><div class="model-box t3"><p>retaliation risk, jobs/prices economy-wide — e.g. 2018 China, -26% US exports</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Conclusion</h5>
     <div class="roadmap-fields"><textarea id="rm-concl" data-persist oninput="checkNoteLength(this)" placeholder="final answer / nuance / condition"></textarea><div class="note-tip" id="tip-rm-concl">Keep your notes short. You should speak from your notes, not read them.</div></div>
     <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-concl-model')">Possible answer</button></div>
-    <div class="reveal" id="rm-concl-model"><div class="model-box"><p>important part, not the whole future — depends on regulation, trust</p></div></div>
+    <div class="reveal" id="rm-concl-model"><div class="model-box"><p>severity depends on substitutability &amp; leverage, not just tariff rate</p></div></div>
   </div>
   <div class="toolbar"><button class="btn gold" onclick="checkRoadmap()">Vérifier mes notes</button></div>
   <div class="feedback" id="roadmap-fb"></div>
 
-  <!-- ═══ STEP 10 — ORAL LANGUAGE TOOLKIT ═══ -->
   <div class="section-title"><span class="section-num">10</span> Oral Language Toolkit</div>
   <p class="section-sub">Des formulations classées par fonction pour construire votre discours à l'oral.</p>
 
@@ -629,7 +559,6 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <li>Overall…</li><li>On balance…</li><li>I would therefore argue that…</li><li>To conclude…</li>
   </ul></details>
 
-  <!-- ═══ STEP 12 — FINAL CHECKLIST ═══ -->
   <div class="section-title"><span class="section-num">11</span> Final Checklist</div>
   <p class="section-sub">Cochez chaque point avant de considérer votre préparation terminée.</p>
 
@@ -650,7 +579,6 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     </div>
   </div>
 
-  <!-- ═══ STEP 11 — ORAL CHALLENGE ═══ -->
   <div class="section-title"><span class="section-num">12</span> Oral Challenge</div>
   <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
 
@@ -663,7 +591,6 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     </div>
   </div>
 
-  <!-- ═══ POSSIBLE ORAL VERSION ═══ -->
   <div class="section-title"><span class="section-num">★</span> Possible Oral Version</div>
   <p class="section-sub">Un exemple de contenu possible, présenté en notes courtes — pas un texte à lire, mais une base à reformuler à voix haute.</p>
 
@@ -674,76 +601,71 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   <div class="reveal" id="fullCorrection">
     <div class="correction-block">
       <div class="cb-head hn">Introduction</div>
-      <div class="cb-body"><p>Digital currency is likely to play an important role in the future, but I do not think it will completely replace cash. It offers major benefits, but it also creates significant economic and social risks. I will first consider its main advantages before examining its limits.</p></div>
+      <div class="cb-body"><p>Tariffs affect global supply chains in ways that go well beyond a simple price increase, and the severity of the effect can vary a great deal. They clearly raise costs somewhere in the chain, but who pays and how deeply the chain is restructured depends on the product and the country involved. I will first consider their direct cost effects before examining how they reshape sourcing decisions and their broader ripple effects.</p></div>
     </div>
 
     <div class="correction-block">
-      <div class="cb-head h1">Part 1. Advantages</div>
+      <div class="cb-head h1">Part 1. Direct cost effects</div>
       <div class="cb-body"><ul>
-        <li>Citizens already use contactless payments, online banking and smartphone apps.<span class="src">Source : connaissances</span></li>
-        <li>A CBDC could help central banks remain powerful as private firms increasingly control payments.<span class="src">Source : texte, §4</span></li>
-        <li>It could make payments faster and cheaper, especially for international transfers.<span class="src">Source : connaissances</span></li>
-        <li>It supports innovation — this echoes Schumpeter's idea of "creative destruction".<span class="src">Source : connaissances</span></li>
-        <li>In developing countries it could improve financial inclusion where banks are weak.<span class="src">Source : connaissances</span></li>
+        <li>Economists warn that the added tariff cost will largely fall on American businesses and consumers.<span class="src">Source : texte</span></li>
+        <li>A country is more vulnerable when its goods can be sourced elsewhere and the US is its main buyer, since importers can simply switch suppliers.<span class="src">Source : texte</span></li>
+        <li>By contrast, a country that dominates global production, such as China with laptops and smartphones, keeps leverage and does not need to lower its prices.<span class="src">Source : texte</span></li>
+        <li>Higher import costs are often passed on to retail prices, feeding inflation in the importing country.<span class="src">Source : connaissances</span></li>
       </ul></div>
     </div>
 
     <div class="correction-block">
-      <div class="cb-head h2">Part 2. Limits</div>
+      <div class="cb-head h2">Part 2. Structural effects on sourcing</div>
       <div class="cb-body"><ul>
-        <li>Cash remains convenient, reliable and anonymous — digital money may not offer the same privacy.<span class="src">Source : texte, §2</span></li>
-        <li>A cashless society could exclude poor, elderly and unbanked people.<span class="src">Source : texte, §4</span></li>
-        <li>Spending can be monitored by governments or private companies.<span class="src">Source : texte, §3 &amp; §6</span></li>
-        <li>Programmable money raises fears of social control — who can pay, where, for what.<span class="src">Source : texte, §7</span></li>
-        <li>As Stiglitz argues, technological progress can deepen exclusion without protective institutions.<span class="src">Source : connaissances</span></li>
+        <li>Multi-stage supply chains mean tariffs pile up: a vehicle assembled in Mexico can contain parts from the US and Canada.<span class="src">Source : texte</span></li>
+        <li>A tariff on one country in such a chain can therefore hurt factories in several countries at once.<span class="src">Source : texte</span></li>
+        <li>Companies respond by diversifying suppliers — for example, Apple shifting some production toward Vietnam and India to reduce its exposure to any single country.<span class="src">Source : connaissances</span></li>
+        <li>Infrastructure can also lock in a supplier despite tariffs, as with Canadian oil and gas moving through US pipelines built specifically for it.<span class="src">Source : texte</span></li>
       </ul></div>
     </div>
 
     <div class="correction-block">
-      <div class="cb-head h3">Part 3. Overall assessment</div>
+      <div class="cb-head h3">Part 3. Broader ripple effects &amp; overall assessment</div>
       <div class="cb-body"><ul>
-        <li>Digital currency should coexist with cash — citizens need both.<span class="src">Source : connaissances</span></li>
-        <li>A public debate is necessary before adopting state-backed digital money.<span class="src">Source : texte, §6</span></li>
-        <li>Strong legal rules should protect against surveillance and data misuse.<span class="src">Source : connaissances</span></li>
-        <li>Caps on CBDC holdings could reduce bank-run risk, but may discourage use.<span class="src">Source : texte, §5</span></li>
-        <li>As Keynes showed, confidence is central — digital money must build trust, not fear.<span class="src">Source : connaissances</span></li>
+        <li>Broad tariffs on close trade partners or essential goods can ripple through the whole economy, raising prices or costing jobs.<span class="src">Source : texte</span></li>
+        <li>Retaliatory tariffs can cut demand for exports — American exports to China fell 26 percent after China's 2018 retaliation.<span class="src">Source : texte</span></li>
+        <li>Multilateral rules, such as those of the WTO, exist precisely to prevent this kind of escalating tariff war.<span class="src">Source : connaissances</span></li>
+        <li>Overall, the severity of the disruption depends less on the tariff rate itself than on how substitutable the product is and who holds market leverage.<span class="src">Source : connaissances</span></li>
       </ul></div>
     </div>
 
     <div class="correction-block">
       <div class="cb-head hn">Conclusion</div>
-      <div class="cb-body"><p>Overall, digital currency is likely to become an important part of society, because economic life is already highly digital. But it is not the whole future: cash still protects privacy and accessibility. The best outcome is a balanced model where digital money coexists with cash, controlled by strong democratic rules. Its success will largely depend on regulation, accessibility and public trust.</p></div>
+      <div class="cb-body"><p>Overall, tariffs affect global supply chains on several levels at once: they shift costs toward whichever side has less market power, they push companies to redesign or diversify their sourcing, and they can trigger economy-wide ripple effects through retaliation. The depth of the disruption is never uniform — it depends on how easily a product can be replaced and how tightly production networks are already integrated across borders.</p></div>
     </div>
   </div>
 
 </main>
 
 <div class="print-only">
-  <h2 style="font-family:'Cormorant Garamond',serif;color:#0d1b2a;font-size:1.6rem">DSCG UE6 — Oral outline : Digital Currency</h2>
+  <h2 style="font-family:'Cormorant Garamond',serif;color:#0d1b2a;font-size:1.6rem">DSCG UE12 — Oral outline : Tariffs and Global Supply Chains</h2>
   <p style="font-style:italic;color:#555">Lycée Sidoine Apollinaire — support de révision, pas un texte à lire</p>
 </div>
 
 <div class="visit-count" id="visitCount"></div>
 
 <script>
-const STORE_KEY = 'lsa-oral-str-digitalcurrency-v1';
+const STORE_KEY = 'lsa-oral-str-production-v1';
 
-/* ── DATA ── */
 const IDEAS = [
-  {t:"Citizens already use contactless payments, online banking and smartphone apps.", a:'1', src:'ext'},
-  {t:"A CBDC could help central banks remain powerful as private firms control payments.", a:'1', src:'doc'},
-  {t:"In developing countries, digital money could improve financial inclusion.", a:'1', src:'ext'},
-  {t:"Cash remains convenient, reliable and anonymous.", a:'2', src:'doc'},
-  {t:"A cashless society would exclude poor, elderly and unbanked people.", a:'2', src:'doc'},
-  {t:"Spending could be monitored, raising surveillance and social-control fears.", a:'2', src:'doc'},
-  {t:"Digital money and cash should coexist so everyone keeps access.", a:'3', src:'ext'},
-  {t:"A public debate and strong democratic rules should frame any adoption.", a:'3', src:'doc'},
-  {t:"Caps on holdings and a focus on trust (Keynes) could ensure stability.", a:'3', src:'ext'}
+  {t:"Economists warn that the added tariff cost will largely fall on American businesses and consumers.", a:'1', src:'doc'},
+  {t:"A country is more vulnerable when its goods can be sourced elsewhere and the US is its main buyer, since importers can switch suppliers.", a:'1', src:'doc'},
+  {t:"Higher import costs are often passed on to retail prices, feeding inflation in the importing country.", a:'1', src:'ext'},
+  {t:"A country that dominates global production, such as China with laptops and smartphones, keeps leverage and does not need to lower its prices.", a:'2', src:'doc'},
+  {t:"A vehicle assembled in Mexico can contain parts from the US and Canada, so a tariff on one country hurts factories in all three.", a:'2', src:'doc'},
+  {t:"Companies respond to tariffs by diversifying suppliers, for example shifting some production toward Vietnam or India.", a:'2', src:'ext'},
+  {t:"Broad tariffs on close trade partners or essential goods can ripple through the whole economy, raising prices or costing jobs.", a:'3', src:'doc'},
+  {t:"Retaliatory tariffs can cut demand for exports, as when US exports to China fell 26 percent after China's 2018 retaliation.", a:'3', src:'doc'},
+  {t:"Multilateral rules, such as those of the WTO, exist precisely to prevent this kind of escalating tariff war.", a:'3', src:'ext'}
 ];
-const LABELS = {'1':'Advantages','2':'Limits','3':'Overall assessment'};
+const LABELS = {'1':'Direct cost effects','2':'Structural effects on sourcing','3':'Broader ripple effects & assessment'};
 const SRC_LABEL = {doc:'Source : texte', ext:'Source : connaissances'};
 
-/* ── SOURCE PANEL TOGGLE ── */
 function toggleSource(open){ document.getElementById('sourcePanel').classList.toggle('open',open); document.getElementById('sourceBackdrop').classList.toggle('open',open); }
 function printSource(){ document.body.classList.add('printing-source'); window.print(); }
 window.addEventListener('afterprint', ()=>document.body.classList.remove('printing-source'));
@@ -771,7 +693,6 @@ function renderNav(){
 function goStep(sel){ const el=document.querySelector(sel); if(!el) return; const target = el.closest('.ex-card,.roadmap-part') || el; target.scrollIntoView({behavior:'smooth',block:'start'}); }
 function updateProgress(){ renderNav(); }
 
-/* ── PERSISTENCE ── */
 function loadStore(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)||'{}'); }catch(e){ return {}; } }
 function saveField(el){
   const data = loadStore();
@@ -787,7 +708,6 @@ function restoreFields(){
 document.addEventListener('input', e=>{ if(e.target.matches('[data-persist]')) saveField(e.target); });
 document.addEventListener('change', e=>{ if(e.target.matches('[data-persist]')) saveField(e.target); });
 
-/* ── IDEA SORTING ── */
 const ideaState = {};
 function shuffleInPlace(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } }
 function buildIdeas(){
@@ -826,7 +746,6 @@ function sortIdea(i,choice,btn){
   }
 }
 
-/* ── MCQ ── */
 function checkMCQ(btn, ok, exId, explain){
   const card=document.getElementById(exId);
   card.querySelectorAll('.mcq-btn').forEach(b=>b.disabled=true);
@@ -843,13 +762,11 @@ function checkMCQ(btn, ok, exId, explain){
 
 function reveal(id){ const e=document.getElementById(id); e.classList.add('show'); e.scrollIntoView({behavior:'smooth',block:'nearest'}); }
 
-/* ── GENERIC HELPERS ── */
 function iconFor(l){ return l==='ok'?'✓':l==='warn'?'~':'!'; }
 function panel(lvl,title,bodyHtml){ return '<div class="fb-panel lvl-'+lvl+'"><div class="fb-panel-head"><span class="ic">'+iconFor(lvl)+'</span>'+title+'</div><div class="fb-panel-body">'+bodyHtml+'</div></div>'; }
 function liList(arr){ return '<ul>'+arr.map(([c,t])=>'<li class="'+c+'">'+t+'</li>').join('')+'</ul>'; }
 function wordCount(s){ return s.trim().split(/\s+/).filter(Boolean).length; }
 
-/* ── REFORMULATION ── */
 function analyzeReform(){
   const raw=document.getElementById('reformText').value.trim();
   const low=raw.toLowerCase();
@@ -859,17 +776,16 @@ function analyzeReform(){
   const items=[];
   let lvl='ok';
   const oneWord = /^(yes|no|oui|non)\b/i.test(raw);
-  if(oneWord){ lvl='bad'; items.push(['bad','Une question « to what extent » n\'accepte jamais un simple oui/non.']); }
+  if(oneWord){ lvl='bad'; items.push(['bad','Une question « how do X affect Y » n\'accepte jamais un simple oui/non.']); }
   else items.push(['good','Vous ne répondez pas par un simple oui/non — bien.']);
-  const degreeWords=['extent','how far','how much','likely','depend','whether','degree'];
+  const degreeWords=['depend','vary','how far','how much','mechanism','severity','extent'];
   const hasDegree = degreeWords.some(k=>low.includes(k));
-  if(hasDegree) items.push(['good','La notion de degré est présente dans votre reformulation.']);
-  else { if(lvl==='ok') lvl='warn'; items.push(['tip','Ajoutez une notion de degré (« how far », « whether », « depend on »).']); }
+  if(hasDegree) items.push(['good','La notion de mécanisme et de variation d\'intensité est présente.']);
+  else { if(lvl==='ok') lvl='warn'; items.push(['tip','Ajoutez une notion de mécanisme ou de variation (« depend on », « vary », « severity »).']); }
   grid.innerHTML = panel(lvl,'Reformulation', liList(items));
   mark('analyse');
 }
 
-/* ── CONNECT ── */
 function analyzeConnect(){
   const raw=document.getElementById('connectText').value.trim();
   const low=raw.toLowerCase();
@@ -878,18 +794,17 @@ function analyzeConnect(){
   if(wc<12){ grid.innerHTML=panel('bad','Trop court','Reliez un élément du document à une connaissance personnelle en une ou deux phrases (≈ 20–40 mots).'); return; }
   const items=[];
   let lvl='ok';
-  const docRef=['exclude','poor','elderly','unbanked','cashless','document','text','article'].some(k=>low.includes(k));
-  const knowRef=['example','such as','country','policy','company','technology','system'].some(k=>low.includes(k));
-  items.push([docRef?'good':'bad', docRef?'Le document est mobilisé.':'Reliez explicitement au fait du document (exclusion, cashless…).']);
-  items.push([knowRef?'good':'bad', knowRef?'Une connaissance personnelle est mobilisée.':'Ajoutez un exemple, une entreprise, un pays ou une politique connue.']);
+  const docRef=['china','dominat','leverage','tariff','document','text','article'].some(k=>low.includes(k));
+  const knowRef=['example','such as','apple','vietnam','india','company','diversif'].some(k=>low.includes(k));
+  items.push([docRef?'good':'bad', docRef?'Le document est mobilisé.':'Reliez explicitement au fait du document (China, leverage, dominance…).']);
+  items.push([knowRef?'good':'bad', knowRef?'Une connaissance personnelle est mobilisée.':'Ajoutez un exemple d\'entreprise ou de stratégie connue (ex : Apple, Vietnam).']);
   if(!docRef || !knowRef) lvl = docRef||knowRef ? 'warn' : 'bad';
   grid.innerHTML = panel(lvl,'Document + connaissances', liList(items));
   mark('connect');
 }
 
-/* ── SCAFFOLD (IDEA→EXPLAIN→EXAMPLE→LINK) ── */
-const THEMES1 = ['contactless','online banking','smartphone','central bank','relevant','powerful','faster','cheaper','international','schumpeter','innovation','inclusion','developing','unbanked','ecuador'];
-const THEMES2 = ['cash','convenient','reliable','anonymous','privacy','poor','elderly','vulnerable','unbanked','surveillance','monitor','track','programmable','control','stiglitz','inequalit'];
+const THEMES1 = ['tariff','cost','price','consumer','substitut','leverage','importer','china'];
+const THEMES2 = ['supply chain','cross','border','part','assembl','diversif','reshor','sourcing','mexico'];
 function analyzeScaffold(prefix, themes, label){
   const fields=['idea','explain','example','link'];
   const vals=fields.map(f=>document.getElementById(prefix+'-'+f).value.trim());
@@ -901,7 +816,7 @@ function analyzeScaffold(prefix, themes, label){
   const idea=vals[0], explain=vals[1], example=vals[2], link=vals[3];
   items.push([wordCount(idea)<=15?'good':'tip', wordCount(idea)<=15?'Idea énoncée clairement et brièvement.':'Idea un peu longue : gardez-la courte, une affirmation.']);
   items.push([wordCount(explain)>=5?'good':'bad', wordCount(explain)>=5?'Explication développée.':'Développez pourquoi / comment (Explain).']);
-  items.push([/for example|such as|e\.g\.|like/.test(example.toLowerCase()) || wordCount(example)>=4?'good':'tip', 'Un exemple concret est attendu (entreprise, pays, situation, chiffre).']);
+  items.push([/for example|such as|e\.g\.|like/.test(example.toLowerCase()) || wordCount(example)>=4?'good':'tip', 'Un exemple concret est attendu (produit, pays, entreprise, chiffre).']);
   items.push([/this shows|this suggests|therefore|this means|link/.test(link.toLowerCase()) || wordCount(link)>=4?'good':'tip', 'Le lien avec la question doit être explicite (« this shows that… »).']);
   const kwHit = themes.some(k=>all.includes(k));
   items.push([kwHit?'good':'tip', kwHit?'Votre argument mobilise le vocabulaire attendu pour cette partie.':'Vérifiez que votre argument correspond bien au thème de '+label+'.']);
@@ -911,7 +826,6 @@ function analyzeScaffold(prefix, themes, label){
   mark(prefix==='b1'?'build1':'build2');
 }
 
-/* ── INTRO BUILD ── */
 function analyzeIntroBuild(){
   const p=document.getElementById('int-position').value.trim();
   const i=document.getElementById('int-issue').value.trim();
@@ -922,16 +836,15 @@ function analyzeIntroBuild(){
   if(p.length<5){ items.push(['bad','Ligne 1 (position) manquante.']); lvl='bad'; } else items.push(['good','Position énoncée.']);
   if(i.length<5){ items.push(['bad','Ligne 2 (main issue) manquante.']); lvl='bad'; } else items.push(['good','Enjeu principal énoncé.']);
   if(s.length<5){ items.push(['bad','Ligne 3 (structure) manquante.']); lvl='bad'; } else items.push(['good','Annonce du plan présente.']);
-  const nuanceWords=['may','can','could','to some extent','depend','likely'];
+  const nuanceWords=['may','can','could','to some extent','depend','likely','vary'];
   const hasNuance = nuanceWords.some(k=>p.toLowerCase().includes(k));
   if(hasNuance) items.push(['good','La position est nuancée.']);
-  else { if(lvl==='ok') lvl='warn'; items.push(['tip','Nuancez votre position (may, could, likely, to some extent…).']); }
+  else { if(lvl==='ok') lvl='warn'; items.push(['tip','Nuancez votre position (may, could, likely, depend on…).']); }
   [p,i,s].forEach((t,idx)=>{ if(wordCount(t)>25){ if(lvl==='ok')lvl='warn'; items.push(['tip','Ligne '+(idx+1)+' un peu longue pour l\'oral : restez sous 25 mots.']); } });
   grid.innerHTML = panel(lvl,'Introduction orale', liList(items));
   mark('intro');
 }
 
-/* ── NUANCE ── */
 function analyzeNuance(){
   const raw=document.getElementById('nuanceText').value.trim();
   const low=raw.toLowerCase();
@@ -945,7 +858,6 @@ function analyzeNuance(){
   mark('nuance');
 }
 
-/* ── ROADMAP ── */
 function checkNoteLength(el){
   const tip=document.getElementById('tip-'+el.id);
   if(!tip) return;
@@ -962,7 +874,6 @@ function checkRoadmap(){
   mark('roadmap');
 }
 
-/* ── TIMER ── */
 let timerSeconds = 0, timerInterval = null, timerRunning = false;
 function renderTimer(){
   const m=Math.floor(timerSeconds/60), s=timerSeconds%60;
@@ -980,7 +891,6 @@ function toggleTimer(){
 }
 function resetTimer(){ clearInterval(timerInterval); timerRunning=false; timerSeconds=0; renderTimer(); document.getElementById('timerStart').textContent='Démarrer'; }
 
-/* ── CHECKLIST ── */
 function onCheck(){
   const boxes=document.querySelectorAll('#checklist input[type=checkbox]');
   const all=[...boxes].every(b=>b.checked);

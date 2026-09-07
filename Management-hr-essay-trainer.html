@@ -486,11 +486,12 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 
   <div class="ex-card" id="exPlan">
     <div class="ex-q">Which plan is the most logical for this question?</div>
+    <p class="section-sub" style="margin:-0.4rem 0 1rem">Les quatre options utilisent les mêmes idées du plan retenu. Une seule les organise dans un ordre qui construit un raisonnement.</p>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','R\u00e9sumer le document ne r\u00e9pond pas \u00e0 la question pos\u00e9e.')"><span class="letter">A</span> Summary of the article → personal opinion</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. Chaque partie couvre un grand domaine de difficult\u00e9 manag\u00e9riale, r\u00e9pondant directement \u00e0 \u00ab what challenges \u00bb.')"><span class="letter">B</span> Technology &amp; flexible work → Wellbeing &amp; retention → Diversity, inclusion &amp; sustainability</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Une histoire des th\u00e9ories du management ne r\u00e9pond pas \u00e0 la question pos\u00e9e ici.')"><span class="letter">C</span> History of management theory → conclusion</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','\u00c9num\u00e9rer des entreprises n\u2019est pas un plan argumentatif.')"><span class="letter">D</span> List of companies offering sabbaticals</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. On part des transformations concrètes de l’organisation du travail, on montre ensuite les tensions humaines qu’elles créent, puis on élargit aux engagements de plus long terme sur l’inclusion et la durabilité — chaque partie prépare la suivante.')"><span class="letter">A</span> Technology &amp; flexible work → Wellbeing &amp; retention → Diversity, inclusion &amp; sustainability</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Séduisant mais prématuré : évoquer l’épuisement et la fidélisation des salariés avant d’avoir montré quels changements concrets du travail les provoquent prive le raisonnement de sa cause.')"><span class="letter">B</span> Wellbeing &amp; retention → Technology &amp; flexible work → Diversity, inclusion &amp; sustainability</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Cela place l’enjeu le plus large et le plus abstrait en ouverture, avant même d’avoir montré les transformations concrètes qui le rendent nécessaire.')"><span class="letter">C</span> Diversity, inclusion &amp; sustainability → Technology &amp; flexible work → Wellbeing &amp; retention</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Presque : mais cela saute directement de la technologie aux enjeux de long terme sans passer par la tension la plus immédiate qu’elle crée — l’épuisement et la fidélisation des salariés.')"><span class="letter">D</span> Technology &amp; flexible work → Diversity, inclusion &amp; sustainability → Wellbeing &amp; retention</button>
     </div>
     <div class="feedback" id="exPlan-fb"></div>
   </div>
@@ -632,21 +633,8 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <li>Overall…</li><li>On balance…</li><li>I would therefore argue that…</li><li>To conclude…</li>
   </ul></details>
 
-  <!-- ═══ STEP 11 — ORAL CHALLENGE ═══ -->
-  <div class="section-title"><span class="section-num">11</span> Oral Challenge</div>
-  <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
-
-  <div class="ex-card">
-    <div class="ex-q">Speak now, from your roadmap above.</div>
-    <div class="timer-box">
-      <div class="timer-display" id="timerDisplay">0:00</div>
-      <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
-      <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
-    </div>
-  </div>
-
   <!-- ═══ STEP 12 — FINAL CHECKLIST ═══ -->
-  <div class="section-title"><span class="section-num">12</span> Final Checklist</div>
+  <div class="section-title"><span class="section-num">11</span> Final Checklist</div>
   <p class="section-sub">Cochez chaque point avant de considérer votre préparation terminée.</p>
 
   <div class="ex-card">
@@ -663,6 +651,19 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
       <label><input type="checkbox" id="ck10" data-persist onchange="onCheck()"> I nuanced my answer.</label>
       <label><input type="checkbox" id="ck11" data-persist onchange="onCheck()"> My conclusion clearly answers the question.</label>
       <label><input type="checkbox" id="ck12" data-persist onchange="onCheck()"> I used notes rather than reading a written text.</label>
+    </div>
+  </div>
+
+  <!-- ═══ STEP 11 — ORAL CHALLENGE ═══ -->
+  <div class="section-title"><span class="section-num">12</span> Oral Challenge</div>
+  <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
+
+  <div class="ex-card">
+    <div class="ex-q">Speak now, from your roadmap above.</div>
+    <div class="timer-box">
+      <div class="timer-display" id="timerDisplay">0:00</div>
+      <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
+      <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
     </div>
   </div>
 
@@ -761,8 +762,8 @@ const NAV_STEPS = [
   ['intro','INTRO','#exIntroMcq'],
   ['nuance','NUANCE','#exNuance'],
   ['roadmap','PREPARE','#rm-position'],
-  ['challenge','SPEAK','#timerDisplay'],
-  ['checklist','CHECK','#checklist']
+  ['checklist','CHECK','#checklist'],
+  ['challenge','SPEAK','#timerDisplay']
 ];
 const TOTAL = NAV_STEPS.length;
 const done = new Set();

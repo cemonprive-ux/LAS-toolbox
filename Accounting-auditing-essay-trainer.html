@@ -413,11 +413,12 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
 
   <div class="ex-card" id="exPlan">
     <div class="ex-q">Which plan is the most logical for this question?</div>
+    <p class="section-sub" style="margin:-0.4rem 0 1rem">Les quatre options utilisent les mêmes idées du plan retenu. Une seule les organise dans un ordre qui construit un raisonnement.</p>
     <div class="mcq-options">
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Une chronologie du reporting ne r\u00e9pond pas \u00e0 la question pos\u00e9e ici.')"><span class="letter">A</span> History of accounting standards → conclusion</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','\u00c9num\u00e9rer des organismes n\u2019est pas un plan argumentatif.')"><span class="letter">B</span> List of institutions involved in the ISSB</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. Chaque partie correspond \u00e0 une id\u00e9e g\u00e9n\u00e9rale qui r\u00e9pond directement \u00e0 \u00ab to what extent \u00bb, pas \u00e0 une liste de faits.')"><span class="letter">C</span> Advantages → Limits → Overall assessment</button>
-      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','R\u00e9sumer le document ne r\u00e9pond pas \u00e0 la question pos\u00e9e.')"><span class="letter">D</span> Summary of the document → personal opinion</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,true,'exPlan','Exact. On établit d’abord ce que les nouvelles normes apportent, on en expose ensuite les limites, puis on peut évaluer le degré réel de leur utilité — chaque partie nourrit l’évaluation finale.')"><span class="letter">A</span> Advantages → Limits → Overall assessment</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Séduisant mais prématuré : critiquer les limites d’un dispositif avant même d’avoir montré ce qu’il apporte prive l’auditeur de repères — les avantages doivent être établis en premier.')"><span class="letter">B</span> Limits → Advantages → Overall assessment</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Cela place la conclusion (l’évaluation du degré) en ouverture, ce qui revient à donner la réponse avant d’avoir pesé les arguments qui la justifient.')"><span class="letter">C</span> Overall assessment → Advantages → Limits</button>
+      <button class="mcq-btn" onclick="checkMCQ(this,false,'exPlan','Presque : mais l’évaluation globale doit tenir compte des limites, qui ne sont pas encore présentées à ce stade — l’évaluer avant de les exposer est prématuré.')"><span class="letter">D</span> Advantages → Overall assessment → Limits</button>
     </div>
     <div class="feedback" id="exPlan-fb"></div>
   </div>
@@ -555,19 +556,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
     <li>Overall…</li><li>On balance…</li><li>I would therefore argue that…</li><li>To conclude…</li>
   </ul></details>
 
-  <div class="section-title"><span class="section-num">11</span> Oral Challenge</div>
-  <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
-
-  <div class="ex-card">
-    <div class="ex-q">Speak now, from your roadmap above.</div>
-    <div class="timer-box">
-      <div class="timer-display" id="timerDisplay">0:00</div>
-      <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
-      <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
-    </div>
-  </div>
-
-  <div class="section-title"><span class="section-num">12</span> Final Checklist</div>
+  <div class="section-title"><span class="section-num">11</span> Final Checklist</div>
   <p class="section-sub">Cochez chaque point avant de considérer votre préparation terminée.</p>
 
   <div class="ex-card">
@@ -584,6 +573,18 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
       <label><input type="checkbox" id="ck10" data-persist onchange="onCheck()"> I nuanced my answer.</label>
       <label><input type="checkbox" id="ck11" data-persist onchange="onCheck()"> My conclusion clearly answers the question.</label>
       <label><input type="checkbox" id="ck12" data-persist onchange="onCheck()"> I used notes rather than reading a written text.</label>
+    </div>
+  </div>
+
+  <div class="section-title"><span class="section-num">12</span> Oral Challenge</div>
+  <p class="section-sub">Answer the discussion question orally using your notes only. Do not read a fully written answer. Use arguments from the document and your own knowledge.</p>
+
+  <div class="ex-card">
+    <div class="ex-q">Speak now, from your roadmap above.</div>
+    <div class="timer-box">
+      <div class="timer-display" id="timerDisplay">0:00</div>
+      <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
+      <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
     </div>
   </div>
 
@@ -679,8 +680,8 @@ const NAV_STEPS = [
   ['intro','INTRO','#exIntroMcq'],
   ['nuance','NUANCE','#exNuance'],
   ['roadmap','PREPARE','#rm-position'],
-  ['challenge','SPEAK','#timerDisplay'],
-  ['checklist','CHECK','#checklist']
+  ['checklist','CHECK','#checklist'],
+  ['challenge','SPEAK','#timerDisplay']
 ];
 const TOTAL = NAV_STEPS.length;
 const done = new Set();
