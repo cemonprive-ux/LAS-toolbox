@@ -62,15 +62,35 @@ a { color: inherit; }
 .question-box .q-label { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
 .question-box .q-text { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-style: italic; color: #fff; }
 
-/* ── PROGRESS ── */
-.progress-wrap { background: var(--navy-mid); padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,.08); position: sticky; top: 0; z-index: 50; }
-.progress-inner { max-width: 900px; margin: 0 auto; }
-.progress-label { display: flex; justify-content: space-between; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); margin-bottom: .45rem; }
-.progress-bar { height: 6px; background: rgba(255,255,255,.12); border-radius: 99px; overflow: hidden; }
-.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); border-radius: 99px; transition: width .5s cubic-bezier(.4,0,.2,1); }
-.progress-steps { display: flex; gap: .3rem; margin-top: .5rem; flex-wrap: wrap; }
-.progress-steps span { font-family: 'DM Mono', monospace; font-size: .6rem; color: rgba(255,255,255,.4); letter-spacing: .04em; }
-.progress-steps span:not(:last-child)::after { content: '→'; margin-left: .3rem; opacity: .5; }
+/* ── SOURCE PANEL ── */
+.source-toggle { display: inline-flex; align-items: center; gap: .45rem; background: rgba(255,255,255,.08); color: #fff; border: 1px solid rgba(255,255,255,.25); border-radius: 20px; padding: .45rem 1rem; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .04em; cursor: pointer; margin-top: 1.1rem; transition: all .18s; }
+.source-toggle:hover { border-color: var(--gold); background: rgba(255,255,255,.14); }
+.source-backdrop { position: fixed; inset: 0; background: rgba(13,27,42,.45); z-index: 190; opacity: 0; pointer-events: none; transition: opacity .2s; }
+.source-backdrop.open { opacity: 1; pointer-events: auto; }
+.source-panel { position: fixed; top: 0; left: 0; height: 100vh; width: 380px; max-width: 90vw; background: var(--paper); z-index: 200; box-shadow: 8px 0 30px rgba(13,27,42,.25); transform: translateX(-100%); transition: transform .25s cubic-bezier(.4,0,.2,1); display: flex; flex-direction: column; }
+.source-panel.open { transform: translateX(0); }
+.source-head { background: var(--navy); color: #fff; padding: .9rem 1.1rem; display: flex; align-items: center; gap: .6rem; font-family: 'DM Mono', monospace; font-size: .72rem; letter-spacing: .05em; text-transform: uppercase; flex-shrink: 0; }
+.source-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.source-head .sp-title { flex: 1; }
+.source-head button { background: none; border: 1px solid rgba(255,255,255,.3); color: #fff; border-radius: 6px; padding: .3rem .6rem; font-family: inherit; font-size: .68rem; cursor: pointer; }
+.source-head button:hover { border-color: var(--gold); }
+.source-body { padding: 1.2rem 1.3rem; overflow-y: auto; font-size: .87rem; line-height: 1.65; flex: 1; }
+.source-body p { margin-bottom: .85rem; }
+.source-body p.lede { font-weight: 600; color: var(--navy); font-size: .95rem; font-family: 'Cormorant Garamond', serif; }
+.source-body .src { font-size: .74rem; color: var(--muted); font-style: italic; border-top: 1px solid var(--border); padding-top: .7rem; margin-top: .3rem; word-break: break-all; }
+@media (max-width: 600px) { .source-panel { width: 100vw; max-width: 100vw; } }
+
+/* ── STEP NAV (progress) ── */
+.step-nav-wrap { background: var(--navy-mid); position: sticky; top: 0; z-index: 60; box-shadow: 0 2px 10px rgba(0,0,0,.08); }
+.step-nav { max-width: 900px; margin: 0 auto; display: flex; overflow-x: auto; scrollbar-width: none; }
+.step-nav::-webkit-scrollbar { display: none; }
+.step-pill { flex: 1; min-width: 84px; display: flex; flex-direction: column; align-items: center; gap: .25rem; padding: .6rem .4rem; background: none; border: none; color: rgba(255,255,255,.55); cursor: pointer; font-family: 'DM Mono', monospace; font-size: .62rem; letter-spacing: .03em; text-transform: uppercase; border-bottom: 3px solid transparent; transition: all .15s; }
+.step-pill .num { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .72rem; border: 1.5px solid rgba(255,255,255,.35); }
+.step-pill.active { color: #fff; border-bottom-color: var(--gold); }
+.step-pill.active .num { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.step-pill.done .num { background: rgba(46,125,94,.85); border-color: transparent; color: #fff; }
+.step-pill.done .num::before { content: '✓'; }
+.step-pill.done .num span { display: none; }
 
 /* ── MAIN ── */
 .main { max-width: 900px; margin: 0 auto; padding: 2.2rem 2rem 4rem; }
@@ -237,10 +257,14 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   .question-box .q-text { font-size: 1.15rem; }
 }
 @media print {
-  .topbar, .site-header, .progress-wrap, .section-title, .section-sub, .ex-card, .btn, .toolbar, .no-print { display: none !important; }
+  .topbar, .site-header, .step-nav-wrap, .section-title, .section-sub, .ex-card, .btn, .toolbar, .no-print, .source-toggle, .source-backdrop { display: none !important; }
   .print-only { display: block !important; }
   body { background: white; }
   .main { padding: 0; max-width: 100%; }
+  .source-panel { display: none; }
+  body.printing-source .print-only { display: none !important; }
+  body.printing-source .source-panel { display: block !important; position: static; transform: none; width: 100%; max-width: 100%; height: auto; box-shadow: none; }
+  body.printing-source .source-head button { display: none; }
 }
 </style>
 </head>
@@ -271,16 +295,27 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
       <div class="q-label">Discussion question</div>
       <div class="q-text">To what extent is digital currency the future of society?</div>
     </div>
+    <button class="source-toggle" onclick="toggleSource(true)">📄 Show source text</button>
   </div>
 </header>
 
-<div class="progress-wrap">
-  <div class="progress-inner">
-    <div class="progress-label"><span>Progression</span><span id="progressLabel">0 / 12 étapes</span></div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
-    <div class="progress-steps"><span>ANALYSE</span><span>BRAINSTORM</span><span>CONNECT</span><span>BUILD</span><span>ORGANISE</span><span>PREPARE</span><span>SPEAK</span><span>CHECK</span></div>
+<aside class="source-panel" id="sourcePanel">
+  <div class="source-head"><div class="dot"></div><span class="sp-title">Source Document</span><button onclick="printSource()">🖶 Imprimer</button><button onclick="toggleSource(false)">✕</button></div>
+  <div class="source-body">
+    <p class="lede">The Guardian view on the digital pound: an impetuous idea with a risky momentum of its own</p>
+    <p>Two years ago, the House of Lords looked into whether the Bank of England should issue digital pounds to be held in electronic wallets. Peers were unconvinced, asking if this wasn't “a solution in search of a problem”. Last December, MPs on the Treasury select committee said the same thing. The government's response, however, was to tell the public to prepare for a “Britcoin” to be in use by the end of the decade.</p>
+    <p>Physical money has been around for thousands of years for good reason. Cash is convenient, reliable and anonymous. It seems unlikely that these advantages could be replicated online. State-backed e-cash might look inevitable to officials who say money is already digital, pointing to cryptocurrencies and smartphone payments. But central bank digital currencies (CBDCs) are different. A Britcoin would shift the management burden from commercial banks to Threadneedle Street.</p>
+    <p>Paul Tucker, a former deputy Bank governor, argued in his book Global Discord that the West is responding to China's digital renminbi, which potentially gives the state social control through direct access to banking transactions. Yet the UK government can already spy on commercial bank accounts. It doesn't do so without good reason. Brett Scott, a former broker and the author of Cloudmoney, accepts that there is a geopolitical rivalry. The difference, he says, is that private corporations can push their agendas harder in the West than in Beijing.</p>
+    <p>During the pandemic, finance and technology firms accelerated moves towards a cashless society, which saw hitherto unimaginable levels of surveillance and data extraction. A world without notes and coins would hurt those least able to afford it. Poor and elderly people often prefer to budget with cash. A million UK adults don't have a bank account. The Royal Society of Arts calculated that going cash-free risked 10 million Britons losing control of their finances. The prospect of a cashless society also unnerved central banks. They worried about being dominated by commercial banks. Their answer: central banks should have their own digital currencies.</p>
+    <p>However, if central banks pushed CBDCs, they risked destabilising the financial institutions they oversaw. Central banks can't go bankrupt. People would vote with their feet if they could effectively open accounts at the Bank of England. According to a 2019 survey of 23 central banks, 82% of respondents worried that digital currencies could cause runs on banks. To address concerns, caps on CBDC holdings have been suggested. But limits may put off many from using digital pounds.</p>
+    <p>Mr Scott rightly compares the digitalisation of money to Uberisation — a process where convenience is traded for societal threats that older behaviours kept in check. That's why we need a debate rather than passively accepting state-backed digital money. Facebook's global cryptocurrency, Diem, was killed off by money-laundering concerns. But pervasive monitoring of spending changes society's psychology for the worse.</p>
+    <p>Right-wing conspiracy theories have been launched by excitable talk about the potential to place conditions on who can use digital money, for what, and with whom. Technically feasible? Eventually. Politically realisable? Gradually. Desirable? Well, that depends on your perspective. Maybe in developing countries, a digital central bank currency could be used — as was attempted briefly in Ecuador — to stymie an overly powerful, and US-aligned, domestic finance sector. But for the UK, it is an idea whose time has yet to come.</p>
+    <p class="src">The Guardian, 12 February 2024 — theguardian.com/commentisfree/2024/feb/12/the-guardian-view-on-the-digital-pound-an-impetuous-idea-with-a-risky-momentum-of-its-own</p>
   </div>
-</div>
+</aside>
+<div class="source-backdrop" id="sourceBackdrop" onclick="toggleSource(false)"></div>
+
+<div class="step-nav-wrap"><nav class="step-nav" id="stepNav"></nav></div>
 
 <main class="main">
 
@@ -525,26 +560,38 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   <div class="roadmap-part">
     <h5>My position</h5>
     <div class="roadmap-fields"><textarea id="rm-position" data-persist oninput="checkNoteLength(this)" placeholder="keywords only"></textarea><div class="note-tip" id="tip-rm-position">Keep your notes short. You should speak from your notes, not read them.</div></div>
+    <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-position-model')">Possible answer</button></div>
+    <div class="reveal" id="rm-position-model"><div class="model-box"><p>important role — but not fully replace cash</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Introduction</h5>
     <div class="roadmap-fields"><textarea id="rm-intro" data-persist oninput="checkNoteLength(this)" placeholder="keywords only"></textarea><div class="note-tip" id="tip-rm-intro">Keep your notes short. You should speak from your notes, not read them.</div></div>
+    <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-intro-model')">Possible answer</button></div>
+    <div class="reveal" id="rm-intro-model"><div class="model-box"><p>benefits vs risks — plan: advantages / limits / assessment</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Part 1 — Advantages <span class="part-tag tag-1">argument · example</span></h5>
     <div class="roadmap-fields"><textarea id="rm-p1" data-persist oninput="checkNoteLength(this)" placeholder="argument — example"></textarea><div class="note-tip" id="tip-rm-p1">Keep your notes short. You should speak from your notes, not read them.</div></div>
+    <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-p1-model')">Possible answer</button></div>
+    <div class="reveal" id="rm-p1-model"><div class="model-box t1"><p>faster/cheaper payments, financial inclusion — e.g. M-Pesa Kenya</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Part 2 — Limits <span class="part-tag tag-2">argument · example</span></h5>
     <div class="roadmap-fields"><textarea id="rm-p2" data-persist oninput="checkNoteLength(this)" placeholder="argument — example"></textarea><div class="note-tip" id="tip-rm-p2">Keep your notes short. You should speak from your notes, not read them.</div></div>
+    <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-p2-model')">Possible answer</button></div>
+    <div class="reveal" id="rm-p2-model"><div class="model-box t2"><p>exclusion, surveillance, social control — e.g. unbanked adults, §4</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Part 3 — Overall assessment <span class="part-tag tag-3">optional</span></h5>
     <div class="roadmap-fields"><textarea id="rm-p3" data-persist oninput="checkNoteLength(this)" placeholder="argument — example"></textarea><div class="note-tip" id="tip-rm-p3">Keep your notes short. You should speak from your notes, not read them.</div></div>
+    <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-p3-model')">Possible answer</button></div>
+    <div class="reveal" id="rm-p3-model"><div class="model-box t3"><p>coexist with cash, strong rules, trust (Keynes)</p></div></div>
   </div>
   <div class="roadmap-part">
     <h5>Conclusion</h5>
     <div class="roadmap-fields"><textarea id="rm-concl" data-persist oninput="checkNoteLength(this)" placeholder="final answer / nuance / condition"></textarea><div class="note-tip" id="tip-rm-concl">Keep your notes short. You should speak from your notes, not read them.</div></div>
+    <div class="toolbar"><button class="btn ghost" onclick="reveal('rm-concl-model')">Possible answer</button></div>
+    <div class="reveal" id="rm-concl-model"><div class="model-box"><p>important part, not the whole future — depends on regulation, trust</p></div></div>
   </div>
   <div class="toolbar"><button class="btn gold" onclick="checkRoadmap()">Vérifier mes notes</button></div>
   <div class="feedback" id="roadmap-fb"></div>
@@ -695,15 +742,33 @@ const IDEAS = [
 const LABELS = {'1':'Advantages','2':'Limits','3':'Overall assessment'};
 const SRC_LABEL = {doc:'Source : texte', ext:'Source : connaissances'};
 
-/* ── PROGRESS ── */
-const TOTAL = 12;
+/* ── SOURCE PANEL TOGGLE ── */
+function toggleSource(open){ document.getElementById('sourcePanel').classList.toggle('open',open); document.getElementById('sourceBackdrop').classList.toggle('open',open); }
+function printSource(){ document.body.classList.add('printing-source'); window.print(); }
+window.addEventListener('afterprint', ()=>document.body.classList.remove('printing-source'));
+const NAV_STEPS = [
+  ['analyse','ANALYSE','#exInstr'],
+  ['qtype','TYPE','#exQtype'],
+  ['sort','BRAINSTORM','#ideaList'],
+  ['connect','CONNECT','#exConnect'],
+  ['build1','BUILD 1','#exBuild1'],
+  ['build2','BUILD 2','#exBuild2'],
+  ['organise','ORGANISE','#exPlan'],
+  ['intro','INTRO','#exIntroMcq'],
+  ['nuance','NUANCE','#exNuance'],
+  ['roadmap','PREPARE','#rm-position'],
+  ['challenge','SPEAK','#timerDisplay'],
+  ['checklist','CHECK','#checklist']
+];
+const TOTAL = NAV_STEPS.length;
 const done = new Set();
 function mark(id){ done.add(id); updateProgress(); }
-function updateProgress(){
-  const n = done.size;
-  document.getElementById('progressLabel').textContent = n + ' / ' + TOTAL + ' étapes';
-  document.getElementById('progressFill').style.width = Math.min(100,(n/TOTAL)*100) + '%';
+function renderNav(){
+  const nav=document.getElementById('stepNav');
+  nav.innerHTML = NAV_STEPS.map((s,i)=>'<button class="step-pill'+(done.has(s[0])?' done':'')+'" onclick="goStep(\''+s[2]+'\')"><span class="num"><span>'+(i+1)+'</span></span>'+s[1]+'</button>').join('');
 }
+function goStep(sel){ const el=document.querySelector(sel); if(!el) return; const target = el.closest('.ex-card,.roadmap-part') || el; target.scrollIntoView({behavior:'smooth',block:'start'}); }
+function updateProgress(){ renderNav(); }
 
 /* ── PERSISTENCE ── */
 function loadStore(){ try{ return JSON.parse(localStorage.getItem(STORE_KEY)||'{}'); }catch(e){ return {}; } }
@@ -926,7 +991,7 @@ function onCheck(){
 buildIdeas();
 restoreFields();
 renderTimer();
-updateProgress();
+renderNav();
 onCheck();
 </script>
 <script>(function(){var k=(location.pathname.split("/").pop()||"index").replace(".html","");var e=document.getElementById("visitCount");if(e){e.innerHTML='<img src="https://api.visitorbadge.io/api/visitors?path=lsa-toolbox-'+encodeURIComponent(k)+'&label=Visites&countColor=%23c8a84b&labelColor=%230f1a33&style=flat-square" alt="compteur de visites">'}})();</script>
