@@ -635,7 +635,7 @@ textarea:focus, input[type=text]:focus { outline: none; border-color: var(--gold
   <div class="ex-card">
     <div class="ex-q">Speak now, from your roadmap above.</div>
     <div class="timer-box">
-      <div class="timer-display" id="timerDisplay">3:00</div>
+      <div class="timer-display" id="timerDisplay">0:00</div>
       <button class="btn gold" id="timerStart" onclick="toggleTimer()">Démarrer</button>
       <button class="btn ghost" onclick="resetTimer()">Réinitialiser</button>
     </div>
@@ -962,12 +962,11 @@ function checkRoadmap(){
 }
 
 /* ── TIMER ── */
-let timerSeconds = 180, timerInterval = null, timerRunning = false;
+let timerSeconds = 0, timerInterval = null, timerRunning = false;
 function renderTimer(){
   const m=Math.floor(timerSeconds/60), s=timerSeconds%60;
   const d=document.getElementById('timerDisplay');
   d.textContent = m+':'+(s<10?'0':'')+s;
-  d.classList.toggle('low', timerSeconds<=30);
 }
 function toggleTimer(){
   const btn=document.getElementById('timerStart');
@@ -975,11 +974,10 @@ function toggleTimer(){
   timerRunning=true; btn.textContent='Pause';
   mark('challenge');
   timerInterval=setInterval(()=>{
-    if(timerSeconds<=0){ clearInterval(timerInterval); timerRunning=false; btn.textContent='Terminé'; return; }
-    timerSeconds--; renderTimer();
+    timerSeconds++; renderTimer();
   },1000);
 }
-function resetTimer(){ clearInterval(timerInterval); timerRunning=false; timerSeconds=180; renderTimer(); document.getElementById('timerStart').textContent='Démarrer'; }
+function resetTimer(){ clearInterval(timerInterval); timerRunning=false; timerSeconds=0; renderTimer(); document.getElementById('timerStart').textContent='Démarrer'; }
 
 /* ── CHECKLIST ── */
 function onCheck(){
