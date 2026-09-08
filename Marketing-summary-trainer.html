@@ -129,6 +129,8 @@ textarea{min-height:80px}
 .help-panel.show{display:block}
 .help-panel ul{list-style:none}
 .help-panel li{padding:.25rem 0;font-family:'Source Serif 4',Georgia,serif;font-size:.8rem;color:var(--navy)}
+.help-sub{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:.7rem 0 .2rem}
+.help-sub:first-child{margin-top:0}
 .fb-grid{display:grid;gap:.8rem}
 .fb-panel{border:1px solid var(--border);border-radius:9px;background:#fff;overflow:hidden}
 .fb-panel-head{padding:.65rem .95rem;font-size:.85rem;font-weight:600;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
@@ -282,28 +284,29 @@ textarea{min-height:80px}
       <div class="step-head"><div class="step-kicker">Step 3 / 7</div><h2>Condense</h2>
         <p class="step-intro">Several sentences can often collapse into one. Watch how a detailed passage becomes a single idea — then try it yourself.</p></div>
 
-      <div class="card"><h3>3.1 — Worked example</h3>
+      <div class="card"><h3>3.0 — Worked example</h3>
+        <p class="step-intro" style="margin-top:0">Study how this example is solved before you try the next ones yourself.</p>
         <div class="flow-step">Original</div>
         <div class="quote">Companies such as Amazon, Walmart and Target have decided some items are not worth the cost or hassle of getting back. Think a $20 T-shirt that might cost $30 to recover, or single-use items like plastic straws that are difficult to resell.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Remove the details</div>
         <p class="field-lbl">Tick the sentences that are examples illustrating the claim — not the core claim itself.</p>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> A $20 T-shirt might cost $30 to recover.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> Single-use items like plastic straws are difficult to resell.</label>
-        <div class="fb" id="cA-details-fb"></div>
+        <label class="chk-row"><input type="checkbox" checked disabled> A $20 T-shirt might cost $30 to recover.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> Single-use items like plastic straws are difficult to resell.</label>
+        <div class="fb show ok">Correct — both these sentences are illustrative examples; keep only the general idea below.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> Retailers never accept returns on clothing</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">B</span> Plastic straws are the most commonly returned product</button>
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">C</span> Retailers keep items when recovery costs exceed their value</button>
+          <button class="opt-btn" disabled><span class="ltr">A</span> Retailers never accept returns on clothing</button>
+          <button class="opt-btn" disabled><span class="ltr">B</span> Plastic straws are the most commonly returned product</button>
+          <button class="opt-btn correct" disabled><span class="ltr">C</span> Retailers keep items when recovery costs exceed their value</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
-        <div class="condensed-box" id="cA-result"><strong>Condensed sentence —</strong> Retailers let customers keep certain items instead of shipping them back when the cost or risk of recovering them outweighs their value.</div>
+        <div class="condensed-box show" id="cA-result"><strong>Condensed sentence —</strong> Retailers let customers keep certain items instead of shipping them back when the cost or risk of recovering them outweighs their value.</div>
       </div>
 
-      <div class="card"><h3>3.2 — Now you try</h3>
+      <div class="card"><h3>3.1 — Now you try</h3>
         <div class="flow-step">Original</div>
         <div class="quote">Shoppers who enjoyed making purchases online became accustomed to loading up their baskets with the intent of returning items they ended up not liking. Shopping online grew significantly during the COVID-19 pandemic, and retail companies have talked about returns becoming more expensive to process due to growing volume, rising inflation and labor costs.</div>
         <div class="flow-arrow">↓</div>
@@ -323,11 +326,31 @@ textarea{min-height:80px}
         <div class="condensed-box" id="cB-result"><strong>Condensed sentence —</strong> Growing return volumes and processing costs, fuelled by pandemic-era online shopping habits, are pushing retailers to tighten previously liberal return policies.</div>
       </div>
 
+      <div class="card"><h3>3.2 — Now you try</h3>
+        <div class="flow-step">Original</div>
+        <div class="quote">Retailers use algorithms weighing customer trust, shipping costs and product demand to decide who receives a returnless refund. Amazon, for example, extended the returnless refund option to third-party sellers on its platform in August.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Remove the details</div>
+        <label class="chk-row"><input type="checkbox" data-correct="0" onchange="condenseCheck('cC')"> Retailers use algorithms weighing customer trust, shipping costs and product demand to decide who receives a returnless refund.</label>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> Amazon, for example, extended the returnless refund option to third-party sellers on its platform in August.</label>
+        <div class="fb" id="cC-details-fb"></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Find the common idea</div>
+        <div class="opts" id="cC-common">
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">A</span> Only Amazon offers returnless refunds</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cC')"><span class="ltr">B</span> Retailers decide returnless refunds algorithmically, based on data</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">C</span> Returnless refunds are given to every customer automatically</button>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Condense</div>
+        <div class="condensed-box" id="cC-result"><strong>Condensed sentence —</strong> Retailers increasingly use algorithms — weighing factors like customer trust and shipping cost — to decide who gets a returnless refund, a policy now extending to third-party sellers too.</div>
+      </div>
+
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about return fraud to the right label.</p>
-        <div class="match-row"><span>"Last year, exactly 14% of returns were fraudulent, costing retailers $101 billion, per a joint NRF and Appriss Retail report."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row"><span>"Return fraud, from returning worn clothing to organised scams, costs retailers over $100 billion a year."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"Fraud is a growing problem for many retailers today."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"Last year, exactly 14% of returns were fraudulent, costing retailers $101 billion, per a joint NRF and Appriss Retail report."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row"><span>"Return fraud, from returning worn clothing to organised scams, costs retailers over $100 billion a year."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"The same NRF and Appriss Retail report found wardrobing — buying, wearing and returning clothing — behind a growing share of that fraud."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>
@@ -356,7 +379,7 @@ textarea{min-height:80px}
         <div class="quote" id="r2-model" style="display:none;border-left-color:var(--gold);background:var(--warn-bg);margin-top:.8rem"><strong>Model —</strong> Algorithms are deployed by retailers to determine who gets a returnless refund.</div>
       </div>
 
-      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three retailers share something in common. Name the category in one or two words.</div>
+      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three retailers share something in common. Name the category in a few words.</div>
         <div class="quote">H&amp;M · Zara · J. Crew</div>
         <input class="txt" id="r3" placeholder="One umbrella term…">
         <button class="btn" onclick="checkReformulate('r3','r3-fb',['clothing retailer','fashion retailer','apparel retailer','clothing brand','fashion brand'],null)">Check</button>
@@ -378,7 +401,7 @@ textarea{min-height:80px}
 
     <div class="step-panel" data-step="organise">
       <div class="step-head"><div class="step-kicker">Step 5 / 7</div><h2>Organise</h2>
-        <p class="step-intro">This is your plan, built from the work you've just done. Edit the wording if you like, and use the arrows to reorder the main ideas.</p></div>
+        <p class="step-intro">This is your plan, built from the work you've just done. <span style="color:var(--wrong);font-weight:700">EDIT</span> the wording if you like, and use the arrows to <span style="color:var(--wrong);font-weight:700">REORDER</span> the main ideas.</p></div>
       <div class="card">
         <div class="plan-field"><div class="lbl">Topic</div><textarea id="planTopic" style="min-height:44px"></textarea></div>
         <div class="plan-field"><div class="lbl">Author's position</div><textarea id="planPosition" style="min-height:44px"></textarea></div>
@@ -396,10 +419,16 @@ textarea{min-height:80px}
         <div class="field-lbl">Your summary</div>
         <textarea id="summaryText" style="min-height:220px" placeholder="Write your summary here, in your own words…" oninput="onSummaryInput()"></textarea>
         <div class="wc-row"><span class="wc-badge" id="wcBadge">0 words</span><button class="btn ghost small" onclick="toggleHelp()">Need help?</button></div>
-        <div class="help-panel" id="helpPanel"><ul>
-          <li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
-          <li>Another point is that…</li><li>Finally, …</li><li>The article concludes that…</li>
-        </ul></div>
+        <div class="help-panel" id="helpPanel">
+          <div class="help-sub">Structure</div>
+          <ul><li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
+          <li>Another point is that…</li><li>Finally, …</li><li>The article concludes that…</li></ul>
+          <div class="help-sub">Content — ideas to include</div>
+          <ul><li>Retailers increasingly let customers keep low-value items rather than pay to recover them.</li>
+          <li>Rising return volumes and costs are pushing retailers to tighten once-liberal policies.</li>
+          <li>Return fraud is a significant and growing cost for retailers.</li>
+          <li>Overall assessment: not all frequent returners are unprofitable customers.</li></ul>
+        </div>
       </div>
       <div class="footer-nav"><button class="btn ghost" onclick="goStep(4)">← Back</button><button class="btn gold" onclick="goStep(6)">Continue → Check</button></div>
     </div>
@@ -488,12 +517,12 @@ function checkMCQ(btn,ok,cardId,explain){
 
 const KOLO=[
 {t:"Returnless refunds let customers keep unwanted items and get refunded, saving retailers the cost and hassle of processing returns.",keep:true,why:"The article's central claim — belongs in the summary."},
-{t:"A $20 T-shirt might cost $30 in shipping and handling to recover.",keep:false,why:"A specific illustrative figure — generalise it, don't quote it."},
 {t:"Retailers use algorithms weighing customer trust, shipping costs and product demand to decide who receives a returnless refund.",keep:true,why:"The key mechanism explaining how the decision is made."},
+{t:"A $20 T-shirt might cost $30 in shipping and handling to recover.",keep:false,why:"A specific illustrative figure — generalise it, don't quote it."},
 {t:"Amazon extended the returnless refund option to third-party sellers on its platform in August.",keep:false,why:"A specific example — illustrative, not a separate main idea."},
 {t:"Growing return volumes and processing costs, fuelled by pandemic-era online shopping habits, are pushing retailers to tighten previously liberal return policies.",keep:true,why:"An important point about why policies are changing."},
-{t:"Roughly 14% of returns were fraudulent last year, costing retailers $101 billion.",keep:false,why:"A supporting statistic for the fraud point — generalise it, don't quote it."},
 {t:"Return fraud, from returning worn clothing to organised scams, is a growing cost for retailers.",keep:true,why:"The general point the statistic above illustrates — worth keeping."},
+{t:"Roughly 14% of returns were fraudulent last year, costing retailers $101 billion.",keep:false,why:"A supporting statistic for the fraud point — generalise it, don't quote it."},
 {t:"H&M, Zara and J. Crew started charging customers return fees in the past year.",keep:false,why:"Specific named examples — illustrative, not a separate main idea."},
 {t:"Frequent returners are not necessarily unprofitable — retailers increasingly distinguish \"good returners\" who buy far more than they send back.",keep:true,why:"The article's conclusion."}
 ];
@@ -537,9 +566,9 @@ function checkCalibration(){
   const a1=document.getElementById('cal1').value,a2=document.getElementById('cal2').value,a3=document.getElementById('cal3').value;
   const fb=document.getElementById('cal-fb');
   if(!a1||!a2||!a3){fb.className='fb show no';fb.innerHTML='Please answer all three.';return;}
-  const correct=(a1==='detailed')+(a2==='ok')+(a3==='vague');
-  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> exactly the right level of detail for a summary sits between "too detailed" and "too vague".';}
-  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentence 1 is too detailed, sentence 2 is appropriate, sentence 3 is too vague.';}
+  const correct=(a1==='detailed')+(a2==='ok')+(a3==='detailed');
+  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> a good summary sentence stays general — specific figures belong to the source text, not the summary.';}
+  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentences 1 and 3 are too detailed, sentence 2 is appropriate.';}
   state.done.condense=true; save(); renderNav();
 }
 

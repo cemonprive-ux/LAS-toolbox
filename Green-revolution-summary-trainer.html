@@ -127,6 +127,8 @@ textarea{min-height:80px}
 .help-panel{display:none;background:var(--ice);border-radius:8px;padding:.9rem 1rem;margin-top:.8rem;font-size:.84rem}
 .help-panel.show{display:block}
 .help-panel ul{list-style:none}
+.help-sub{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:.7rem 0 .2rem}
+.help-sub:first-child{margin-top:0}
 .help-panel li{padding:.25rem 0;font-family:'Source Serif 4',Georgia,serif;font-size:.8rem;color:var(--navy)}
 .fb-grid{display:grid;gap:.8rem}
 .fb-panel{border:1px solid var(--border);border-radius:9px;background:#fff;overflow:hidden}
@@ -277,29 +279,30 @@ textarea{min-height:80px}
       <div class="step-head"><div class="step-kicker">Step 3 / 7</div><h2>Condense</h2>
         <p class="step-intro">Several sentences can often collapse into one. Watch how a detailed passage becomes a single idea — then try it yourself.</p></div>
 
-      <div class="card"><h3>3.1 — Worked example</h3>
+      <div class="card"><h3>3.0 — Worked example</h3>
+        <p class="step-intro" style="margin-top:0">Study how this example is solved before you try the next ones yourself.</p>
         <div class="flow-step">Original</div>
         <div class="quote">Businesses face real barriers to making sustainable changes. Consumers are concerned about non-recyclable packaging and complex recycling rules. The report specifically names the lack of government financial support as a key obstacle.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Remove the details</div>
         <p class="field-lbl">Tick the sentences that are examples, figures or secondary sources — not the core claim itself.</p>
-        <label class="chk-row"><input type="checkbox" data-correct="0" onchange="condenseCheck('cA')"> Businesses face real barriers to making sustainable changes.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> Consumers are concerned about non-recyclable packaging and complex recycling rules.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> The report specifically names the lack of government financial support as a key obstacle.</label>
-        <div class="fb" id="cA-details-fb"></div>
+        <label class="chk-row"><input type="checkbox" disabled> Businesses face real barriers to making sustainable changes.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> Consumers are concerned about non-recyclable packaging and complex recycling rules.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> The report specifically names the lack of government financial support as a key obstacle.</label>
+        <div class="fb show ok">Correct — the first sentence is the core claim; the other two are examples/figures to drop.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> Consumer demand drives organic product growth</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">B</span> Green brand marketing budgets are shrinking</button>
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">C</span> Unclear rules and lack of support hinder green action</button>
+          <button class="opt-btn" disabled><span class="ltr">A</span> Consumer demand drives organic product growth</button>
+          <button class="opt-btn" disabled><span class="ltr">B</span> Green brand marketing budgets are shrinking</button>
+          <button class="opt-btn correct" disabled><span class="ltr">C</span> Unclear rules and lack of support hinder green action</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
-        <div class="condensed-box" id="cA-result"><strong>Condensed sentence —</strong> Businesses face real barriers to sustainable change, especially a lack of government financial support and unclear recycling guidance.</div>
+        <div class="condensed-box show" id="cA-result"><strong>Condensed sentence —</strong> Businesses face real barriers to sustainable change, especially a lack of government financial support and unclear recycling guidance.</div>
       </div>
 
-      <div class="card"><h3>3.2 — Now you try</h3>
+      <div class="card"><h3>3.1 — Now you try</h3>
         <div class="flow-step">Original</div>
         <div class="quote">Shoppers are more likely to act sustainably if they believe many others are doing the same. Richard Strachan, the managing director of 3 Sided Cube, said reprimanding people doesn't work if the aim is to reach a mass audience.</div>
         <div class="flow-arrow">↓</div>
@@ -319,11 +322,32 @@ textarea{min-height:80px}
         <div class="condensed-box" id="cB-result"><strong>Condensed sentence —</strong> The report recommends a "nudge" approach, using technology and the sense of a growing trend, rather than reprimanding people.</div>
       </div>
 
+      <div class="card"><h3>3.2 — Now you try</h3>
+        <div class="flow-step">Original</div>
+        <div class="quote">Digital technology can help consumers make smarter, greener decisions. Feeling part of a wider sustainability-conscious community also motivates people to act. The report highlights apps and platforms that consumers already use to track their own environmental impact.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Remove the details</div>
+        <label class="chk-row"><input type="checkbox" data-correct="0" onchange="condenseCheck('cC')"> Digital technology can help consumers make smarter, greener decisions.</label>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> Feeling part of a wider sustainability-conscious community also motivates people to act.</label>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> The report highlights apps and platforms that consumers already use to track their own environmental impact.</label>
+        <div class="fb" id="cC-details-fb"></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Find the common idea</div>
+        <div class="opts" id="cC-common">
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">A</span> Younger consumers spend more on eco-friendly products</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">B</span> Government subsidies drive most green purchases</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cC')"><span class="ltr">C</span> Technology and a sense of belonging both drive greener choices</button>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Condense</div>
+        <div class="condensed-box" id="cC-result"><strong>Condensed sentence —</strong> Digital technology and a sense of belonging to a wider sustainability-conscious community both help consumers make greener choices.</div>
+      </div>
+
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about brand peer pressure to the right label.</p>
-        <div class="match-row"><span>"If one supermarket cuts plastic packaging by 12% in a year, three rivals will match the pledge within six months."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row"><span>"Competitive and moral pressure from rivals can push businesses to adopt greener practices."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"Companies often copy what their competitors are doing."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"If one supermarket cuts plastic packaging by 12% in a year, three rivals will match the pledge within six months."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row"><span>"Competitive and moral pressure from rival brands can push a wide range of businesses to gradually adopt greener working practices."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"When a clothing retailer announced a 30% cut to packaging waste last spring, two competitors launched matching schemes within four months."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>
@@ -352,7 +376,7 @@ textarea{min-height:80px}
         <div class="quote" id="r2-model" style="display:none;border-left-color:var(--gold);background:var(--warn-bg);margin-top:.8rem"><strong>Model —</strong> The Igniting A Green Revolution report was released by 3 Sided Cube.</div>
       </div>
 
-      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three issues share something in common. Name the category in one or two words.</div>
+      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three issues share something in common. Name the category in a few words.</div>
         <div class="quote">non-recyclable packaging · complex recycling rules · lack of government financial support</div>
         <input class="txt" id="r3" placeholder="One umbrella term…">
         <button class="btn" onclick="checkReformulate('r3','r3-fb',['barrier','obstacle','challenge'],null)">Check</button>
@@ -374,7 +398,7 @@ textarea{min-height:80px}
 
     <div class="step-panel" data-step="organise">
       <div class="step-head"><div class="step-kicker">Step 5 / 7</div><h2>Organise</h2>
-        <p class="step-intro">This is your plan, built from the work you've just done. Edit the wording if you like, and use the arrows to reorder the main ideas.</p></div>
+        <p class="step-intro">This is your plan, built from the work you've just done. <span style="color:var(--wrong,#b5302b);font-weight:700">EDIT</span> the wording if you like, and use the arrows to <span style="color:var(--wrong,#b5302b);font-weight:700">REORDER</span> the main ideas.</p></div>
       <div class="card">
         <div class="plan-field"><div class="lbl">Topic</div><textarea id="planTopic" style="min-height:44px"></textarea></div>
         <div class="plan-field"><div class="lbl">Author's position</div><textarea id="planPosition" style="min-height:44px"></textarea></div>
@@ -392,9 +416,19 @@ textarea{min-height:80px}
         <div class="field-lbl">Your summary</div>
         <textarea id="summaryText" style="min-height:220px" placeholder="Write your summary here, in your own words…" oninput="onSummaryInput()"></textarea>
         <div class="wc-row"><span class="wc-badge" id="wcBadge">0 words</span><button class="btn ghost small" onclick="toggleHelp()">Need help?</button></div>
-        <div class="help-panel" id="helpPanel"><ul>
+        <div class="help-panel" id="helpPanel">
+          <div class="help-sub">Structure</div>
+          <ul>
           <li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
           <li>Another concern is…</li><li>Finally, …</li><li>The article concludes that…</li>
+        </ul>
+          <div class="help-sub">Content — ideas to include</div>
+          <ul>
+          <li>Brand peer pressure: companies act partly because rivals' green initiatives get public attention.</li>
+          <li>Technology as a "nudge": tools and apps help turn good intentions into concrete action.</li>
+          <li>Packaging and recycling remain confusing for consumers, even when they want to act.</li>
+          <li>Businesses fear that sustainable initiatives raise costs without a clear return.</li>
+          <li>Overall assessment: are these tools enough on their own, or do they need to be combined with something else (regulation, real financial incentives)?</li>
         </ul></div>
       </div>
       <div class="footer-nav"><button class="btn ghost" onclick="goStep(4)">← Back</button><button class="btn gold" onclick="goStep(6)">Continue → Check</button></div>
@@ -484,10 +518,10 @@ function checkMCQ(btn,ok,cardId,explain){
 
 const KOLO=[
 {t:"Competitive and moral pressure from industry rivals — 'brand peer pressure' — can push businesses to adopt greener practices.",keep:true,why:"The report's central finding about businesses — belongs in the summary."},
-{t:"The report was released by 3 Sided Cube on Monday, March 8.",keep:false,why:"A date/event detail — mention 3 Sided Cube if useful, not this level of detail."},
 {t:"Digital technology can help consumers make smarter, greener decisions and feel part of a wider sustainability-conscious community.",keep:true,why:"The second key driver identified by the report."},
-{t:"3 Sided Cube's managing director, Richard Strachan, made these comments to the press.",keep:false,why:"An anecdotal, secondary detail about a source, not an argument."},
+{t:"The report was released by 3 Sided Cube on Monday, March 8.",keep:false,why:"A date/event detail — mention 3 Sided Cube if useful, not this level of detail."},
 {t:"Businesses face real barriers to sustainable change, especially a lack of government financial support and unclear guidance on recyclable materials.",keep:true,why:"The main obstacle the report identifies for businesses."},
+{t:"3 Sided Cube's managing director, Richard Strachan, made these comments to the press.",keep:false,why:"An anecdotal, secondary detail about a source, not an argument."},
 {t:"Consumers are concerned about non-recyclable packaging and complex recycling rules.",keep:false,why:"A supporting example under the wider barriers idea, not a separate main idea."},
 {t:"The report recommends a 'nudge' approach, using technology and social proof, rather than reprimanding people.",keep:true,why:"The report's core recommendation."},
 {t:"Shoppers are more likely to act if they believe sustainable lifestyles are increasing in popularity.",keep:false,why:"A supporting mechanism behind the nudge idea — a detail, not the idea itself."},
@@ -533,9 +567,9 @@ function checkCalibration(){
   const a1=document.getElementById('cal1').value,a2=document.getElementById('cal2').value,a3=document.getElementById('cal3').value;
   const fb=document.getElementById('cal-fb');
   if(!a1||!a2||!a3){fb.className='fb show no';fb.innerHTML='Please answer all three.';return;}
-  const correct=(a1==='detailed')+(a2==='ok')+(a3==='vague');
-  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> exactly the right level of detail for a summary sits between "too detailed" and "too vague".';}
-  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentence 1 is too detailed, sentence 2 is appropriate, sentence 3 is too vague.';}
+  const correct=(a1==='detailed')+(a2==='ok')+(a3==='detailed');
+  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> a good summary sentence stays general — specific figures and dates belong to the source text, not the summary.';}
+  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentences 1 and 3 are too detailed (they keep the exact figures), sentence 2 is appropriate.';}
   state.done.condense=true; save(); renderNav();
 }
 

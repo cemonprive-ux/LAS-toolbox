@@ -128,6 +128,8 @@ textarea{min-height:80px}
 .help-panel.show{display:block}
 .help-panel ul{list-style:none}
 .help-panel li{padding:.25rem 0;font-family:'Source Serif 4',Georgia,serif;font-size:.8rem;color:var(--navy)}
+.help-sub{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:.7rem 0 .2rem}
+.help-sub:first-child{margin-top:0}
 .fb-grid{display:grid;gap:.8rem}
 .fb-panel{border:1px solid var(--border);border-radius:9px;background:#fff;overflow:hidden}
 .fb-panel-head{padding:.65rem .95rem;font-size:.85rem;font-weight:600;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
@@ -281,28 +283,29 @@ textarea{min-height:80px}
       <div class="step-head"><div class="step-kicker">Step 3 / 7</div><h2>Condense</h2>
         <p class="step-intro">Several sentences can often collapse into one. Watch how a detailed passage becomes a single idea — then try it yourself.</p></div>
 
-      <div class="card"><h3>3.1 — Worked example</h3>
+      <div class="card"><h3>3.0 — Worked example</h3>
+        <p class="step-intro" style="margin-top:0">Study how this example is solved before you try the next ones yourself.</p>
         <div class="flow-step">Original</div>
         <div class="quote">8.8 million UK workers, or 28% of the workforce, could work 32-hour weeks by 2033. A further 88% of the workforce could see working hours cut by at least 10%.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Remove the details</div>
         <p class="field-lbl">Tick the sentences that are examples, figures or secondary sources — not the core claim itself.</p>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> 8.8 million UK workers, or 28% of the workforce, could work 32-hour weeks by 2033.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> A further 88% of the workforce could see working hours cut by at least 10%.</label>
-        <div class="fb" id="cA-details-fb"></div>
+        <label class="chk-row"><input type="checkbox" checked disabled> 8.8 million UK workers, or 28% of the workforce, could work 32-hour weeks by 2033.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> A further 88% of the workforce could see working hours cut by at least 10%.</label>
+        <div class="fb show ok">Correct — both these sentences are supporting figures; keep only the general idea below.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> AI will replace most human jobs within a decade</button>
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">B</span> AI could let many UK workers work fewer hours</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">C</span> UK productivity has fallen sharply this year</button>
+          <button class="opt-btn" disabled><span class="ltr">A</span> AI will replace most human jobs within a decade</button>
+          <button class="opt-btn correct" disabled><span class="ltr">B</span> AI could let many UK workers work fewer hours</button>
+          <button class="opt-btn" disabled><span class="ltr">C</span> UK productivity has fallen sharply this year</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
-        <div class="condensed-box" id="cA-result"><strong>Condensed sentence —</strong> AI could let a significant share of the UK workforce work fewer hours for the same pay.</div>
+        <div class="condensed-box show" id="cA-result"><strong>Condensed sentence —</strong> AI could let a significant share of the UK workforce work fewer hours for the same pay.</div>
       </div>
 
-      <div class="card"><h3>3.2 — Now you try</h3>
+      <div class="card"><h3>3.1 — Now you try</h3>
         <div class="flow-step">Original</div>
         <div class="quote">Many people fear that AI will take jobs away from humans. A LinkedIn survey found nearly half of European workers expect AI to have a major impact on their working lives within a year.</div>
         <div class="flow-arrow">↓</div>
@@ -322,11 +325,31 @@ textarea{min-height:80px}
         <div class="condensed-box" id="cB-result"><strong>Condensed sentence —</strong> Beyond concerns about job losses, AI is also raising hopes of a shorter working week.</div>
       </div>
 
+      <div class="card"><h3>3.2 — Now you try</h3>
+        <div class="flow-step">Original</div>
+        <div class="quote">Early four-day week trials already show steady or improved productivity, alongside real gains in wellbeing. Autonomy's estimates about a 32-hour week rely on productivity data collected by Goldman Sachs and the US Department of Labor.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Remove the details</div>
+        <label class="chk-row"><input type="checkbox" data-correct="0" onchange="condenseCheck('cC')"> Early four-day week trials already show steady or improved productivity, alongside real gains in wellbeing.</label>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> Autonomy's estimates about a 32-hour week rely on productivity data collected by Goldman Sachs and the US Department of Labor.</label>
+        <div class="fb" id="cC-details-fb"></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Find the common idea</div>
+        <div class="opts" id="cC-common">
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">A</span> AI trials have all failed to show any benefit</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cC')"><span class="ltr">B</span> Evidence so far supports the case for a shorter week</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">C</span> Only US companies have tested shorter working weeks</button>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Condense</div>
+        <div class="condensed-box" id="cC-result"><strong>Condensed sentence —</strong> Early evidence, including the productivity data behind Autonomy's estimates, supports the case for a shorter working week.</div>
+      </div>
+
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about AI and working hours to the right label.</p>
-        <div class="match-row"><span>"Autonomy's report says 8.8 million UK workers could move to a 32-hour week by 2033."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row"><span>"AI could let a significant share of UK workers work fewer hours for the same pay."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"AI is going to change how people work in the future."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"Autonomy's report says 8.8 million UK workers could move to a 32-hour week by 2033."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row"><span>"AI could let a significant share of UK workers work fewer hours for the same pay."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"Autonomy's report also estimates that a further 88% of the UK workforce could see hours cut by at least 10%."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>
@@ -355,7 +378,7 @@ textarea{min-height:80px}
         <div class="quote" id="r2-model" style="display:none;border-left-color:var(--gold);background:var(--warn-bg);margin-top:.8rem"><strong>Model —</strong> A report on AI and the four-day week was published by Autonomy.</div>
       </div>
 
-      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three sources share something in common. Name the category in one or two words.</div>
+      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three sources share something in common. Name the category in a few words.</div>
         <div class="quote">Goldman Sachs · the US Department of Labor · LinkedIn</div>
         <input class="txt" id="r3" placeholder="One umbrella term…">
         <button class="btn" onclick="checkReformulate('r3','r3-fb',['data','source','organisation','organization','research'],null)">Check</button>
@@ -377,7 +400,7 @@ textarea{min-height:80px}
 
     <div class="step-panel" data-step="organise">
       <div class="step-head"><div class="step-kicker">Step 5 / 7</div><h2>Organise</h2>
-        <p class="step-intro">This is your plan, built from the work you've just done. Edit the wording if you like, and use the arrows to reorder the main ideas.</p></div>
+        <p class="step-intro">This is your plan, built from the work you've just done. <span style="color:var(--wrong);font-weight:700">EDIT</span> the wording if you like, and use the arrows to <span style="color:var(--wrong);font-weight:700">REORDER</span> the main ideas.</p></div>
       <div class="card">
         <div class="plan-field"><div class="lbl">Topic</div><textarea id="planTopic" style="min-height:44px"></textarea></div>
         <div class="plan-field"><div class="lbl">Author's position</div><textarea id="planPosition" style="min-height:44px"></textarea></div>
@@ -395,10 +418,16 @@ textarea{min-height:80px}
         <div class="field-lbl">Your summary</div>
         <textarea id="summaryText" style="min-height:220px" placeholder="Write your summary here, in your own words…" oninput="onSummaryInput()"></textarea>
         <div class="wc-row"><span class="wc-badge" id="wcBadge">0 words</span><button class="btn ghost small" onclick="toggleHelp()">Need help?</button></div>
-        <div class="help-panel" id="helpPanel"><ul>
-          <li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
-          <li>Another concern is…</li><li>Finally, …</li><li>The article concludes that…</li>
-        </ul></div>
+        <div class="help-panel" id="helpPanel">
+          <div class="help-sub">Structure</div>
+          <ul><li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
+          <li>Another concern is…</li><li>Finally, …</li><li>The article concludes that…</li></ul>
+          <div class="help-sub">Content — ideas to include</div>
+          <ul><li>AI could let a significant share of UK workers work fewer hours for the same pay.</li>
+          <li>Beyond job-loss fears, AI also raises hopes of a shorter working week.</li>
+          <li>Early four-day week trials already show steady or improved productivity and wellbeing gains.</li>
+          <li>Overall assessment: is a shorter week guaranteed, or does it depend on how the gains are shared?</li></ul>
+        </div>
       </div>
       <div class="footer-nav"><button class="btn ghost" onclick="goStep(4)">← Back</button><button class="btn gold" onclick="goStep(6)">Continue → Check</button></div>
     </div>
@@ -487,12 +516,12 @@ function checkMCQ(btn,ok,cardId,explain){
 
 const KOLO=[
 {t:"AI could let a significant share of the UK workforce work fewer hours for the same pay.",keep:true,why:"The report's central finding — belongs in the summary."},
-{t:"8.8 million UK workers, or 28% of the workforce, could work 32-hour weeks by 2033.",keep:false,why:"A supporting statistic for the main idea above — generalise it, don't quote it."},
 {t:"Beyond concerns about job losses, AI is also raising hopes of a shorter working week.",keep:true,why:"Frames the article's overall angle — belongs in the summary."},
-{t:"Nearly half of European workers expect AI to have a major impact on their working lives within a year, according to a LinkedIn survey.",keep:false,why:"A supporting survey statistic, not the idea itself."},
+{t:"8.8 million UK workers, or 28% of the workforce, could work 32-hour weeks by 2033.",keep:false,why:"A supporting statistic for the main idea above — generalise it, don't quote it."},
 {t:"Autonomy's estimates rely on productivity data from Goldman Sachs and the US Department of Labor.",keep:true,why:"An important methodological point about where the figures come from."},
-{t:"Generative tools like ChatGPT and Bard can write articles or business plans in seconds.",keep:false,why:"A tangential example about AI capability, not about working hours."},
+{t:"Nearly half of European workers expect AI to have a major impact on their working lives within a year, according to a LinkedIn survey.",keep:false,why:"A supporting survey statistic, not the idea itself."},
 {t:"A shorter working week is the clearest way to make sure AI's gains benefit workers, not just companies.",keep:true,why:"The report's central argument, worth keeping."},
+{t:"Generative tools like ChatGPT and Bard can write articles or business plans in seconds.",keep:false,why:"A tangential example about AI capability, not about working hours."},
 {t:"A further 88% of the workforce could see working hours cut by at least 10%.",keep:false,why:"Another supporting statistic — leave it out of the summary itself."},
 {t:"Early four-day week trials already show steady or improved productivity, alongside real gains in wellbeing.",keep:true,why:"The article's conclusion."}
 ];
@@ -536,9 +565,9 @@ function checkCalibration(){
   const a1=document.getElementById('cal1').value,a2=document.getElementById('cal2').value,a3=document.getElementById('cal3').value;
   const fb=document.getElementById('cal-fb');
   if(!a1||!a2||!a3){fb.className='fb show no';fb.innerHTML='Please answer all three.';return;}
-  const correct=(a1==='detailed')+(a2==='ok')+(a3==='vague');
-  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> exactly the right level of detail for a summary sits between "too detailed" and "too vague".';}
-  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentence 1 is too detailed, sentence 2 is appropriate, sentence 3 is too vague.';}
+  const correct=(a1==='detailed')+(a2==='ok')+(a3==='detailed');
+  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> a good summary sentence stays general — specific figures belong to the source text, not the summary.';}
+  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentences 1 and 3 are too detailed, sentence 2 is appropriate.';}
   state.done.condense=true; save(); renderNav();
 }
 

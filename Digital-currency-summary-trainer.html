@@ -151,6 +151,8 @@ textarea{min-height:80px}
 .help-panel.show{display:block}
 .help-panel ul{list-style:none}
 .help-panel li{padding:.25rem 0;font-family:'Source Serif 4',Georgia,serif;font-size:.8rem;color:var(--navy)}
+.help-sub{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:.7rem 0 .2rem}
+.help-sub:first-child{margin-top:0}
 
 /* check step */
 .fb-grid{display:grid;gap:.8rem}
@@ -310,29 +312,30 @@ textarea{min-height:80px}
       <div class="step-head"><div class="step-kicker">Step 3 / 7</div><h2>Condense</h2>
         <p class="step-intro">Several sentences can often collapse into one. Watch how a detailed passage becomes a single idea — then try it yourself.</p></div>
 
-      <div class="card"><h3>3.1 — Worked example</h3>
+      <div class="card"><h3>3.0 — Worked example</h3>
+        <p class="step-intro" style="margin-top:0">Study how this example is solved before you try the next ones yourself.</p>
         <div class="flow-step">Original</div>
         <div class="quote" id="cA-orig">Poor and elderly people often prefer to budget with cash. <span data-d="1">A million UK adults don't have a bank account.</span> <span data-d="1">The Royal Society of Arts calculated that going cash-free risked 10 million Britons losing control of their finances.</span></div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Remove the details</div>
         <p class="field-lbl">Tick the sentences that are examples, figures or secondary sources — not the core claim itself.</p>
-        <label class="chk-row"><input type="checkbox" data-correct="0" onchange="condenseCheck('cA')"> Poor and elderly people often prefer to budget with cash.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> A million UK adults don't have a bank account.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> The Royal Society of Arts calculated 10 million Britons could lose control of their finances.</label>
-        <div class="fb" id="cA-details-fb"></div>
+        <label class="chk-row"><input type="checkbox" disabled> Poor and elderly people often prefer to budget with cash.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> A million UK adults don't have a bank account.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> The Royal Society of Arts calculated 10 million Britons could lose control of their finances.</label>
+        <div class="fb show ok">Correct — the first sentence is the core claim; the other two are examples/figures to drop.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> Digital payment technology in emerging markets</button>
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">B</span> Vulnerable groups risk financial exclusion</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">C</span> Central bank interest rate policy</button>
+          <button class="opt-btn" disabled><span class="ltr">A</span> Digital payment technology in emerging markets</button>
+          <button class="opt-btn correct" disabled><span class="ltr">B</span> Vulnerable groups risk financial exclusion</button>
+          <button class="opt-btn" disabled><span class="ltr">C</span> Central bank interest rate policy</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
-        <div class="condensed-box" id="cA-result"><strong>Condensed sentence —</strong> A cashless society could financially exclude vulnerable groups such as the poor, the elderly and the unbanked.</div>
+        <div class="condensed-box show" id="cA-result"><strong>Condensed sentence —</strong> A cashless society could financially exclude vulnerable groups such as the poor, the elderly and the unbanked.</div>
       </div>
 
-      <div class="card"><h3>3.2 — Now you try</h3>
+      <div class="card"><h3>3.1 — Now you try</h3>
         <div class="flow-step">Original</div>
         <div class="quote">According to a 2019 survey of 23 central banks, 82% of respondents worried that digital currencies could cause runs on banks. Caps on CBDC holdings have been suggested to address these concerns.</div>
         <div class="flow-arrow">↓</div>
@@ -352,11 +355,31 @@ textarea{min-height:80px}
         <div class="condensed-box" id="cB-result"><strong>Condensed sentence —</strong> Central banks fear that digital currencies could destabilise commercial banks by triggering bank runs.</div>
       </div>
 
+      <div class="card"><h3>3.2 — Now you try</h3>
+        <div class="flow-step">Original</div>
+        <div class="quote">Critics fear a central bank could gain unprecedented insight into citizens' spending habits through a digital pound. Bank of England officials have stressed that privacy safeguards would be built into any design.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Remove the details</div>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> Critics fear a central bank could gain unprecedented insight into citizens' spending habits.</label>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> Bank of England officials have stressed that privacy safeguards would be built into any design.</label>
+        <div class="fb" id="cC-details-fb"></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Find the common idea</div>
+        <div class="opts" id="cC-common">
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">A</span> Digital currencies always increase transaction fees</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cC')"><span class="ltr">B</span> Privacy concerns are central to the digital pound debate</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">C</span> The Bank of England plans to abolish physical cash</button>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Condense</div>
+        <div class="condensed-box" id="cC-result"><strong>Condensed sentence —</strong> Privacy concerns — and reassurances about safeguards — are central to the digital pound debate.</div>
+      </div>
+
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about cash's advantages to the right label.</p>
-        <div class="match-row"><span>"Cash is convenient because it works in shops and markets, never runs out of battery, and can't be traced or hacked, unlike apps."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row"><span>"Cash has practical advantages: it is convenient, reliable and anonymous, qualities hard to reproduce digitally."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"Cash remains quite useful for many people in everyday situations."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"Cash is convenient because it works in shops and markets, never runs out of battery, and can't be traced or hacked, unlike apps."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row"><span>"Cash has practical advantages that are convenient, reliable and anonymous — qualities that are genuinely hard to reproduce in a fully digital system."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"Cash also works during power cuts or internet outages, and gives users an exact daily record they can carry physically in their wallet."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>
@@ -386,7 +409,7 @@ textarea{min-height:80px}
         <div class="quote" id="r2-model" style="display:none;border-left-color:var(--gold);background:var(--warn-bg);margin-top:.8rem"><strong>Model —</strong> A digital pound is being promoted by the government.</div>
       </div>
 
-      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three groups share something in common. Name the category in one or two words.</div>
+      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These three groups share something in common. Name the category in a few words.</div>
         <div class="quote">poor people · elderly people · people without a bank account</div>
         <input class="txt" id="r3" placeholder="One umbrella term…">
         <button class="btn" onclick="checkReformulate('r3','r3-fb',['vulnerable'],null)">Check</button>
@@ -409,7 +432,7 @@ textarea{min-height:80px}
     <!-- STEP 5 — ORGANISE -->
     <div class="step-panel" data-step="organise">
       <div class="step-head"><div class="step-kicker">Step 5 / 7</div><h2>Organise</h2>
-        <p class="step-intro">This is your plan, built from the work you've just done. Edit the wording if you like, and use the arrows to reorder the main ideas.</p></div>
+        <p class="step-intro">This is your plan, built from the work you've just done. <span style="color:var(--wrong);font-weight:700">EDIT</span> the wording if you like, and use the arrows to <span style="color:var(--wrong);font-weight:700">REORDER</span> the main ideas.</p></div>
       <div class="card">
         <div class="plan-field"><div class="lbl">Topic</div><textarea id="planTopic" style="min-height:44px"></textarea></div>
         <div class="plan-field"><div class="lbl">Author's position</div><textarea id="planPosition" style="min-height:44px"></textarea></div>
@@ -428,10 +451,16 @@ textarea{min-height:80px}
         <div class="field-lbl">Your summary</div>
         <textarea id="summaryText" style="min-height:220px" placeholder="Write your summary here, in your own words…" oninput="onSummaryInput()"></textarea>
         <div class="wc-row"><span class="wc-badge" id="wcBadge">0 words</span><button class="btn ghost small" onclick="toggleHelp()">Need help?</button></div>
-        <div class="help-panel" id="helpPanel"><ul>
-          <li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
-          <li>Another concern is…</li><li>Finally, …</li><li>The article concludes that…</li>
-        </ul></div>
+        <div class="help-panel" id="helpPanel">
+          <div class="help-sub">Structure</div>
+          <ul><li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
+          <li>Another concern is…</li><li>Finally, …</li><li>The article concludes that…</li></ul>
+          <div class="help-sub">Content — ideas to include</div>
+          <ul><li>Cash still offers real advantages — convenience, reliability, anonymity — especially for vulnerable groups.</li>
+          <li>A digital pound would shift money management from commercial banks to the central bank.</li>
+          <li>Central banks worry that digital currencies could trigger bank runs.</li>
+          <li>Overall assessment: are these risks a reason to reject a digital pound, or points to design around?</li></ul>
+        </div>
       </div>
       <div class="footer-nav"><button class="btn ghost" onclick="goStep(4)">← Back</button><button class="btn gold" onclick="goStep(6)">Continue → Check</button></div>
     </div>
@@ -527,10 +556,10 @@ function checkMCQ(btn,ok,cardId,explain){
 /* ── KEEP OR LEAVE OUT ── */
 const KOLO=[
 {t:"Cash is convenient, reliable and anonymous, and hard to replicate online.",keep:true,why:"A central argument in favour of cash — it belongs in the summary."},
-{t:"A million UK adults don't have a bank account.",keep:false,why:"A figure that illustrates a broader idea (exclusion) — generalise it, don't quote it."},
 {t:"A cashless society could exclude vulnerable groups such as the poor, the elderly and the unbanked.",keep:true,why:"The main idea this evidence supports."},
-{t:"The Royal Society of Arts calculated that 10 million Britons could lose control of their finances.",keep:false,why:"A supporting statistic, not the idea itself."},
+{t:"A million UK adults don't have a bank account.",keep:false,why:"A figure that illustrates a broader idea (exclusion) — generalise it, don't quote it."},
 {t:"A digital pound would shift the management of money from commercial banks to the central bank.",keep:true,why:"A key point distinguishing a CBDC from ordinary digital payments."},
+{t:"The Royal Society of Arts calculated that 10 million Britons could lose control of their finances.",keep:false,why:"A supporting statistic, not the idea itself."},
 {t:"Paul Tucker, a former deputy Bank governor, wrote a book called Global Discord.",keep:false,why:"An anecdotal, secondary detail about a source, not an argument."},
 {t:"Digital currencies could destabilise commercial banks if people moved their savings to the central bank.",keep:true,why:"The core risk the article raises about central bank digital currencies."},
 {t:"82% of the central banks surveyed in 2019 worried about this risk.",keep:false,why:"A statistic supporting the idea above — leave it out of the summary itself."},
@@ -577,9 +606,9 @@ function checkCalibration(){
   const a1=document.getElementById('cal1').value,a2=document.getElementById('cal2').value,a3=document.getElementById('cal3').value;
   const fb=document.getElementById('cal-fb');
   if(!a1||!a2||!a3){fb.className='fb show no';fb.innerHTML='Please answer all three.';return;}
-  const correct=(a1==='detailed')+(a2==='ok')+(a3==='vague');
-  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> exactly the right level of detail for a summary sits between "too detailed" and "too vague".';}
-  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentence 1 is too detailed, sentence 2 is appropriate, sentence 3 is too vague.';}
+  const correct=(a1==='detailed')+(a2==='ok')+(a3==='detailed');
+  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> a good summary sentence stays general — specific figures and mechanisms belong to the source text, not the summary.';}
+  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentences 1 and 3 are too detailed, sentence 2 is appropriate.';}
   state.done.condense=true; save(); renderNav();
 }
 

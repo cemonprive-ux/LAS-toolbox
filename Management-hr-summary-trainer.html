@@ -129,6 +129,8 @@ textarea{min-height:80px}
 .help-panel.show{display:block}
 .help-panel ul{list-style:none}
 .help-panel li{padding:.25rem 0;font-family:'Source Serif 4',Georgia,serif;font-size:.8rem;color:var(--navy)}
+.help-sub{font-family:'DM Mono',monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:.7rem 0 .2rem}
+.help-sub:first-child{margin-top:0}
 .fb-grid{display:grid;gap:.8rem}
 .fb-panel{border:1px solid var(--border);border-radius:9px;background:#fff;overflow:hidden}
 .fb-panel-head{padding:.65rem .95rem;font-size:.85rem;font-weight:600;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
@@ -282,28 +284,29 @@ textarea{min-height:80px}
       <div class="step-head"><div class="step-kicker">Step 3 / 7</div><h2>Condense</h2>
         <p class="step-intro">Several sentences can often collapse into one. Watch how a detailed passage becomes a single idea — then try it yourself.</p></div>
 
-      <div class="card"><h3>3.1 — Worked example</h3>
+      <div class="card"><h3>3.0 — Worked example</h3>
+        <p class="step-intro" style="margin-top:0">Study how this example is solved before you try the next ones yourself.</p>
         <div class="flow-step">Original</div>
         <div class="quote">53% of managers said their organisation offered sabbatical leave. Managers in the public or charity sector were more likely to say sabbaticals were available than those in the private sector (62% v 44%).</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Remove the details</div>
         <p class="field-lbl">Tick the sentences that are examples, figures or secondary sources — not the core claim itself.</p>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> 53% of managers said their organisation offered sabbatical leave.</label>
-        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cA')"> Managers in the public or charity sector were more likely to say sabbaticals were available (62% v 44%).</label>
-        <div class="fb" id="cA-details-fb"></div>
+        <label class="chk-row"><input type="checkbox" checked disabled> 53% of managers said their organisation offered sabbatical leave.</label>
+        <label class="chk-row"><input type="checkbox" checked disabled> Managers in the public or charity sector were more likely to say sabbaticals were available (62% v 44%).</label>
+        <div class="fb show ok">Correct — both these sentences are supporting figures; keep only the general idea below.</div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Find the common idea</div>
         <div class="opts" id="cA-common">
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">A</span> Private companies rarely offer any sabbaticals</button>
-          <button class="opt-btn" onclick="condenseCommon(this,true,'cA')"><span class="ltr">B</span> Sabbaticals are now common in most sectors</button>
-          <button class="opt-btn" onclick="condenseCommon(this,false,'cA')"><span class="ltr">C</span> Most managers personally dislike sabbatical leave</button>
+          <button class="opt-btn" disabled><span class="ltr">A</span> Private companies rarely offer any sabbaticals</button>
+          <button class="opt-btn correct" disabled><span class="ltr">B</span> Sabbaticals are now common in most sectors</button>
+          <button class="opt-btn" disabled><span class="ltr">C</span> Most managers personally dislike sabbatical leave</button>
         </div>
         <div class="flow-arrow">↓</div>
         <div class="flow-step">Condense</div>
-        <div class="condensed-box" id="cA-result"><strong>Condensed sentence —</strong> Sabbatical leave is now offered by a majority of organisations, and is more common in the public and charity sector than in the private sector.</div>
+        <div class="condensed-box show" id="cA-result"><strong>Condensed sentence —</strong> Sabbatical leave is now offered by a majority of organisations, and is more common in the public and charity sector than in the private sector.</div>
       </div>
 
-      <div class="card"><h3>3.2 — Now you try</h3>
+      <div class="card"><h3>3.1 — Now you try</h3>
         <div class="flow-step">Original</div>
         <div class="quote">Two-fifths of managers said the main reason for offering sabbaticals was to improve employee wellbeing and mental health. 36% wanted to cultivate a more flexible work culture, and 31% wanted to increase talent retention.</div>
         <div class="flow-arrow">↓</div>
@@ -323,11 +326,31 @@ textarea{min-height:80px}
         <div class="condensed-box" id="cB-result"><strong>Condensed sentence —</strong> Employers offer sabbaticals mainly to improve employee wellbeing, encourage flexibility and increase retention.</div>
       </div>
 
+      <div class="card"><h3>3.2 — Now you try</h3>
+        <div class="flow-step">Original</div>
+        <div class="quote">Uptake of sabbaticals varies by industry, and practical terms such as length, pay and eligibility differ between organisations. One NHS hospital in Louth, for example, has offered sabbaticals to staff since 1952.</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Remove the details</div>
+        <label class="chk-row"><input type="checkbox" data-correct="0" onchange="condenseCheck('cC')"> Uptake of sabbaticals varies by industry, and practical terms such as length, pay and eligibility differ between organisations.</label>
+        <label class="chk-row"><input type="checkbox" data-correct="1" onchange="condenseCheck('cC')"> One NHS hospital in Louth, for example, has offered sabbaticals to staff since 1952.</label>
+        <div class="fb" id="cC-details-fb"></div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Find the common idea</div>
+        <div class="opts" id="cC-common">
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">A</span> All sabbaticals are unpaid and short-term</button>
+          <button class="opt-btn" onclick="condenseCommon(this,true,'cC')"><span class="ltr">B</span> Sabbatical policies vary widely between organisations</button>
+          <button class="opt-btn" onclick="condenseCommon(this,false,'cC')"><span class="ltr">C</span> Only public-sector employers offer sabbaticals</button>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-step">Condense</div>
+        <div class="condensed-box" id="cC-result"><strong>Condensed sentence —</strong> Sabbatical policies vary widely between organisations, in length, pay and eligibility, as shown by long-running schemes such as one NHS hospital's since 1952.</div>
+      </div>
+
       <div class="card"><h3>3.3 — Find the right level of detail</h3>
         <p class="step-intro" style="margin-top:0">Match each candidate sentence about job satisfaction and sabbaticals to the right label.</p>
-        <div class="match-row"><span>"Dobrow's survey found job satisfaction rises sharply in the first six months of a new role, then gradually declines."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row"><span>"Sabbaticals can recreate the boost in job satisfaction that normally comes from changing jobs."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
-        <div class="match-row" style="border-bottom:none"><span>"Job satisfaction changes over time for various reasons."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option><option value="vague">Too vague</option></select></div>
+        <div class="match-row"><span>"Dobrow's survey found job satisfaction rises sharply in the first six months of a new role, then gradually declines."</span><select id="cal1"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row"><span>"Sabbaticals can artificially recreate the same boost in job satisfaction that normally comes only from changing jobs entirely."</span><select id="cal2"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
+        <div class="match-row" style="border-bottom:none"><span>"Dobrow's survey also found satisfaction plateaus after around three years in a role, before starting to decline once again."</span><select id="cal3"><option value="">–</option><option value="detailed">Too detailed</option><option value="ok">Appropriate</option></select></div>
         <button class="btn" onclick="checkCalibration()">Check my answers</button>
         <div class="fb" id="cal-fb"></div>
       </div>
@@ -356,7 +379,7 @@ textarea{min-height:80px}
         <div class="quote" id="r2-model" style="display:none;border-left-color:var(--gold);background:var(--warn-bg);margin-top:.8rem"><strong>Model —</strong> Exclusive data on sabbatical leave was collected by the Chartered Management Institute.</div>
       </div>
 
-      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These four things share something in common. Name the category in one or two words.</div>
+      <div class="card"><h3>4.3 — Generalise</h3><div class="q">These four things share something in common. Name the category in a few words.</div>
         <div class="quote">wellbeing · mental health · flexible culture · talent retention</div>
         <input class="txt" id="r3" placeholder="One umbrella term…">
         <button class="btn" onclick="checkReformulate('r3','r3-fb',['benefit','advantage','reason'],null)">Check</button>
@@ -378,7 +401,7 @@ textarea{min-height:80px}
 
     <div class="step-panel" data-step="organise">
       <div class="step-head"><div class="step-kicker">Step 5 / 7</div><h2>Organise</h2>
-        <p class="step-intro">This is your plan, built from the work you've just done. Edit the wording if you like, and use the arrows to reorder the main ideas.</p></div>
+        <p class="step-intro">This is your plan, built from the work you've just done. <span style="color:var(--wrong);font-weight:700">EDIT</span> the wording if you like, and use the arrows to <span style="color:var(--wrong);font-weight:700">REORDER</span> the main ideas.</p></div>
       <div class="card">
         <div class="plan-field"><div class="lbl">Topic</div><textarea id="planTopic" style="min-height:44px"></textarea></div>
         <div class="plan-field"><div class="lbl">Author's position</div><textarea id="planPosition" style="min-height:44px"></textarea></div>
@@ -396,10 +419,16 @@ textarea{min-height:80px}
         <div class="field-lbl">Your summary</div>
         <textarea id="summaryText" style="min-height:220px" placeholder="Write your summary here, in your own words…" oninput="onSummaryInput()"></textarea>
         <div class="wc-row"><span class="wc-badge" id="wcBadge">0 words</span><button class="btn ghost small" onclick="toggleHelp()">Need help?</button></div>
-        <div class="help-panel" id="helpPanel"><ul>
-          <li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
-          <li>Another point is that…</li><li>Finally, …</li><li>The article concludes that…</li>
-        </ul></div>
+        <div class="help-panel" id="helpPanel">
+          <div class="help-sub">Structure</div>
+          <ul><li>The article examines…</li><li>The author argues that…</li><li>It also points out that…</li>
+          <li>Another point is that…</li><li>Finally, …</li><li>The article concludes that…</li></ul>
+          <div class="help-sub">Content — ideas to include</div>
+          <ul><li>Sabbatical leave is now common, especially in the public and charity sectors.</li>
+          <li>Employers offer sabbaticals mainly to boost wellbeing, flexibility and retention.</li>
+          <li>Sabbaticals can recreate the job-satisfaction boost normally linked to changing jobs.</li>
+          <li>Overall assessment: practical terms — length, pay, eligibility — vary a lot between organisations.</li></ul>
+        </div>
       </div>
       <div class="footer-nav"><button class="btn ghost" onclick="goStep(4)">← Back</button><button class="btn gold" onclick="goStep(6)">Continue → Check</button></div>
     </div>
@@ -537,9 +566,9 @@ function checkCalibration(){
   const a1=document.getElementById('cal1').value,a2=document.getElementById('cal2').value,a3=document.getElementById('cal3').value;
   const fb=document.getElementById('cal-fb');
   if(!a1||!a2||!a3){fb.className='fb show no';fb.innerHTML='Please answer all three.';return;}
-  const correct=(a1==='detailed')+(a2==='ok')+(a3==='vague');
-  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> exactly the right level of detail for a summary sits between "too detailed" and "too vague".';}
-  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentence 1 is too detailed, sentence 2 is appropriate, sentence 3 is too vague.';}
+  const correct=(a1==='detailed')+(a2==='ok')+(a3==='detailed');
+  if(correct===3){fb.className='fb show ok';fb.innerHTML='<strong>3 / 3 —</strong> a good summary sentence stays general — specific figures and dates belong to the source text, not the summary.';}
+  else{fb.className='fb show no';fb.innerHTML='<strong>'+correct+' / 3 —</strong> sentences 1 and 3 are too detailed, sentence 2 is appropriate.';}
   state.done.condense=true; save(); renderNav();
 }
 
